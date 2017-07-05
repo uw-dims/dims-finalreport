@@ -6,10 +6,10 @@
 .. DIMS Project Final Report v |release|
    =====================================
 
-DIMS Project Interim Report v |release|
+DIMS Project Final Report v |release|
 =======================================
 
-This document (version |release|) is the Interim Report for the
+This document (version |release|) is the Final Report for the
 *Distributed Incident Management System* (DIMS) project,
 DHS Contract HSHQDC-13-C-B0013.
 
