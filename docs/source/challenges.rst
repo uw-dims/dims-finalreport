@@ -47,12 +47,12 @@ beyond their limits and some turnover on the project was directly related to
 this pressure to deliver.
 
 Over the course of the project, the team size was typically 3-5 people, with
-most of the team working at less than 100% FTE. (One contractor was 100% FTE
+most of the team working at less than 100% FTE. One contractor was 100% FTE
 for the majority of the project and had to step in to perform tasks that were
 not being performed by other team members.  At several portions of the project,
 the PI was at 50% FTE in terms of the project budget, but often worked 60-80
 hours per week, sometimes more, to ensure that tasks were completed to meet
-deliverable deadlines.)
+deliverable deadlines.
 
 The team was also partially virtual, with one, two, and sometimes three
 staff members working on the East Coast, while the rest of the team was
@@ -87,7 +87,7 @@ computer, at which point one of two things happens:
    it becomes harder to know what computer name to use when trying to
    connect to the second service. ("The Git repos are on ``git``, and
    Jira is on ``jira``. We put Jenkins on one of those two servers,
-   but was it ``git`` or ``jenkins``?).
+   but was it on ``git`` or on ``jira``?).
 
 #. The service is put on another computer (possibly a virtual machine)
    and the computer's name now matches the service. But now there is also
@@ -138,27 +138,45 @@ across cluster nodes:
 Separating DNS Name Spaces
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Adding to the complexity of DNS and host naming is the situation of
-multi-homed hosts. Most people are used to one computer with one
-or two interfaces (like a laptop with either a wired Ethernet
-interface, or a WiFi interface, only one of which is active at any
-given time). That means the computer always has just one active
-IP address, and since laptops are usually used for connecting as
-a client to remote services, don't even need to have a DNS name!
+Adding to the complexity of DNS and host naming is the situation of multi-homed
+hosts. Most people are used to one computer with one or two interfaces (like a
+laptop with either a wired Ethernet interface, or a WiFi interface, only one of
+which is active at any given time). That means the computer always has just one
+active IP address, and since laptops are usually used for connecting as a
+client to remote services, don't even need to have a DNS name!
 
-Layered, segmented networks that involve external firewalling,
-Virtual Private Network (VPN) access to multi-segmented Virtual
-Local Area Network (VLAN) switched or virtual machine network
-environments cause problems when it comes to host naming
-and DNS naming.
+Layered, segmented networks that involve external firewalling, Virtual Private
+Network (VPN) access to multi-segmented Virtual Local Area Network (VLAN)
+switched or virtual machine network environments cause problems when it comes
+to host naming and DNS naming.
 
-The way that multi-homed network namespace management is handled
-is through the use of *Split horizon* (or *split-brain*) DNS.
-This requires multiple DNS servers, multiple DNS zones,
-and careful mapping of the IP addresses and DNS names for
-each of the zones, as necessary to route packets properly
-through the correct interface. Again, this requires a much
-deeper understanding of DNS than is common.
+The early implementation of DIMS DNS used a single DNS namespace, with multiple
+names per host that were arbitrarily chosen with some hosts having four or more
+names using A records, some in the ``prisem.washington.edu`` namespace, even
+though they only existed in the internal DNS server and not in the external
+authoritative name servers.
+
+For example, a DNS name like ``jira.prisem.washington.edu`` would exist in the
+internal server, mapping to an IP address in the ``140.142.29.0/14`` network
+block. Doing ``dig @128.95.120.1 jira.prisem.washington.edu`` (an official UW
+name server) or ``dig @8.8.8.8 jira.prisem.washington.edu`` (one of Google's
+name servers) would fail to get an IP address, but making the request of
+the internel server would work. Since Jira was running behind a reverse
+proxy, however, the host that was actually running the Jira server was
+not the one using the addres on the ``140.142.29.0/24`` network block, so
+a second DNS name ``jira-int.prisem.washington.edu`` (also non-existent
+externally) would map to the internal IP address, which was only accessible
+over a VPN. This resulted in a huge amount of confusion. Which host was
+actually running Jira? What port? What order for DNS servers has to exist
+to ensure the request goes to the internal DNS server first, not the
+external DNS servers that don't know the answer?
+
+The proper way that multi-homed network namespace management is handled is through the
+use of *Split horizon* (or *split-brain*) DNS.  This requires multiple DNS
+servers, multiple DNS zones, and careful mapping of the IP addresses and DNS
+names for each of the zones, as necessary to route packets properly through the
+correct interface. Again, this requires a much deeper understanding of DNS than
+is common.
 
 
 Handling Dynamic Addressing on Mobile Devices
@@ -175,22 +193,20 @@ advanced network configuration on the operating system being used (in this
 case, Mac OS X and Ubuntu Linux were the two predominant operating systems on
 laptops.)
 
-One of the ramifications of mobile devices using Ubuntu Linux is the
-role of ``NetworkManager``, a notoriously problematic service in
-terms of network configuration management. It is very difficult to
-take control of services like ``dnsmasq`` for split-horizon DNS,
-or use VPNs (especially multiple VPNs, as was implemented in this
-project from the start), without running into conflicts with
-``NetworkManager``.
+One of the ramifications of mobile devices using Ubuntu Linux is the role of
+``NetworkManager``, a notoriously problematic service in terms of network
+configuration management. It is very difficult to take control of services like
+``dnsmasq`` for split-horizon DNS, or use VPNs (especially multiple VPNs, as
+was implemented in this project from the start), without running into conflicts
+with ``NetworkManager``.
 
-The DIMS project started using the Consul service as a means of
-registering the IP address of a client using a VPN, such that
-the current address and accessibility status is available using
-Consul's DNS service. As Consul was going to be used for service
-health monitoring as well, this seemed like a good choice. One
-downside is further complexity in DNS handling, however, since
-not all hosts in the deployment were configured to run Consul
-using Ansible playbooks.
+The DIMS project started using the Consul service as a means of registering the
+IP address of a client using a VPN, such that the current address and
+accessibility status is available using Consul's DNS service. As Consul was
+going to be used for service health monitoring as well, this seemed like a good
+choice. One downside is further complexity in DNS handling, however, since not
+all hosts in the deployment were configured to run Consul using Ansible
+playbooks.
 
 .. _distributedchallenges:
 
@@ -207,9 +223,9 @@ containerization.
 Physical Distribution
 ~~~~~~~~~~~~~~~~~~~~~
 
-One of the core challenges when building distributed systems results
-from using separate DNS host names and physically separate data centers
-and/or logically separated subnets.
+One of the core challenges when building distributed systems results from using
+separate DNS host names and physically separate data centers and/or logically
+separated subnets.
 
 At the start of the DIMS project, hardware was physically located in two server
 rooms in two separate buildings operated by the Applied Physics Laboratory,
@@ -266,22 +282,62 @@ Stability
 ~~~~~~~~~
 
 Due to the inherent inter-relationships between subcomponents in a distributed
-system, stability of the overall system is a constant challenge.
-Not only are hardware moves like those described in the previous section a
-contributor to instability, but so are software changes.
+system, stability of the overall system is a constant challenge.  Not only are
+hardware moves like those described in an earlier Section a contributor to
+instability, but so are software changes.  As the DIMS project is using open
+source operating systems and tools that may be updated on as frequent as a
+monthly basis, often resulting in parts of the system "breaking" when an update
+happens.
 
-As the DIMS project is using open source operating systems and tools that may
-be updated on as frequent as a monthly basis, often resulting in parts of
-the system "breaking" when an update happens.
+As the entire distributed system was not put under Ansible control from the
+start, and "as-built" documentation was lacking in several areas, some
+architectural changes resulted in critical systems breaking with no clear way
+to fix them. This could lead to days of running ``tcpdump`` and ``strace``,
+watching ``syslog`` log file output, and poking at servers (after clearing the
+browser cache frequently to eliminate problems due to erroneous cached content)
+in order to diagnose the problem, reverse engineer the solution, and
+meticulously put all of the related configuration files under Ansible control.
+This was complicated by the fact that the team members who set up some of these
+systems were no longer on the project and could not assist in the cleanup.
 
-[ Container Linux ...]
+One of the solutions that was attempted was to use Docker containers for
+internal microservices. The hope was to avoid some of the complexities of
+out-of-date libraries, version incompatibilities in programs, and differences
+in operating systems. The project team looked at several ways to deploy Docker
+containers in a clusterized environment and chose to use CoreOS (now called
+"Container Linux by CoreOS"). While this allowed clusterization using ``etcd``,
+``consul``, and eventually Docker Swarm mode, it also resulted in a trade-off
+between leaving the three servers running CoreOS for clustering stable (and
+thus drifting apart in versions from the regularly updated development hosts
+running Ubuntu 14 and Debian 8), or dealing with changes to configuration files
+that had to be ported to Vagrant Virtualbox "box" files and the bare-metal
+cluster at the same time.  As these systems were not easily controlled with
+Ansible at first, this caused a lot of pain that was never fully eliminated. As
+the baremetal servers were re-purposed for pilot deployment work, the central
+cluster services degraded and took some formely working services with them.
 
-[ Configuration changes, such as the change to Trident's style sheets. ]
+.. _swengchallenges:
+
+Software Engineering Challenges
+-------------------------------
+
+The software engineering skill levels and experience of the team members varied
+widely, as did their individual coding styles, language preferences, and
+debugging abilities. This resulted in several points of friction (both
+technically and politically) over time. It also made it difficult to rely on
+documented requirements and white board sessions to provide sufficient
+direction for programmers to independently produce "production" quality system
+components. A project of this scope requires more direct interaction between
+the PI (who knows the user requirements and what needs to be built to meet
+them) and individual team members (who are tasked with building those
+components). This requires a greater level of institutional support
+and commitment, or a more highly-skilled and experienced engineering
+team, than was available.
 
 .. _abstractionchallenges:
 
 Challenges Related to Abstraction
----------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Related to the :ref:`distributedchallenges` are challenges related
 to abstraction. Abstraction presents challenges in many ways.
@@ -363,11 +419,62 @@ and organized so they don't interfere.)
 .. [1] All You Need to Know About the 10 Percent Brain Myth, in
    60 Seconds, by Christian Jarrett, July 24, 2014.
 
-.. _swengchallenges:
+.. _coupling_cohesion:
 
-Software Engineering Challenges
--------------------------------
+Coupling and Cohesion
+~~~~~~~~~~~~~~~~~~~~~
 
-.. todo::
+The degree of coupling and cohesion between system components varied widely,
+contributing in many cases to instability of the overall system due to data
+dependencies, use of hard-coded values, redundancy in variables, and
+inconsistency in the use of DNS names vs. IP addresses.
 
-    Talk about coupling, cohesion,
+For example, there were often multiple variables in different locations with
+different naming styles that all held the same value. Changing only one of the
+variables resulted in inconsistency in configuration, breaking one or more
+components as a result of the change. Trying to find all occurances of the
+similar variables was difficult, since the naming style used by each programmer
+may vary and you would not know what to look for. After the team was reduced to
+just the PI, a significant amount of effort was put into finding and
+eliminating duplicative variables, and switching to a more common naming style
+to reduce the effort required to make changes or debug problems. This had a
+major positive effect on overall system stability as well as speeding up
+forward progress on adding some new features required by the pilot deployment.
+
+.. _backward_compatibility:
+
+Backward Compatibility
+~~~~~~~~~~~~~~~~~~~~~~
+
+In Section :ref:`stability`, the problem of version drift between like
+components in a distributed system was discussed. The right answer is to put
+everything under Ansible control from the very start and to handle subtle
+variations in how things are installed and configured by using the minimum
+necessary "glue scripting" so as to stay in sync with versions across all
+subsystems. This is a difficult task that takes expertise that was not commonly
+available across all team members.
+
+Backward compatibility issues also arose with one of the core components the
+DIMS project was using: the Trident portal. Open source projects (DIMS
+included) move forward and change things at whatever cadence they can follow.
+Sometimes this means some fairly significant changes will happen quickly,
+requiring some effort to keep up. This results in a challenge: stay on the
+cutting edge by focusing effort as soon as changes are made, or try to maintain
+some stability by pinning to older versions that are working?
+
+In order to keep stability in the development environment to make forward
+progress on a number of fronts, the Trident version was pinned to ``1.3.8``.
+The pilot deployment, however, would need to be done using a newer version (at
+the time ``1.4.2``, currently ``1.4.5``).  There were at least two significant
+changes make between the ``1.3.8`` and ``1.4.2`` versions: The CSS style
+sheets used by the Trident portal GUI went from two files to one file, changing
+names at the same time, and there were some incompatible changes to the command
+set for the ``tcli`` command line interface that was used by Ansible to install
+and configure Trident.  These changes required some reverse engineering of the
+changes by extracting files from the two packages and differencing everything
+in order to then use conditional logic and dictionaries to quickly switch
+between version ``1.3.8`` and ``1.4.2`` in order to keep a stable working
+demo and simultaneously prepare for the pilot deployment. This diverted a
+significant amount of energy for a period of time that pushed other tasks to
+the background.
+
