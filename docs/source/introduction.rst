@@ -3,8 +3,8 @@
 Introduction 
 ============
 
-This document presents the Interim Report for the *Distributed Incident
-Management System* (DIMS). It is divided into the following sections:
+This document presents the Final Report for the *Distributed Incident
+Management System* (DIMS) Project. It is divided into the following sections:
 
 + Section :ref:`referenceddocs` summarizes referenced documents
   (with links to those available online for convenience).

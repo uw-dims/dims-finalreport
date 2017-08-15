@@ -67,7 +67,7 @@ source_encoding = 'utf-8-sig'
 master_doc = 'index'
 
 # General information about the project.
-project = u'DIMS Project Interim Report'
+project = u'DIMS Project Final Report'
 copyright = u'2016, University of Washington'
 
 # The version info for the project you're documenting, acts as replacement
@@ -250,7 +250,7 @@ latex_elements = {
 # [howto/manual]).
 latex_documents = [
     (master_doc, 'dims-finalreport.tex',
-     u'DIMS Interim Report',
+     u'DIMS Project Final Report',
      u'David Dittrich', 'manual'),
 ]
 
@@ -281,7 +281,7 @@ latex_logo = 'UW-logo.png'
 # (source start file, name, description, authors, manual section).
 man_pages = [
     (master_doc, 'dims-finalreport',
-     u'DIMS Interim Report',
+     u'DIMS Project Final Report',
      [u'David Dittrich'], 1)
 ]
 
@@ -296,10 +296,10 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
     (master_doc, 'dims-finalreport',
-     u'DIMS Interim Report',
+     u'DIMS Project Final Report',
      'David Dittrich',
      'dims-finalreport',
-     'Interim Report.',
+     'Final Report.',
      'Miscellaneous'),
 ]
 
