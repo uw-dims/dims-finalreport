@@ -396,6 +396,7 @@ if os.environ.get('DOCSURL') is None:
 intersphinx_cache_limit = -1   # days to keep the cached inventories (0 == forever)
 if on_rtd:
     intersphinx_mapping = {
+        'ansible_dims_playbooks': ("https://ansible-dims-playbooks.readthedocs.io/en/{0}".format(git_tag), None),
         'dimssr': ("https://dims-sr.readthedocs.io/en/{0}".format(git_tag), None),
         'dimsjds':("https://dims-jds.readthedocs.io/en/{0}".format(git_tag), None),
         'dimsswplan': ("https://dims-swplan.readthedocs.io/en/{0}".format(git_tag), None),
@@ -406,6 +407,7 @@ if on_rtd:
     }
 else:
     intersphinx_mapping = {
+        'ansible_dims_playbooks': ("{}/ansible-dims-playbooks".format(os.environ['DOCSURL']), None),
         'dimssr': ("{}/dims-sr".format(os.environ['DOCSURL']), None),
         'dimsjds': ("{}/dims-jds".format(os.environ['DOCSURL']), None),
         'dimsswplan': ("{}/dims-swplan".format(os.environ['DOCSURL']), None),
