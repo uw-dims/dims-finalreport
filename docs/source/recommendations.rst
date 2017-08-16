@@ -220,9 +220,11 @@ by defining the ``DEFAULT_API_VERSION`` (which can be changed via the
 ``--os_identity_api_version`` command line option), and mappings of the option strings to directory names found in the
 directory of `openstack/python-openstackclient`_ and to module names.
 
+.. _clientpy:
+
 .. code-block:: python
    :emphasize-lines: 1,2,5-7,12-14
-   :caption: Except of ``client.py`` showing version support
+   :caption: Excerpt of ``client.py`` showing version support
 
     DEFAULT_API_VERSION = '3'
     API_VERSION_OPTION = 'os_identity_api_version'
