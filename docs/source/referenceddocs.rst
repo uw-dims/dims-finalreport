@@ -13,6 +13,6 @@ Referenced Documents
 
 #. :ref:`dimsswplan:dimsswplan`
 
-#. :ref:`dittrich:homepage` home page.
+#. https://staff.washington.edu/dittrich/home/
 
 ..
