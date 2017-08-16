@@ -150,6 +150,44 @@ This testing methodology is described in Section
 
 ..
 
+.. _python_virtualenv:
+
+Python Virtualenv Encapsulation
+-------------------------------
+
+A frequently experienced point of friction within the team had to do with
+differences in the tools being used by developers. One team member has ``git``
+version ``2.1`` and the other has version ``1.8`` and can't access the repo the
+night before a deadline. One person has the ``hub-flow`` tools and the other
+does not, but they also don't know how to merge and push branches so their code
+is not available to the team. Someone installs a broken version of an internal
+tool and doesn't realize it when they try to test someone else's commits, so
+their test fails when it should succeed and nobody knows why it is happening.
+
+As a means of isolating and encapsulating a Python based shell environment to
+facilitate development, testing, working on branches, and generally
+experimenting in a non-destructive manner, the use of a standardized Python
+virtual environment called ``dimsenv`` was implemented. This is a little
+heavier-weight use of the Python ``virtualenv`` mechanism, encapsulating more
+than just Python intepreter and ``pip`` installed packages.
+
+The ``python-virtualenv`` role builds a specific version of Python, installs a
+specific set of pinned ``pip`` packages, and also adds a series of programs to
+the ``bin/`` directory so as to ensure the full set of commands that have been
+documented in the :ref:`dimsdevguide:dimsdevguide` are available and at the
+same revision level.
+
+This not only saves time in setting up a development environment, but makes it
+more consistent across systems and between development team members. Things
+like testing new versions of Ansible is trivial.  You just clone the
+``dimsenv`` environment (which has all the development tools in it already),
+use ``workon`` to enable the new virtual environment, and ``pip install
+ansible==$DESIRED_VERSION``. Then run the playbooks you want to test. It is
+easy to switch back and forth, allowing development and debugging of playbooks
+to be able to migrate to the latest version of Ansible more easily, while still
+being able to fall back to the standard to get back to a stable build
+environment. While this is an unconventional use of Python ``virtualenv``, it
+works pretty well and saves lots of time.
 
 .. _dashboard:
 
