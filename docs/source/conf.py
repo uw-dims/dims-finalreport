@@ -68,7 +68,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'DIMS Project Final Report'
-copyright = u'2016, University of Washington'
+copyright = u'2017, University of Washington'
 
 # The version info for the project you're documenting, acts as replacement
 # for |version| and |release|, also used in various other places throughout
@@ -324,7 +324,7 @@ git_tag = os.environ.get('GITTAG', "latest")
 epub_title = u'DIMS Commercialization and Open Source Licensing Plan'
 epub_author = u'David Dittrich'
 epub_publisher = u'David Dittrich'
-epub_copyright = u'2016 University of Washington'
+epub_copyright = u'2017 University of Washington'
 
 # The basename for the epub file. It defaults to the project name.
 #epub_basename = u'DIMS Commercialization and Open Source Licensing Plan'
