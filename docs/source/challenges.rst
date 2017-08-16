@@ -17,9 +17,6 @@ for programming tasks, and simply copy/paste what someone posts there
 in order to quickly "solve" the problem at hand and move on to the
 next thing.
 
-.. _StackExchange: http://unix.stackexchange.com/
-.. _StackOverflow: http://stackoverflow.com/
-
 Taking this kind of a short-cut, bypassing the time investment to learn
 (or at the very minimum, familiarizing oneself with the content of
 available documentation by skimming through it completely) can result
@@ -29,7 +26,7 @@ work that could be done in a more straight-forward or idiomatic way
 using advanced features of the tool in question. When someone is
 tasked with solving a particular problem, given a set of requirements
 or use cases that should be satisfied, it is important that they
-take on the responsibility of studying the tool being used to
+take responsibility for studying the tool being used to
 understand how best to use it.
 
 .. _staffingchallenges:
@@ -56,12 +53,13 @@ deliverable deadlines.
 
 The team was also partially virtual, with one, two, and sometimes three
 staff members working on the East Coast, while the rest of the team was
-on the West Coast. One sub-contractor was located in California. Regular
-"scrum" meetings were held using online tools (at various times Adobe
-Connect, Skype, and Google Hangout were all used, to varying degrees of
-effectiveness or frustration.) This made the problem of trying to bring
-team members up to speed on new concepts and skills difficult, due
-to lack of physical presense and availability.
+on the West Coast (mostly in Seattle, WA, but at one point split between
+Seattle, Tacoma, and Bremerton, WA and one person in California.) Regular
+"scrum" meetings were held using online tools (at various times Adobe Connect,
+Skype, and Google Hangout were all used, to varying degrees of effectiveness or
+frustration.) This made the problem of trying to bring team members up to speed
+on new concepts and skills difficult, due to lack of physical presense and
+availability.
 
 .. _dnschallenges:
 
@@ -274,8 +272,6 @@ instability and outages caused by this long-delayed (yet required) hardware
 move set the team back significantly and had ripple effects on other deadlines
 and events that could not be adjusted or cancelled.
 
-.. _Project 172 private address routing: https://itconnect.uw.edu/connect/uw-networks/network-addresses/private-address-routing/
-
 .. _stability:
 
 Stability
@@ -333,6 +329,59 @@ them) and individual team members (who are tasked with building those
 components). This requires a greater level of institutional support
 and commitment, or a more highly-skilled and experienced engineering
 team, than was available.
+
+.. _usingagile:
+
+Using Agile
+~~~~~~~~~~~
+
+Exacerbated by the issues of team member physical distribution, timezone
+differences, and work schedule differences was achieving and maintaining
+a cadence with Agile/Scrum and software releases. All team members were new
+to using Git, which has a steep learning curve to begin with. Differences
+in versions across workstations caused problems in sharing code using Git.
+Getting everyone to adopt common processes and tools proved to be difficult.
+The most prevalent model for branching, described by Vincent Driessen's
+"`A successful Git branching model`_" was chosen as the right model to follow.
+Getting all team members to learn it, and follow it, was not entirely achieved.
+(A diagram of the model is shown in Figure :ref:`vincentdriessenbranching`).
+
+The :ref:`dimsdevguide:dimsdevguide` was produced, with sections laying out
+things like policy (:ref:`dimsdevguide:policy`) and guidance on using Git
+(:ref:`dimsdevguide:sourcemanagement`).
+
+.. _vincentdriessenbranching:
+
+.. figure:: images/git-model@2x.png
+   :alt: Vincent Driessen Git branching model
+   :width: 50%
+   :align: center
+
+   Vincent Driessen Git branching model
+
+..
+
+What tended to happen over and over was a situation where a large number of
+disruptive changes and bugfixes would all be placed onto a single long-lived
+feature branch (sometimes going for weeks at a time) before merging them back
+into the ``develop`` branch, let alone released to the ``master`` branch.  In
+order to test successfully (and sometimes just be be able to have a stable
+build at all) would require multiple repositories all being on the same feature
+branch. The worst case was that one part of the system would only work on one
+feature branch and another part would only work on a different feature branch,
+creating an impasse where a full build of multiple VMs would not work.  This
+caused repeated states of instability and high stress leading up to
+demonstrations.
+
+It wasn't until Q2 2017 that stability was achieved on the ``master`` branch,
+regular merges from feature branches to ``develop`` and vice-versa kept both
+``develop`` and feature branches stable, and hotfix branches used more
+diligently to improve ``master`` and ``develop`` branches without losing these
+fixes on long-lived feature branches. In restrospect, "release early, release
+often" and "build from master" to validate merged features should be the
+mantra. (This process was adopted leading up to the pilot deployment, which was
+built almost exclusively from the public ``master`` branch of
+https://github.com/uw-dims/ansible-dims-playbooks).
 
 .. _abstractionchallenges:
 
@@ -416,9 +465,6 @@ that uses variables from the values that those variables take on
 at run time (and to keep multiple sets of those variables separated
 and organized so they don't interfere.)
 
-.. [1] All You Need to Know About the 10 Percent Brain Myth, in
-   60 Seconds, by Christian Jarrett, July 24, 2014.
-
 .. _coupling_cohesion:
 
 Coupling and Cohesion
@@ -474,7 +520,17 @@ and configure Trident.  These changes required some reverse engineering of the
 changes by extracting files from the two packages and differencing everything
 in order to then use conditional logic and dictionaries to quickly switch
 between version ``1.3.8`` and ``1.4.2`` in order to keep a stable working
-demo and simultaneously prepare for the pilot deployment. This diverted a
-significant amount of energy for a period of time that pushed other tasks to
-the background.
+demo and simultaneously prepare for the pilot deployment. (A variation of
+this technique is illustrated in the code block in the code block :ref:`clientpy`).
+This diverted a significant amount of energy for a period of time that pushed
+other tasks to the background.
+
+
+.. [1] All You Need to Know About the 10 Percent Brain Myth, in
+   60 Seconds, by Christian Jarrett, July 24, 2014.
+
+.. _Project 172 private address routing: https://itconnect.uw.edu/connect/uw-networks/network-addresses/private-address-routing/
+.. _StackExchange: http://unix.stackexchange.com/
+.. _StackOverflow: http://stackoverflow.com/
+.. _A successful Git branching model: http://nvie.com/posts/a-successful-git-branching-model/
 
