@@ -61,6 +61,24 @@ frustration.) This made the problem of trying to bring team members up to speed
 on new concepts and skills difficult, due to lack of physical presense and
 availability.
 
+Another difficulty resulted from political issues as opposed to strictly
+technical issues. In order to meet the objectives of the contract, the team was
+being pushed far beyond their capabilities. Some people respond to this by
+putting in the extra time it takes to improve their skill set (either inside
+working hours, or seeing it as an investment in their professional career,
+doing some extra-curricular learning.) Others respond by pushing back, focusing
+their efforts on only those tasks they are comfortable with and no more, or
+otherwise not following the established development path.
+
+One risk to a project that is hard to avoid is a dependency on external
+software products or standards that are outside of the control of the project
+(e.g., see :ref:`stix_dev_libraries`). Such situations can surface larger
+organizational weaknesses and personnel issues that simply cannot be solved
+without commitment and full-throated support from higher up in the
+organization. The best that can sometimes be achieved is to learn from
+the situation, find a way to move on, and carry the lessons forward
+to do better in the future.
+
 .. _dnschallenges:
 
 DNS Challenges
@@ -524,6 +542,30 @@ demo and simultaneously prepare for the pilot deployment. (A variation of
 this technique is illustrated in the code block in the code block :ref:`clientpy`).
 This diverted a significant amount of energy for a period of time that pushed
 other tasks to the background.
+
+.. _external_dependencies:
+
+External Dependencies and Pacing
+--------------------------------
+
+One of the most laudable goals of this project was the use of open source tools
+to be integrated into an affordable distributed system capable of scaling to
+the degree needed to handle millions of security events per day. The flip side
+of this is that every one of the open source tools that come from outside
+entities are produced on someone else's whim (including pace of release,
+quality of testing, rate of disruptive changes in code, time available to
+respond to interactions, etc.)
+
+For example, keeping up with the pace and direction of change in STIX core
+development, and difficulties in maintaining development momentum within the
+project team, limited this avenue and it could not be sustained. (See
+:ref:`stix_dev_libraries`.) Other challenges listed in this section caused the
+pace internal to our team to be much slower than desired, resulting in
+difficulty in our reaching out and interacting with developers of the Trident
+portal. The friction within the project slowed some of our internal
+development, requiring that we play "catch-up" late in the project and not
+being able to provide as much input as we had hoped to their developers towards
+features we needed.
 
 
 .. [1] All You Need to Know About the 10 Percent Brain Myth, in
