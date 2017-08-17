@@ -218,17 +218,41 @@ on the to-do list, along with rebuilding all of the other central
 components (e.g., the Jenkins build server that failed when accidentally
 upgraded to a version with non-backward compatible features).
 
+Source code:
+
++ https://github.com/uw-dims/dims-dashboard
+
 .. _stixingest:
 
 Ingest of STIX Documents
 ------------------------
 
-.. TODO(dittrich): complete this section
-.. todo::
+Java bindings for STIX were produced to facilitate ingest of STIX 1.1
+documents into the DIMS system.
 
-   Complete this section.
+Source code:
 
-..
++ https://github.com/uw-dims/stix-java
++ https://github.com/uw-dims/xsdwalker
+
+
+.. _tupelo:
+
+Tupelo and Related Host Forensic Tools
+--------------------------------------
+
+A Java client/server application for manipulation of host file system disk
+images and related metadata named "Tupelo" was produced as part of an earlier
+National Science Foundation grant funded project.  It was enhanced with
+inclusion of libraries for access TSK tools and manipulating virtual machine
+disk images, and integrated into the early DIMS development deployment.
+
+Source code:
+
++ https://github.com/uw-dims/tupelo
++ https://github.com/uw-dims/tsk4j
++ https://github.com/uw-dims/java-native-loader
++ https://github.com/uw-dims/device-files
 
 
 .. _Bats\: Bash Automated Testing System: https://github.com/sstephenson/bats#bats-bash-automated-testing-system
