@@ -24,6 +24,7 @@ DHS Contract HSHQDC-13-C-B0013.
    enhancements
    recommendations
    license
+   appendices
 
 .. sectionauthor:: David Dittrich dittrich@u.washington.edu
 

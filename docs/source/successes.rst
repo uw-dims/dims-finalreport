@@ -3,6 +3,36 @@
 Successes
 =========
 
+.. _ansible_playbooks:
+
+Ansible Playbooks
+-----------------
+
+One of the most significant achievements of this project was the production of
+a set of Ansible playbooks, roles, and task files, capable of instantiating a
+small-scale distributed system comprised of Ubuntu 14, Ubuntu 16, Debian 8, and
+Container Linux by CoreOS systems, implementing an ``etcd``, ``consul``, and
+Docker Swarm cluster. These playbooks share many similarities with those of
+some other publicly available projects that were developed contemporaneously
+with the DIMS Project, including the `Fedora Project`, Intel Corporation's
+`Trusted Analytics Platform`_ and `DebOps`_.
+
+.. _Fedora Project: https://infrastructure.fedoraproject.org/cgit/ansible.git
+.. _Trusted Analytic Platform: https://github.com/trustedanalytics
+.. _DebOps: https://github.com/debops
+
+The Ansible playbooks created by the DIMS project differ from each of
+these in that they are designed to be multi-OS from the start, focused on
+producing a stand-alone small-scale distributed system designed for security
+incident response, with customization and configuration separated from the
+playbooks repository to facilitate continued development and integration
+of new tools capable of being managed independently of the public
+``ansible-dims-playbooks`` repository.
+
+Source:
+
++ https://github.com/uw-dims/ansible-dims-playbooks
+
 .. _continuousintegration:
 
 Continuous Integration/Continuous Deployment

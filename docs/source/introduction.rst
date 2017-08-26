@@ -4,7 +4,69 @@ Introduction
 ============
 
 This document presents the Final Report for the *Distributed Incident
-Management System* (DIMS) Project. It is divided into the following sections:
+Management System* (DIMS) Project.
+
+Project Overview
+----------------
+
+The Distributed Incident Management System (DIMS) Project period
+of performance began on August 16, 2014 and ended August 15, 2017.
+Over the period of performance, the people listed in Table
+:ref:`participanttable` were involved in project:
+
+.. _participanttable:
+
+.. table:: Project Participants
+
+    +-----------------------+-------------------------------------------------------------+
+    | Name                  | Organization(s) and role(s)                                 |
+    +=======================+=============================================================+
+    | David Dittrich      \ | Applied Physics Laboratory, University of Washington,     \ |
+    |                     \ | Center for Data Science, University of Washington Tacoma. \ |
+    |                     \ | Principal Investigator.                                   \ |
+    |                       |                                                             |
+    +-----------------------+-------------------------------------------------------------+
+    | Linda Parsons       \ | Next Century. Subcontract programmer.                     \ |
+    |                     \ |                                                             |
+    +-----------------------+-------------------------------------------------------------+
+    | Scott Warner        \ | Next Century. Subcontract programmer.                     \ |
+    |                     \ |                                                             |
+    +-----------------------+-------------------------------------------------------------+
+    | Mickey Ross         \ | Ross Consulting Services.                                 \ |
+    |                     \ | Subcontract program management, administrative services.  \ |
+    |                     \ |                                                             |
+    +-----------------------+-------------------------------------------------------------+
+    | Eliot Lim           \ | Applied Physics Laboratory, University of Washington,     \ |
+    |                     \ | Center for Data Science, University of Washington Tacoma. \ |
+    |                     \ | System administration, hardware support.                  \ |
+    |                     \ |                                                             |
+    +-----------------------+-------------------------------------------------------------+
+    | Stuart Maclean      \ | Applied Physics Laboratory, University of Washington.     \ |
+    |                     \ | Programming.                                              \ |
+    |                     \ |                                                             |
+    +-----------------------+-------------------------------------------------------------+
+    | Megan Boggess       \ | University of Washington, Tacoma (graduate student RA),   \ |
+    |                     \ | Center for Data Science, University of Washington Tacoma. \ |
+    |                     \ | Programming, system administration.                       \ |
+    |                     \ |                                                             |
+    +-----------------------+-------------------------------------------------------------+
+    | Jeremy Parks        \ | Center for Data Science, University of Washington Tacoma. \ |
+    |                     \ | Programming, system administration.                       \ |
+    |                     \ |                                                             |
+    +-----------------------+-------------------------------------------------------------+
+    | Jeremy Johnson      \ | Critical Informatics.                                     \ |
+    |                     \ | Subcontract programming, system administration.           \ |
+    |                     \ |                                                             |
+    +-----------------------+-------------------------------------------------------------+
+    | Katherine Carpenter \ | Critical Informatics.                                     \ |
+    |                     \ | Subcontract program management, administrative services.  \ |
+    |                     \ |                                                             |
+    +-----------------------+-------------------------------------------------------------+
+
+..
+
+The remainder of this report is divided into the following
+sections:
 
 + Section :ref:`referenceddocs` summarizes referenced documents
   (with links to those available online for convenience).
