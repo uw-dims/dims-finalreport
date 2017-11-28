@@ -14,12 +14,40 @@ small-scale distributed system comprised of Ubuntu 14, Ubuntu 16, Debian 8, and
 Container Linux by CoreOS systems, implementing an ``etcd``, ``consul``, and
 Docker Swarm cluster. These playbooks share many similarities with those of
 some other publicly available projects that were developed contemporaneously
-with the DIMS Project, including the `Fedora Project`, Intel Corporation's
-`Trusted Analytics Platform`_ and `DebOps`_.
+with the DIMS Project, including the OpenCredo and Summit Route
+Iterative Defense Architecture projects mentioned in Section
+:ref:`integratedopensource`, as well as the `Fedora Project's Ansible playbooks`_,
+Intel Corporation's `Trusted Analytics Platform`_, and `DebOps`_.
 
-.. _Fedora Project: https://infrastructure.fedoraproject.org/cgit/ansible.git
-.. _Trusted Analytic Platform: https://github.com/trustedanalytics
+.. note::
+
+   The PI reached out to each of these groups listed (with the exception of
+   the Debops group) and two other projects using Ansible for multi-system
+   deployment, to see if there was any possibility to collaborate or take
+   development of DIMS Ansible playbooks.  The majority of these inquiries
+   resulted in no response at all (despite multiple attempts in some cases.)
+   One outreach resulted in a conversation that was a dead end, and another
+   response suggested the chances of potential funding were low. Only one
+   person engaged in multiple follow-on conversations, but no funding
+   opportunities to support a collaboration could be identified.
+
+   Two other projects were identified in the final days of the DIMS Project
+   while investigating options for using `hashicorp/terraform`_ and
+   `Digital Ocean`_; Cisco's `Mantl`_ and `DC/OS`_. These projects appear to
+   have significantly larger and more well-resourced development teams. The
+   fact that so many similar projects exist does confirm the viability of the
+   direction taken in the DIMS Project.
+
+..
+
+.. _hashicorp/terraform: https://github.com/hashicorp/terraform
+.. _Digital Ocean: https://www.digitalocean.com/
+.. _Fedora Project's Ansible playbooks: https://infrastructure.fedoraproject.org/cgit/ansible.git
+.. _Trusted Analytics Platform: https://01.org/tap
+.. _trustedanalytics: https://github.com/trustedanalytics
 .. _DebOps: https://github.com/debops
+.. _Mantl: http://mantl.io/
+.. _DC/OS: https://dcos.io/
 
 The Ansible playbooks created by the DIMS project differ from each of
 these in that they are designed to be multi-OS from the start, focused on
