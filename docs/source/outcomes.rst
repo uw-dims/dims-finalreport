@@ -320,6 +320,7 @@ from their FAQ as an example:
 
 ..
 
+.. _integratedopensource:
 
 Integrated Open Source Solutions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
