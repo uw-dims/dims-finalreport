@@ -239,6 +239,8 @@ latex_elements = {
     # and http://www.utf8-chartable.de/unicode-utf8-table.pl?start=9472&names=-
     #
     'preamble': "".join((
+        '\usepackage{enumitem}',
+        '\setlistdepth{99}',
         '\DeclareUnicodeCharacter{00A0}{ }',  # NO-BREAK SPACE
         '\DeclareUnicodeCharacter{251C}{+}',  # BOX DRAWINGS LIGHT VERTICAL AND RIGHT
         '\DeclareUnicodeCharacter{2514}{+}',  # BOX DRAWINGS LIGHT UP AND RIGHT
