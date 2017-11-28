@@ -178,7 +178,7 @@ capability.
     address a similar set of goals and have reached out (as time permitted) to
     find common ground and try to develop collaborative relationships that will
     have broad impact over time. This is expanded upon in Section
-    :ref:`commercializationplan`.
+    :ref:`dimsswplan:commercializationplan`.
 
 ..
 
