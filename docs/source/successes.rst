@@ -29,6 +29,39 @@ playbooks repository to facilitate continued development and integration
 of new tools capable of being managed independently of the public
 ``ansible-dims-playbooks`` repository.
 
+These playbooks include the following features:
+
++ Support for Ubuntu 14.04, Ubuntu 16.04, Debian 8, Container Linux
+  by CoreOS, and partial support for Mac OS X (Darwin) and RedHat
+  Enterprise Linux.
+
++ Installation and pre-configuration of `Trident`_ trust group
+  management portal.
+
++ Integrated multi-level testing using ``bats``.
+
++ Support for official SSL certificates using `Letsencrypt`_ and
+  self-signed SSL certificates using https://github.com/uw-dims/ansible-role-ca
+
++ Support for automated backup and restoration of Trident PostgreSQL
+  database and Letsencrypt certificates.
+
++ Support for version pinning of core subsystems across development
+  and production hosts for improved distributed system stability.
+
++ Support for automated system-wide checks for availability of
+  package updates, application of updates, and detection of
+  required reboot, with option for email notification.
+
++ Support for isolated Vagrant Virtualbox virtual machines (including
+  local copies of Ansible playbooks for testing branches and
+  improved distributed system stability). This includes automated
+  VM suspension upon host shutdown using, and multi-VM resumption
+  after, using the ``dims.shutdown`` script.
+
+.. _Letsencrypt: https://letsencrypt.org/
+.. _Trident: https://trident.li
+
 Source:
 
 + https://github.com/uw-dims/ansible-dims-playbooks
