@@ -64,15 +64,28 @@ vs.  RedHat Enterprise Linux vs. CentOS`_) can have implications for
 compatability of installed components and subcomponents, be they package
 contents, libraries, or supported programs and utilities.
 
-Using a configuration management program like Ansible helps by
-expressing installation steps using different Ansible modules or plays,
-though it does require engineering discipline to deal with complexity (above
-and beyond what a Bash script would entail, for example) and to ensure the
-right plays work the right way on the right operating system. This could mean
-maintaining a large set of group variables (one for each alternative operating
-system), using variables in inclusion directives to select from those
-alternatives, and/or using "Ansible facts" derived at run time with logic (e.g.,
-``when: ansible_os_family == "Debian"`` as a qualifier in a playbook)
+While this recommendation sounds simple, it is not. This task is made difficult
+by the choices of supported base operating system(s) made by each of the open
+source security tools you want to integrate. Great care needs to be taken in
+making the decisions of which operating systems to support balanced with
+available expertise in the team for dealing with required debugging and
+configuration management tasks.
+
+Using a configuration management program like Ansible helps by expressing
+installation steps using different Ansible modules or plays, though it does
+require engineering discipline to deal with complexity (above and beyond what a
+Bash script would entail, for example) and to ensure the right plays work the
+right way on the right operating system. This could mean maintaining a large
+set of group variables (one for each alternative operating system), using
+variables in inclusion directives to select from those alternatives, and/or
+using "Ansible facts" derived at run time with logic (e.g., ``when:
+ansible_os_family == "Debian"`` as a qualifier in a playbook)
+Developing Ansible playbooks in a modular way that can easily accomodate
+generalized support for multiple operating systems (e.g., using a "plug-in"
+style model) is a more sophisticated way of writing playbooks that requires a
+greater level of expertise in all who are writing the playbooks.  Such
+expertise, or institutional support for employee training to achieve it, are
+not always available.
 
 .. _standardVM:
 
@@ -91,15 +104,18 @@ Start with a preferred hypervisor to support and take the time to migrate
 legacy virtual machines to that preferred hypervisor, rather than attempting to
 support part of the system with one hypervisor and the rest with another. If it
 becomes necessary to support additional hypervisors, require replication of the
-*entire* system of systems in a separate deployment to ensure that tests can be
-peformed to validate that all software works identically using the alternate
-hypervisor.
+*entire* system of systems in a separate deployment (i.e., fully independent,
+not sharing any resources in a way that couples the heterogeneous systems) to
+ensure that tests can be peformed to validate that all software works
+identically using the alternate hypervisor.
 
-The ``vncserver`` role was created to make it easier to remotely manage
+The ``vncserver`` role [#vncserver]_ was created to make it easier to remotely manage
 long-running virtual machines using a GUI hypervisor control program. Using
 CLI tools is also necessary, however, to more easily script operations
 so they can be parallelized using Ansible ad-hoc mode, or scheduled
 with ``cron`` or other background service managers.
+
+.. [#vncserver] https://github.com/uw-dims/ansible-dims-playbooks/blob/master/roles/vncserver/tasks/main.yml
 
 .. _staticDynamicConfigs:
 
@@ -146,9 +162,9 @@ recompiling to create new libraries or executable files. It is a little more
 difficult when a script is produced from a template, which is produced from a
 complex set of inventory files, host variable files, group variable files, and
 command line variable definitions as is supported by Ansible. In that case, the
-``Makefile`` model is harder to use and those who are not experts in how
-``make`` works (and are skilled enough to debug it with ``remake`` or other
-low-level process tracing tools) have a hard time.
+``Makefile`` model is harder to use, especially for those who are not experts in how
+``make`` works and may not have the skills required to efficiently debug
+it with ``remake`` or other low-level process tracing tools.
 
 Tools like Jenkins or Rundeck provide a similar kind of dependency chaining
 mechanism which may be preferable to ``make``, provided that programmers
@@ -254,6 +270,27 @@ using conditional constructs within programs, or mixing old and new files in a
 single directory without any clear way to delineate or separate these files.
 
 
+Budget for System Maintenance
+-----------------------------
+
+To paraphrase a joke in the programming world: "You have a problem. You decide
+to solve your problem using free and open source tools and operating systems.
+Now you have two problems." Sure, its a joke, but that makes it no less true.
+
+Trying to compose a system using open source parts that are constantly changing
+requires constantly dealing with testing upgrades, updating version numbers
+in Ansible playbook files, applying patches, debugging regression problems,
+debugging version inconsistencies betweeen systems, and updating
+documentation. The more software subsystems and packages used, the
+greater the frequency of changes that must be dealt with. Assume that up to
+half of the project working time will be spent dealing with these issues.
+
+The automation provided by Ansible, and the integration of unit and system
+tests (see :ref:`ansibledimsplaybooks:tests`), helps immensely with identifying
+what may be misconfigured, broken, or missing. Be disciplined about adding
+new tests and regularly running tests saves time in the long run. Make sure
+that all team members learn to use these tools, as well as spend time
+learning debugging techniques (see :ref:`ansibledimsplaybooks:debugging`).
 
 
 .. _Fedora vs. RedHat Enterprise Linux vs. CentOS: https://danielmiessler.com/study/fedora_redhat_centos/

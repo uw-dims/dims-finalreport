@@ -69,12 +69,6 @@ deployments to fit in a single server rack using a small external network
 footprint, since the PRISEM project on which DIMS was to be built was built
 that way.
 
-In the long term, a solution that falls within the gap between a single server
-rack with custom ``Makefile`` and scripts and something as complex as Openstack
-or AWS CloudFormation is desired. This could be Terraform with custom
-provisioners (though this would require specific programming expertise to
-implement properly.)
-
 In September of 2015, well into the DIMS project, Hashicorp came out with
 "otto" and "nomad". [#otto1]_ These looked promising, but were immature and looked costly
 to implement. In August 2016, Hashicorp announced they were decommissioning and
@@ -85,17 +79,28 @@ through use of the inventory and templating scripts, Packer ``.json``
 files, and ``Vagrantfile`` configuration files would help smooth
 things out.
 
+In the long term, a solution that falls within the gap between a single server
+rack with custom ``Makefile`` and scripts and something as complex as Openstack
+or AWS CloudFormation is desired.  This could be Packer and Terraform with
+custom provisioners. Experiments using Packer to create Amazon instances was
+successfully performed and a prototype of Terraform to provision Digital Ocean
+droplets has been initiated and is anticipated to be completed after the
+project is completed for use in subsequent follow on projects using the DIMS
+software products.)
+
 .. _kisckstart:
 
 Normalization of Kickstart
 --------------------------
 
-Debian has a mechanism known as Kickstart that allows pre-configuration
-of steps needed to perform an unattended ("hands-off") installation of
-the operating system at boot time. This mechanism is used in DIMS
-as part of the Packer workflow, and as part of the customized USB
-thumb drive installer. It can also be made to work by Virtualbox
-(or other hypervisors, for that matter) directly.
+Along with a standardized and simplified virtual machine instance build
+process, a related simplified bare-metal boot capability is needed for more
+efficient deployment of servers.  Debian has a mechanism known as Kickstart
+that allows pre-configuration of steps needed to perform an unattended
+("hands-off") installation of the operating system at boot time. This mechanism
+is used in DIMS as part of the Packer workflow, and as part of the customized
+USB thumb drive installer. It can also be made to work by Virtualbox (or other
+hypervisors, for that matter) directly.
 
 + The Packer workflow uses inline commands to perform some initial
   system setup steps necessary to then use Ansible for the remainder
@@ -143,10 +148,13 @@ Configuration Management Database
 ---------------------------------
 
 At the start of the project, a combination of variables stored in files that
-could be exported through the environment into scripts and ``Makefile`` rules
-and Ansible vars files was used. These mechanisms were not integrated and it
+could be exported through the shell's environment into scripts, ``Makefile`` rules,
+and Ansible vars files, was used. These mechanisms were not fully integrated and it
 was difficult to switch between different sets of variables to support multiple
-simultaneous deployments.  The simplistic and limited INI style inventory, with
+simultaneous deployments.  For this reason, the team clung to a single deployment
+for far too long.
+
+In terms of Ansible, the use of the simplistic and limited INI style inventory, with
 group and host variable files, was easy to learn, but proved difficult to
 manage for multiple deployments and for this reason its use held the project
 back for a long time.
@@ -160,16 +168,18 @@ more easily accomodate managing multiple simultaneous deployments.
 The need here is for a system that behaves something like the way Openstack
 supports a CLI for getting and setting variables in concert with a "cloud"
 configuration file to control high-level storage locations that allow a single
-interface to operate across multiple configuration databases. Ideally, it would
-serve as what is called a "single point of truth" about not only data center
-equipment (e.g., hardware devices, rack slots, switch ports, VLANs), but also
+interface to operate across multiple configuration databases. Ideally, this
+database would serve as what is called a "single point of truth" or "single
+source of truth" about not only hardware in a data center (e.g., servers and
+network equipment, rack slot allocations, switch ports, VLANs), but also
 configuration specifics that would drive Ansible playbooks for configuration
 and templating of scripts that run on the systems.  A lot of research was done,
-but nothing seemed to be a good fit.  Commercial tools like Ansible Tower may
-solve this problem, but that was neither in the budget for the project, nor did
-that fall within the objective of using only free open source tools. Other
-solutions were similarly focused on enterprise-level deployments and were not
-suitable for our use.
+but nothing seemed to be a good fit.  Commercial tools like Ansible Tower [#awx]_
+may
+solve this problem, but that was neither in the project's budget, nor did that
+conform with the objective of using only free and open source software tools.
+Other solutions were similarly focused on enterprise-level deployments and were
+not suitable for our use.
 
 The tools that seem to exist are all focused on large-scale cloud deployments
 for massively-scaled, multi-datacenter deployments using a federated model.
@@ -180,13 +190,56 @@ that are configured locally, but pull much of their code from the public
 repositories on GitHub.
 
 The solution that was settled upon in the DIMS project was a combination of
-most variables being defaulted in roles and a separete "private" directory for
-each deployment that would hold customization details in the form of a YAML
-inventory tree and local customized files and templates that playbooks in the
+most variables being defaulted in roles with a separete "private" directory tree
+for each deployment that holds customization details in the form of Ansible
+YAML style
+inventory files and local customized files and templates that playbooks in the
 public ``ansible-dims-playbooks`` repository use before looking for generic
 equivalents in the public repository. This allowed the ability to operate
 multiple deployments in parallel with the public repository with less hassle,
 though this is still not the ideal solution.
 
+Continued Reimplementation and Integration of Services
+------------------------------------------------------
+
+In the final months of the project, effort was put into re-implementing as many
+of the original (version 1) deployment services as possible. The RabbitMQ service,
+Jenkins with Git+SSH and Nginx file service, and Trident portal were all
+reimplemented and replicated on a new server. The Tupelo, PRISEM RPC services,
+and Lemon LDAP (for single-signon service) server roles remain to be
+re-implemented and updated from their original Ansible roles and the
+hand-crafted Jira system implementations.  The DIMS Dashboard, Redis server,
+and ELK stack Ansible roles (which were all working in prototype form in year
+2, prior to moving the project to UW Tacoma) should be easy to port after that,
+but it is likely that the Javascript Dashboard and Java Tupelo code are now
+out of date and will require experienced Javascript and Java programmers to
+bring them up to current coding standards.
+
+Secrets as a Service
+--------------------
+
+In the first year of the project, many secrets (passwords, non-public sensitive
+sample data, private keys, and SSL/TLS certificates) were committed to source
+code at worst, or passed around manually. This is neither a secure way to deal
+with these secrets, nor does it scale well. Ansible Vault and use of a separated
+private directory were prototyped as mechanisms to deal with the storing of
+shared secrets, but passwords were not entirely eliminated in favor of a
+ubiquitous single-signon mechanism. (Single-signon was implemented for Jira,
+Jenkins, and the DIMS Dashboard server, but no farther.) Trident uses a
+Javascript Web Token (JWT, pronounced "jot"). LDAP and JWT tokens could be
+extended, a service like `FreeIPA`_ or HashiCorp Vault (both used in the
+system illustration in Figure :ref:`bootmygovcloud`).
+
+
 .. [#otto1] https://www.hashicorp.com/blog/otto/
 .. [#otto2] https://www.hashicorp.com/blog/decommissioning-otto/
+.. [#awx] A couple months before the DIMS project end of period of performance,
+  RedHat released the Ansible Tower product in open source form as the
+  `AWX Project`_. There was no time to fully learn how to use and evaluate
+  this product, though it appears it would be relatively easy to add it to
+  the ``ansible-dims-playbooks`` as a role and deploy it along with other
+  system components.
+
+.. _AWX Project: https://github.com/ansible/awx
+.. _FreeIPA: https://www.freeipa.org/page/Main_Page
+

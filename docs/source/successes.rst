@@ -8,7 +8,8 @@ Successes
 Ansible Playbooks
 -----------------
 
-One of the most significant achievements of this project was the production of
+The most significant achievement of this project was the production and
+refinement of
 a set of Ansible playbooks, roles, and task files, capable of instantiating a
 small-scale distributed system comprised of Ubuntu 14, Ubuntu 16, Debian 8, and
 Container Linux by CoreOS systems, implementing an ``etcd``, ``consul``, and
@@ -90,9 +91,35 @@ These playbooks include the following features:
 .. _Letsencrypt: https://letsencrypt.org/
 .. _Trident: https://trident.li
 
-Source:
+.. _tridentportal:
 
-+ https://github.com/uw-dims/ansible-dims-playbooks
+Trident Portal
+--------------
+
+The project began using the original Perl-based *ops-trust* portal system using
+a hosted portal that was pre-configured. An initial Ansible playbook to deploy
+a local instance was produced, but the team continued to use the hosted server.
+In the final year of the project, Ansible playbook support for the new
+Trident portal (re-written in Go, with both a command line and web application
+graphical interface) was finally added and the ability to replicate the Trident
+portal was achieved. Features to support customization of the portal's graphical
+elements (banner image, default icon image for users who have not loaded their
+own photo, logo image, and CSS style sheet settings for font and web page
+colors) were added to support custom branding. These playbooks were used to
+deploy a pilot instance to complete one of the final deliverables of the
+project.
+
+As mentioned in the previous section, along with the playbook for installing
+Trident the ability to backup and restore both the Trident database and the
+Letsencrypt SSL/TLS certificates was added. This allows easier development,
+testing, and training with the Trident portal by simplifying deployment of two
+portal servers at once (one for dev/test/training and the other for
+"production" use.) Combined with the re-written Jenkins build scripts, an
+improved mechanism for debugging and development of new Trident features is now
+possible. (Testing of these features with volunteers associated with the
+Trident portal in use by the ops-trust community is being discussed and will
+move forward after the project end date.)
+
 
 .. _continuousintegration:
 
@@ -309,23 +336,14 @@ on the to-do list, along with rebuilding all of the other central
 components (e.g., the Jenkins build server that failed when accidentally
 upgraded to a version with non-backward compatible features).
 
-Source code:
-
-+ https://github.com/uw-dims/dims-dashboard
-
 .. _stixingest:
 
 Ingest of STIX Documents
 ------------------------
 
-Java bindings for STIX were produced to facilitate ingest of STIX 1.1
-documents into the DIMS system.
-
-Source code:
-
-+ https://github.com/uw-dims/stix-java
-+ https://github.com/uw-dims/xsdwalker
-
+Java bindings for STIX were produced to facilitate ingest of STIX version
+1.1 documents into the DIMS system. (The current release of STIX is now
+version 2.0.)
 
 .. _tupelo:
 
@@ -338,12 +356,83 @@ National Science Foundation grant funded project.  It was enhanced with
 inclusion of libraries for access TSK tools and manipulating virtual machine
 disk images, and integrated into the early DIMS development deployment.
 
-Source code:
-
-+ https://github.com/uw-dims/tupelo
-+ https://github.com/uw-dims/tsk4j
-+ https://github.com/uw-dims/java-native-loader
-+ https://github.com/uw-dims/device-files
-
-
 .. _Bats\: Bash Automated Testing System: https://github.com/sstephenson/bats#bats-bash-automated-testing-system
+
+
+Software Products and Documentation
+-----------------------------------
+
+The following table provides links to public source code repositories and
+documentation.
+
+.. _productstable:
+
+.. list-table:: Software Products and Documentation
+   :widths: 50,50
+   :header-rows: 1
+
+   * - Source repository
+     - Documenation
+
+   * - https://github.com/uw-dims/ansible-dims-playbooks
+     - https://ansible-dims-playbooks.readthedocs.io
+
+   * - https://github.com/uw-dims/device-files
+     - (No additional documenation)
+
+   * - https://github.com/uw-dims/dims-ad
+     - https://dims-ad.readthedocs.io
+
+   * - https://github.com/uw-dims/dims-dashboard
+     - https://dims-dashboard.readthedocs.io
+
+   * - https://github.com/uw-dims/dims-devguide
+     - https://dims-devguide.readthedocs.io
+
+   * - https://github.com/uw-dims/dims-jds
+     - https://dims-jds.readthedocs.io
+
+   * - https://github.com/uw-dims/dims-ocd/
+     - https://dims-ocd.readthedocs.io
+
+   * - https://github.com/uw-dims/dims-sr/
+     - https://dims-sr.readthedocs.io
+
+   * - https://github.com/uw-dims/dims-swplan
+     - https://dims-swplan.readthedocs.io
+
+   * - https://github.com/uw-dims/dims-training-manual
+     - https://dims-training-manual.readthedocs.io
+
+   * - https://github.com/uw-dims/dims-tp/
+     - https://dims-tp.readthedocs.io
+
+   * - https://github.com/uw-dims/dims-user-manual
+     - https://dims-user-manual.readthedocs.io
+
+   * - https://github.com/uw-dims/fuse4j
+     - (No additional documenation)
+
+   * - https://github.com/uw-dims/java-native-loader
+     - (No additional documenation)
+
+   * - https://github.com/uw-dims/stix-java
+     - (No additional documenation)
+
+   * - https://github.com/uw-dims/trident-training-manual
+     - https://trident-training-manual.readthedocs.io
+
+   * - https://github.com/uw-dims/trident-user-manual
+     - https://trident-user-manual.readthedocs.io
+
+   * - https://github.com/uw-dims/tsk4j
+     - (No additional documenation)
+
+   * - https://github.com/uw-dims/tupelo
+     - (No additional documenation)
+
+   * - https://github.com/uw-dims/xsdwalker
+     - (No additional documenation)
+
+..
+

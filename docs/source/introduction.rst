@@ -95,7 +95,7 @@ sections:
    Some of the content of this report comes from other previously
    delivered project documents, or references found in *working*
    documents and/or the PI's (:ref:`dittrich:homepage`) home page
-   (which serves as a general project reference on a number of topics).
+   (which served as a general project reference on a number of topics).
 
 ..
 

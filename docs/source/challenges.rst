@@ -3,6 +3,13 @@
 Challenges Encountered
 ======================
 
+This section describes many of the challenges that were encountered
+during the project's period of performance. Some where eventually overcome
+in the final months of the project, though others were not. Suggestions
+on dealing with some of these issues are found in Section :ref:`enhancements`
+and Section :ref:`recommendations`.
+
+
 .. _toolknowledge:
 
 Understanding the Tools Being Used
@@ -17,17 +24,36 @@ for programming tasks, and simply copy/paste what someone posts there
 in order to quickly "solve" the problem at hand and move on to the
 next thing.
 
-Taking this kind of a short-cut, bypassing the time investment to learn
-(or at the very minimum, familiarizing oneself with the content of
-available documentation by skimming through it completely) can result
-in problems later on. Scripts may be written that restrict or limit
-the utility of the program being called, or that perform extra
-work that could be done in a more straight-forward or idiomatic way
-using advanced features of the tool in question. When someone is
-tasked with solving a particular problem, given a set of requirements
-or use cases that should be satisfied, it is important that they
-take responsibility for studying the tool being used to
-understand how best to use it.
+Taking such short-cuts, trying to avoid the investment of time required to
+learn the capabilities of a given tool can result in problems later on.
+Scripts may be written that restrict or limit the utility of the underlying
+programs they call, or that perform extra work that could be done in a more
+straight-forward or idiomatic way using advanced features of the underlying
+programs. At the very minimum, everyone sharing use of a common tool must have
+a sufficient baseline familiarization with the content of available
+documentation by skimming through it completely to be able to quickly get past
+a blocker.
+
+When someone is tasked with solving a particular problem, given a set of
+requirements or use cases that should be satisfied, it is important that they
+take responsibility for studying the tool(s) being used to understand how best
+to perform the task at hand and to share their knowledge with other team
+members using the same tool. It does not work for the project lead to have to
+become the expert in every tool and micro-manage how team members do their
+work.
+
+This problem was exacerbated in the DIMS Project due to the large number of new
+and rapidly changing tools and technologies that are necessary to assemble a
+system with the complexity defined in the project scope of work. Given project
+team members had experience in specific programming languages and some
+familiarity with Unix system administration on their own development
+workstations. Going beyind their experience and pushing them to rapidly and
+constantly learn new things is not easy, and is sometimes resisted.  During
+this project every team member was pushed to learn new programming languages,
+new data storage mechanisms, new inter-process communication protocols, new
+software development tools and processes, new types of security event data, and
+new concepts in network and host forensics required to process security event
+data, threat intelligence streams, and malware artifact metadata.
 
 .. _staffingchallenges:
 
@@ -39,17 +65,17 @@ set of skills and experience required by those working on a project of this
 nature. It can be safely stated that every member of the team was pushed beyond
 their technical limits and had to constantly research and learn new
 technologies and rapidly acquire new software engineering, network engineering,
-or system administration skills. Not everyone is capable (or happy) when pushed
-beyond their limits and some turnover on the project was directly related to
-this pressure to deliver.
+or system administration skills. Not everyone is capable of, or happy with,
+being pushed beyond their limits on a daily basis and some turnover within the
+project was directly related to this pressure to deliver.
 
 Over the course of the project, the team size was typically 3-5 people, with
 most of the team working at less than 100% FTE. One contractor was 100% FTE
 for the majority of the project and had to step in to perform tasks that were
 not being performed by other team members.  At several portions of the project,
 the PI was at 50% FTE in terms of the project budget, but often worked 60-80
-hours per week, sometimes more, to ensure that tasks were completed to meet
-deliverable deadlines.
+hours per week (sometimes more) to ensure that tasks were completed in order
+to meet deliverable deadlines.
 
 The team was also partially virtual, with one, two, and sometimes three
 staff members working on the East Coast, while the rest of the team was
@@ -68,7 +94,9 @@ putting in the extra time it takes to improve their skill set (either inside
 working hours, or seeing it as an investment in their professional career,
 doing some extra-curricular learning.) Others respond by pushing back, focusing
 their efforts on only those tasks they are comfortable with and no more, or
-otherwise not following the established development path.
+otherwise not following the established development path. Some documenation
+was not produced as requested (in some cases the PI was able to make up for
+the deficit, but this was not possible when the PI did not write the software.)
 
 One risk to a project that is hard to avoid is a dependency on external
 software products or standards that are outside of the control of the project
@@ -91,8 +119,8 @@ Naming computers is not easy. One of the tenets of secure design is
 *separation of services*, which historically has driven system
 administrators to limit services to one service per computer. You have a DNS
 server that does DNS, a database server for data storage, a web server
-that provides HTTP/HTTPS service to browsers, an FTP file server that
-only serves static files, etc.
+that provides HTTP/HTTPS web application services for browsers, an FTP file
+server that only serves static files, etc.
 
 In such simple deployments, naming a computer based on the service it
 provides seems to make sense and to be simple. Until you decide to it
