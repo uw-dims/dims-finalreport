@@ -3,6 +3,11 @@
 Successes
 =========
 
+This section describes some of the successfully implemented features and
+subsystems and catalogs the source code repositories and online documentation
+published during the project. These followed the contractual requirements
+described in DHS Contract HSHQDC-13-C-B0013.
+
 .. _ansible_playbooks:
 
 Ansible Playbooks
