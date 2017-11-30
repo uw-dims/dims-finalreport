@@ -47,7 +47,7 @@ and rapidly changing tools and technologies that are necessary to assemble a
 system with the complexity defined in the project scope of work. Given project
 team members had experience in specific programming languages and some
 familiarity with Unix system administration on their own development
-workstations. Going beyind their experience and pushing them to rapidly and
+workstations. Going beyond their experience and pushing them to rapidly and
 constantly learn new things is not easy, and is sometimes resisted.  During
 this project every team member was pushed to learn new programming languages,
 new data storage mechanisms, new inter-process communication protocols, new
@@ -84,7 +84,7 @@ Seattle, Tacoma, and Bremerton, WA and one person in California.) Regular
 "scrum" meetings were held using online tools (at various times Adobe Connect,
 Skype, and Google Hangout were all used, to varying degrees of effectiveness or
 frustration.) This made the problem of trying to bring team members up to speed
-on new concepts and skills difficult, due to lack of physical presense and
+on new concepts and skills difficult, due to lack of physical presence and
 availability.
 
 Another difficulty resulted from political issues as opposed to strictly
@@ -94,7 +94,7 @@ putting in the extra time it takes to improve their skill set (either inside
 working hours, or seeing it as an investment in their professional career,
 doing some extra-curricular learning.) Others respond by pushing back, focusing
 their efforts on only those tasks they are comfortable with and no more, or
-otherwise not following the established development path. Some documenation
+otherwise not following the established development path. Some documentation
 was not produced as requested (in some cases the PI was able to make up for
 the deficit, but this was not possible when the PI did not write the software.)
 
@@ -136,7 +136,7 @@ computer, at which point one of two things happens:
 #. The service is put on another computer (possibly a virtual machine)
    and the computer's name now matches the service. But now there is also
    another computer host to manage, with ``iptables`` rules, accounts and
-   passwords allowing adminstrator access, the need to copy in SSH keys, etc.
+   passwords allowing administrator access, the need to copy in SSH keys, etc.
    As more computers are added, management and use gets harder and harder.
 
 Part of this problem is handled by adopting a policy of *not* naming computers after
@@ -205,9 +205,9 @@ internal server, mapping to an IP address in the ``140.142.29.0/14`` network
 block. Doing ``dig @128.95.120.1 jira.prisem.washington.edu`` (an official UW
 name server) or ``dig @8.8.8.8 jira.prisem.washington.edu`` (one of Google's
 name servers) would fail to get an IP address, but making the request of
-the internel server would work. Since Jira was running behind a reverse
+the internal server would work. Since Jira was running behind a reverse
 proxy, however, the host that was actually running the Jira server was
-not the one using the addres on the ``140.142.29.0/24`` network block, so
+not the one using the address on the ``140.142.29.0/24`` network block, so
 a second DNS name ``jira-int.prisem.washington.edu`` (also non-existent
 externally) would map to the internal IP address, which was only accessible
 over a VPN. This resulted in a huge amount of confusion. Which host was
@@ -285,7 +285,7 @@ server, with the necessity to route traffic between virtual machines
 on the two hypervisors. (Both hypervisors, by the way, were different
 and ran on two different operating systems.)
 
-On multiple occassions, hardware had to be moved from one location
+On multiple occasions, hardware had to be moved from one location
 to another (which meant changing IP addresses on both bare-metal
 hosts and virtual machines, changing routes, and changing VPNs.)
 The last time hardware was moved, this time to consolidate it all
@@ -316,7 +316,7 @@ just one former team member using remote desktop services and/or X11 forwarding
 from a workstation that was no longer available as an option to use. The
 instability and outages caused by this long-delayed (yet required) hardware
 move set the team back significantly and had ripple effects on other deadlines
-and events that could not be adjusted or cancelled.
+and events that could not be adjusted or canceled.
 
 .. _stability:
 
@@ -356,7 +356,7 @@ that had to be ported to Vagrant Virtualbox "box" files and the bare-metal
 cluster at the same time.  As these systems were not easily controlled with
 Ansible at first, this caused a lot of pain that was never fully eliminated. As
 the baremetal servers were re-purposed for pilot deployment work, the central
-cluster services degraded and took some formely working services with them.
+cluster services degraded and took some formerly working services with them.
 
 .. _swengchallenges:
 
@@ -423,7 +423,7 @@ It wasn't until Q2 2017 that stability was achieved on the ``master`` branch,
 regular merges from feature branches to ``develop`` and vice-versa kept both
 ``develop`` and feature branches stable, and hotfix branches used more
 diligently to improve ``master`` and ``develop`` branches without losing these
-fixes on long-lived feature branches. In restrospect, "release early, release
+fixes on long-lived feature branches. In retrospect, "release early, release
 often" and "build from master" to validate merged features should be the
 mantra. (This process was adopted leading up to the pilot deployment, which was
 built almost exclusively from the public ``master`` branch of
@@ -442,13 +442,13 @@ to abstraction. Abstraction presents challenges in many ways.
    or fail, with little feedback). This requires greater expertise in
    debugging.
 
-#. Abstration in service oriented architecture requires a greater level of
+#. Abstraction in service oriented architecture requires a greater level of
    expertise in configuring and debugging systems in that it is necessary
    for someone to be able to understand and control the system at any
-   level in the abstrated stack, or to be able to jump up and down
+   level in the abstracted stack, or to be able to jump up and down
    the application stack in order to diagnose and debug the system
    when something does not work. If someone is only capable of understanding
-   the highest layer in the abstrated stack and something does not work,
+   the highest layer in the abstracted stack and something does not work,
    they must rely on someone else who has expertise at the lower layers
    in order to debug and fix any problems. (This is related to the
    issue of *opacity* in the system, or the *black box* effect).
@@ -474,7 +474,7 @@ need more attributes. That means one of two things must happen:
 
 #. Trident is modified support the extra attributes that are needed, or
 
-#. An abstration layer is added that makes one call to Trident to
+#. An abstraction layer is added that makes one call to Trident to
    get the attributes it holds, and a second call to a DIMS database
    component to get the extra attributes, combining them into one
    data structure and returning that to the caller.
@@ -501,7 +501,7 @@ for remote access, have domain names to map to IP addresses, have a
 branded logo, etc. If a second DIMS instance is to be stood up, a
 complete set of similar systems (though configured differently with
 another address range, another set of DNS names, etc.) must be
-independantly set up. This means that very little can be hard-coded,
+independently set up. This means that very little can be hard-coded,
 since each deployment will be isolated and independent (yet made up
 of the same service components from the same set of Ansible playbooks
 and instructions). This isn't the way that most people learn how to
@@ -524,7 +524,7 @@ inconsistency in the use of DNS names vs. IP addresses.
 For example, there were often multiple variables in different locations with
 different naming styles that all held the same value. Changing only one of the
 variables resulted in inconsistency in configuration, breaking one or more
-components as a result of the change. Trying to find all occurances of the
+components as a result of the change. Trying to find all occurrences of the
 similar variables was difficult, since the naming style used by each programmer
 may vary and you would not know what to look for. After the team was reduced to
 just the PI, a significant amount of effort was put into finding and

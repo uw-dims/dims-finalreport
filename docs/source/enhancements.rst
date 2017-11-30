@@ -14,7 +14,7 @@ Needed Enhancements
 
 There are several areas in the DIMS development architecture that are
 more complex than is desirable, where things are difficult to use and
-bugs often get in the way.  As the quote above atests, it is a challenge
+bugs often get in the way.  As the quote above attests, it is a challenge
 to make things simple, elegant, and robust. Given limited resources,
 time deadlines, and pressures to get things working, some components
 of the DIMS project have attained the success of a prototype and
@@ -31,7 +31,7 @@ When the DIMS project began, and the team first began to work with
 multiple Linux distributions (to follow guidance of each open source
 tool producer's specified supported platform requirements), the
 decision was made to use Packer for creating virtual machine
-images from distribution disk image files (colloqually known as
+images from distribution disk image files (colloquially known as
 **ISOs**, short for ISO 9660 format read-only boot images.).
 
 To facilitate applying generic configuration settings and package
@@ -45,7 +45,7 @@ Vagrant virtual machine.
 
 This process pipeline eventually included a Jenkins server
 that would trigger ``ansible-playbook`` execution to implement
-a complete continous integration/continuous deployment
+a complete continuous integration/continuous deployment
 environment. This process looked like that depicted in Figure
 :ref:`packer_diagram`.
 
@@ -80,7 +80,7 @@ files, and ``Vagrantfile`` configuration files would help smooth
 things out.
 
 In the long term, a solution that falls within the gap between a single server
-rack with custom ``Makefile`` and scripts and something as complex as Openstack
+rack with custom ``Makefile`` and scripts and something as complex as OpenStack
 or AWS CloudFormation is desired.  This could be Packer and Terraform with
 custom provisioners. Experiments using Packer to create Amazon instances was
 successfully performed and a prototype of Terraform to provision Digital Ocean
@@ -162,10 +162,10 @@ back for a long time.
 Having multiple deployments was always a project objective, but how to achieve
 it using free and open source tools was not obvious to the team.  It was clear
 that a configuration management database was needed that supported a more
-object-oriented "inheritence" style mechanism of defining variables that would
-more easily accomodate managing multiple simultaneous deployments.
+object-oriented "inheritance" style mechanism of defining variables that would
+more easily accommodate managing multiple simultaneous deployments.
 
-The need here is for a system that behaves something like the way Openstack
+The need here is for a system that behaves something like the way OpenStack
 supports a CLI for getting and setting variables in concert with a "cloud"
 configuration file to control high-level storage locations that allow a single
 interface to operate across multiple configuration databases. Ideally, this
@@ -190,7 +190,7 @@ that are configured locally, but pull much of their code from the public
 repositories on GitHub.
 
 The solution that was settled upon in the DIMS project was a combination of
-most variables being defaulted in roles with a separete "private" directory tree
+most variables being defaulted in roles with a separate "private" directory tree
 for each deployment that holds customization details in the form of Ansible
 YAML style
 inventory files and local customized files and templates that playbooks in the

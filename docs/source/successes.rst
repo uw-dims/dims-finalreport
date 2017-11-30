@@ -292,7 +292,7 @@ facilitate development, testing, working on branches, and generally
 experimenting in a non-destructive manner, the use of a standardized Python
 virtual environment called ``dimsenv`` was implemented. This is a little
 heavier-weight use of the Python ``virtualenv`` mechanism, encapsulating more
-than just Python intepreter and ``pip`` installed packages.
+than just Python interpreter and ``pip`` installed packages.
 
 The ``python-virtualenv`` role builds a specific version of Python, installs a
 specific set of pinned ``pip`` packages, and also adds a series of programs to
@@ -383,7 +383,7 @@ documentation.
      - https://ansible-dims-playbooks.readthedocs.io
 
    * - https://github.com/uw-dims/device-files
-     - (No additional documenation)
+     - (No additional documentation)
 
    * - https://github.com/uw-dims/dims-ad
      - https://dims-ad.readthedocs.io
@@ -416,13 +416,13 @@ documentation.
      - https://dims-user-manual.readthedocs.io
 
    * - https://github.com/uw-dims/fuse4j
-     - (No additional documenation)
+     - (No additional documentation)
 
    * - https://github.com/uw-dims/java-native-loader
-     - (No additional documenation)
+     - (No additional documentation)
 
    * - https://github.com/uw-dims/stix-java
-     - (No additional documenation)
+     - (No additional documentation)
 
    * - https://github.com/uw-dims/trident-training-manual
      - https://trident-training-manual.readthedocs.io
@@ -431,13 +431,13 @@ documentation.
      - https://trident-user-manual.readthedocs.io
 
    * - https://github.com/uw-dims/tsk4j
-     - (No additional documenation)
+     - (No additional documentation)
 
    * - https://github.com/uw-dims/tupelo
-     - (No additional documenation)
+     - (No additional documentation)
 
    * - https://github.com/uw-dims/xsdwalker
-     - (No additional documenation)
+     - (No additional documentation)
 
 ..
 

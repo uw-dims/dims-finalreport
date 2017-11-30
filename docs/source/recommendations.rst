@@ -23,7 +23,7 @@ to fix or replace should something happen to it. Any host that is fully under
 Ansible control can be quickly rebuilt, quickly reconfigured, and much more
 easily debugged and diagnosed.
 
-Rather than use SSH to log into hosts, whenver possible use ``ansible`` ad-hoc
+Rather than use SSH to log into hosts, whenever possible use ``ansible`` ad-hoc
 mode. The ability to invoke modules directly using ``ansible`` not only helps
 learn how the module work, but it also allows very powerful manipulation of any
 or all hosts in the inventory at once. This makes debugging, configuring,
@@ -41,7 +41,7 @@ to building a complex and scalable system.
 
 Last, but not least, by putting **all** configuration files under Ansible
 control from the start enables much easier change management and incremental
-configruation adjustment with less disruption than with manual system
+configuration adjustment with less disruption than with manual system
 administration. It is far easier to search Git history to figure out
 what changed, or search a few directory trees to locate where a particular
 variable is set or configuration file was customized. The ``ansible_managed``
@@ -61,7 +61,7 @@ As much as possible, standardize on a small and manageable number of base
 operating systems and versions. Every major or minor version difference (e.g.,
 12.04.4 vs. 14.04.4 for Ubuntu Linux) or distribution difference (e.g., `Fedora
 vs.  RedHat Enterprise Linux vs. CentOS`_) can have implications for
-compatability of installed components and subcomponents, be they package
+comparability of installed components and subcomponents, be they package
 contents, libraries, or supported programs and utilities.
 
 While this recommendation sounds simple, it is not. This task is made difficult
@@ -80,7 +80,7 @@ set of group variables (one for each alternative operating system), using
 variables in inclusion directives to select from those alternatives, and/or
 using "Ansible facts" derived at run time with logic (e.g., ``when:
 ansible_os_family == "Debian"`` as a qualifier in a playbook)
-Developing Ansible playbooks in a modular way that can easily accomodate
+Developing Ansible playbooks in a modular way that can easily accommodate
 generalized support for multiple operating systems (e.g., using a "plug-in"
 style model) is a more sophisticated way of writing playbooks that requires a
 greater level of expertise in all who are writing the playbooks.  Such
@@ -106,7 +106,7 @@ support part of the system with one hypervisor and the rest with another. If it
 becomes necessary to support additional hypervisors, require replication of the
 *entire* system of systems in a separate deployment (i.e., fully independent,
 not sharing any resources in a way that couples the heterogeneous systems) to
-ensure that tests can be peformed to validate that all software works
+ensure that tests can be performed to validate that all software works
 identically using the alternate hypervisor.
 
 The ``vncserver`` role [#vncserver]_ was created to make it easier to remotely manage
@@ -280,7 +280,7 @@ Now you have two problems." Sure, its a joke, but that makes it no less true.
 Trying to compose a system using open source parts that are constantly changing
 requires constantly dealing with testing upgrades, updating version numbers
 in Ansible playbook files, applying patches, debugging regression problems,
-debugging version inconsistencies betweeen systems, and updating
+debugging version inconsistencies between systems, and updating
 documentation. The more software subsystems and packages used, the
 greater the frequency of changes that must be dealt with. Assume that up to
 half of the project working time will be spent dealing with these issues.
