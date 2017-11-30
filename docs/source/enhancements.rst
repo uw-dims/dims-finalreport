@@ -227,9 +227,12 @@ shared secrets, but passwords were not entirely eliminated in favor of a
 ubiquitous single-signon mechanism. (Single-signon was implemented for Jira,
 Jenkins, and the DIMS Dashboard server, but no farther.) Trident uses a
 Javascript Web Token (JWT, pronounced "jot"). LDAP and JWT tokens could be
-extended, a service like `FreeIPA`_ or HashiCorp Vault (both used in the
-system illustration in Figure :ref:`bootmygovcloud`).
-
+extended, a service like `FreeIPA`_ or HashiCorp Vault (both used in the system
+illustration in Figure :ref:`bootmygovcloud`), or Docker's built-in secrets
+management feature (see `Introducing Docker Secret Management`_ and
+`Manage sensitive data with Docker secrets`_) could be used. There are
+many tradeoffs and service integration issues in this area that make
+this a non-trivial problem for all open source projects of this scope.
 
 .. [#otto1] https://www.hashicorp.com/blog/otto/
 .. [#otto2] https://www.hashicorp.com/blog/decommissioning-otto/
@@ -242,4 +245,5 @@ system illustration in Figure :ref:`bootmygovcloud`).
 
 .. _AWX Project: https://github.com/ansible/awx
 .. _FreeIPA: https://www.freeipa.org/page/Main_Page
-
+.. _Introducing Docker Secret Management: https://blog.docker.com/2017/02/docker-secrets-management/
+.. _Manage sensitive data with Docker secrets: https://docs.docker.com/engine/swarm/secrets/
