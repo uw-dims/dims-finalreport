@@ -350,6 +350,7 @@ similar in form and content to what the DIMS project has focused on producing.
 
 ..
 
+.. _opencredo:
 
 OpenCredo
 ^^^^^^^^^
