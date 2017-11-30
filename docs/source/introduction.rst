@@ -1,6 +1,6 @@
 .. _introduction:
 
-Introduction 
+Introduction
 ============
 
 This document presents the Final Report for the *Distributed Incident
@@ -16,52 +16,70 @@ Over the period of performance, the people listed in Table
 
 .. _participanttable:
 
-.. table:: Project Participants
+.. .. table:: Project Participants
+..
+..     +-----------------------+-------------------------------------------------------------+
+..     | Name                  | Organization(s) and role(s)                                 |
+..     +=======================+=============================================================+
+..     | David Dittrich        | Applied Physics Laboratory, University of Washington,     \ |
+..     |                       | Center for Data Science, University of Washington Tacoma. \ |
+..     |                       | Principal Investigator.                                   \ |
+..     |                       |                                                             |
+..     +-----------------------+-------------------------------------------------------------+
+..     | Linda Parsons         | Next Century. Subcontract programmer.                     \ |
+..     |                       |                                                             |
+..     +-----------------------+-------------------------------------------------------------+
+..     | Scott Warner          | Next Century. Subcontract programmer.                     \ |
+..     |                       |                                                             |
+..     +-----------------------+-------------------------------------------------------------+
+..     | Mickey Ross           | Ross Consulting Services.                                 \ |
+..     |                       | Subcontract program management, administrative services.  \ |
+..     |                       |                                                             |
+..     +-----------------------+-------------------------------------------------------------+
+..     | Eliot Lim             | Applied Physics Laboratory, University of Washington,     \ |
+..     |                       | Center for Data Science, University of Washington Tacoma. \ |
+..     |                       | System administration, hardware support.                  \ |
+..     |                       |                                                             |
+..     +-----------------------+-------------------------------------------------------------+
+..     | Stuart Maclean        | Applied Physics Laboratory, University of Washington.     \ |
+..     |                       | Programming.                                              \ |
+..     |                       |                                                             |
+..     +-----------------------+-------------------------------------------------------------+
+..     | Megan Boggess         | University of Washington, Tacoma (graduate student RA),   \ |
+..     |                       | Center for Data Science, University of Washington Tacoma. \ |
+..     |                       | Programming, system administration.                       \ |
+..     |                       |                                                             |
+..     +-----------------------+-------------------------------------------------------------+
+..     | Jeremy Parks          | Center for Data Science, University of Washington Tacoma. \ |
+..     |                       | Programming, system administration.                       \ |
+..     |                       |                                                             |
+..     +-----------------------+-------------------------------------------------------------+
+..     | Jeremy Johnson        | Critical Informatics.                                     \ |
+..     |                       | Subcontract programming, system administration.           \ |
+..     |                       |                                                             |
+..     +-----------------------+-------------------------------------------------------------+
+..     | Katherine Carpenter   | Critical Informatics.                                     \ |
+..     |                       | Subcontract program management, administrative services.  \ |
+..     |                       |                                                             |
+..     +-----------------------+-------------------------------------------------------------+
+..
+.. ..
 
-    +-----------------------+-------------------------------------------------------------+
-    | Name                  | Organization(s) and role(s)                                 |
-    +=======================+=============================================================+
-    | David Dittrich      \ | Applied Physics Laboratory, University of Washington,     \ |
-    |                     \ | Center for Data Science, University of Washington Tacoma. \ |
-    |                     \ | Principal Investigator.                                   \ |
-    |                       |                                                             |
-    +-----------------------+-------------------------------------------------------------+
-    | Linda Parsons       \ | Next Century. Subcontract programmer.                     \ |
-    |                     \ |                                                             |
-    +-----------------------+-------------------------------------------------------------+
-    | Scott Warner        \ | Next Century. Subcontract programmer.                     \ |
-    |                     \ |                                                             |
-    +-----------------------+-------------------------------------------------------------+
-    | Mickey Ross         \ | Ross Consulting Services.                                 \ |
-    |                     \ | Subcontract program management, administrative services.  \ |
-    |                     \ |                                                             |
-    +-----------------------+-------------------------------------------------------------+
-    | Eliot Lim           \ | Applied Physics Laboratory, University of Washington,     \ |
-    |                     \ | Center for Data Science, University of Washington Tacoma. \ |
-    |                     \ | System administration, hardware support.                  \ |
-    |                     \ |                                                             |
-    +-----------------------+-------------------------------------------------------------+
-    | Stuart Maclean      \ | Applied Physics Laboratory, University of Washington.     \ |
-    |                     \ | Programming.                                              \ |
-    |                     \ |                                                             |
-    +-----------------------+-------------------------------------------------------------+
-    | Megan Boggess       \ | University of Washington, Tacoma (graduate student RA),   \ |
-    |                     \ | Center for Data Science, University of Washington Tacoma. \ |
-    |                     \ | Programming, system administration.                       \ |
-    |                     \ |                                                             |
-    +-----------------------+-------------------------------------------------------------+
-    | Jeremy Parks        \ | Center for Data Science, University of Washington Tacoma. \ |
-    |                     \ | Programming, system administration.                       \ |
-    |                     \ |                                                             |
-    +-----------------------+-------------------------------------------------------------+
-    | Jeremy Johnson      \ | Critical Informatics.                                     \ |
-    |                     \ | Subcontract programming, system administration.           \ |
-    |                     \ |                                                             |
-    +-----------------------+-------------------------------------------------------------+
-    | Katherine Carpenter \ | Critical Informatics.                                     \ |
-    |                     \ | Subcontract program management, administrative services.  \ |
-    |                     \ |                                                             |
-    +-----------------------+-------------------------------------------------------------+
+.. csv-table:: Project Participants
+   :header: "Name", "Organization(s)", "Role(s)"
+   :widths: 20, 50, 30
+
+   "David Dittrich", "Applied Physics Laboratory, University of Washington;
+   Center for Data Science, University of Washington Tacoma", "Principal Investigator"
+   "Linda Parsons", "Next Century", "Subcontract programmer"
+   "Scott Warner", "Next Century", "Subcontract programmer"
+   "Mickey Ross", "Ross Consulting Services", "Subcontract program management, administrative services"
+   "Eliot Lim", "Applied Physics Laboratory, University of Washington; Center for Data Science, University of Washington Tacoma", "System administration, hardware support"
+   "Stuart Maclean", "Applied Physics Laboratory, University of Washington", "Programmer"
+   "Megan Boggess", "University of Washington Tacoma; Center for Data Science, University of Washington Tacoma", "Graduate Student RA; Programming, system administration."
+   "Jeremy Parks", "Center for Data Science, University of Washington Tacoma", "Programming, system administration"
+   "Jeremy Johnson", "Critical Informatics", "Subcontract programming, system administration"
+   "Katherine Carpenter", "Critical Informatics", "Subcontract program management, administrative services"
 
 ..
 
