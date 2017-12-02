@@ -325,7 +325,7 @@ Stability
 
 Due to the inherent inter-relationships between subcomponents in a distributed
 system, stability of the overall system is a constant challenge.  Not only are
-hardware moves like those described in an earlier Section a contributor to
+relocations of hardware like those described in an earlier Section a contributor to
 instability, but so are software changes.  As the DIMS project is using open
 source operating systems and tools that may be updated on as frequent as a
 monthly basis, often resulting in parts of the system "breaking" when an update
@@ -333,7 +333,8 @@ happens.
 
 As the entire distributed system was not put under Ansible control from the
 start, and "as-built" documentation was lacking in several areas, some
-architectural changes resulted in critical systems breaking with no clear way
+architectural changes resulted in critical system components breaking,
+with no clear way
 to fix them. This could lead to days of running ``tcpdump`` and ``strace``,
 watching ``syslog`` log file output, and poking at servers (after clearing the
 browser cache frequently to eliminate problems due to erroneous cached content)

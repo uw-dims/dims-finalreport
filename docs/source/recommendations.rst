@@ -13,22 +13,34 @@ will want to consider these suggestions.
 
 .. _ansibleFTW:
 
-Focus on Ansible
-----------------
+Focus on System Build Automation
+--------------------------------
 
-The primary focus of anyone wanting to build on the project's successes is to
-ensure everyone masters Ansible. That can't be stressed enough, since any
-system that is not under Ansible control is a risk to stability and very costly
-to fix or replace should something happen to it. Any host that is fully under
-Ansible control can be quickly rebuilt, quickly reconfigured, and much more
-easily debugged and diagnosed.
+From the first days of the project, the PI constantly told the team to *not*
+build things by hand, since that does not scale and cannot be replicated. We
+didn't need one hand-built system, we needed multiple systems for development,
+testing, production, and anyone wanting to use the DIMS system needed to
+quickly and easily stand up a system. This can only be accomplished using
+stable and well-documented build automation.
+
+Ansible was chosen early on as what looked like the most promising system build
+automation tool, so in this sense saying "focus on system build automation"
+means "focus on mastering Ansible." Anyone wanting to build on the project's
+successes, and avoid some of its challenges, is to ensure *everyone* masters
+using Ansible. That can't be stressed enough, since any system that is not
+under Ansible control is at risk of instability and very costly effort to fix
+or replace should something happen to it. Any host that is fully under Ansible
+control can be quickly rebuilt, quickly reconfigured, and much more easily
+debugged and diagnosed.
 
 Rather than use SSH to log into hosts, whenever possible use ``ansible`` ad-hoc
 mode. The ability to invoke modules directly using ``ansible`` not only helps
-learn how the module work, but it also allows very powerful manipulation of any
+learn how the module works, but it also allows very powerful manipulation of any
 or all hosts in the inventory at once. This makes debugging, configuring,
 cleaning up, or any other task you need to perform, much easier and more
-uniformly.
+uniform. Avoiding logging into hosts and remotely using the command line shell
+also helps focus on controlling the configuration and using the automation
+rather than hand-crafting uncontrolled system changes.
 
 Using ``ansible-playbook`` with custom playbooks for complex tasks, or by
 invoking a master playbook that includes all other playbooks, facilitates
