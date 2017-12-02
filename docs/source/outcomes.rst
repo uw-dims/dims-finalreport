@@ -95,8 +95,9 @@ up.  The two primary outcomes of this effort are:
 
 #. Transitioning this platform into the public sector to support operational
    needs of State, Local, Territorial, and Tribal (SLTT) government entities.
-   DIMS project outputs are being evaluated by the PISCES-NW not-for-profit
-   organization for use in the Pacific Northwest (see Section :ref:`piscesnw`).
+   DIMS project software products were included in a draft proposal for
+   evaluation by the PISCES-NW not-for-profit organization for use in the
+   Pacific Northwest.
    The latest modification to the contract includes a pilot deployment for use
    by the United States Secret Service for their Electronic Crimes Task Force
    (ECTF) membership.
