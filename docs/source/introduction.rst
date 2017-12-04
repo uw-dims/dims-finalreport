@@ -26,8 +26,6 @@ The period of performance for the DIMS Project ran from August 16, 2014 to
 August 15, 2017.  Over the period of performance, the people listed in Table
 :ref:`participanttable` were involved in project:
 
-.. _participanttable:
-
 .. .. table:: Project Participants
 ..
 ..     +-----------------------+-------------------------------------------------------------+
@@ -76,6 +74,8 @@ August 15, 2017.  Over the period of performance, the people listed in Table
 ..     +-----------------------+-------------------------------------------------------------+
 ..
 .. ..
+
+.. _participanttable:
 
 .. csv-table:: Project Participants
    :header: "Name", "Organization(s)", "Role(s)"
@@ -357,7 +357,7 @@ deployment.
 MozDef uses Ubuntu 14.04 as the base operating system. It has components for
 front-end user interface written in Javascript using Meteor, Node.js, and d3,
 and back-end data processing scripts written in Python using uWSGI, bottle.py,
-with MongoDB for a database, RabbitMQ for message bus, and NGINX for web app
+with MongoDB for a database, `RabbitMQ`_ for message bus, and NGINX for web app
 front end.
 
 For installation, there is a demonstration ``Dockerfile`` for creating a
@@ -462,7 +462,6 @@ dashboard, portal, etc.) that is specified in
 
 ..
 
-
 The remainder of this report is divided into the following
 sections:
 
@@ -497,3 +496,20 @@ sections:
 
 ..
 
+.. _GRR Rapid Response: https://github.com/google/grr
+.. _RabbitMQ: http://www.rabbitmq.com/
+.. _Don't Pipe to your Shell: https://www.seancassidy.me/dont-pipe-to-your-shell.html
+.. _Git: http://git-scm.com
+.. _Jenkins CI: http://jenkins-ci.org/
+.. _Badge Program: https://www.coreinfrastructure.org/programs/badge-program
+.. _Ansible: http://www.ansible.com/get-started
+.. _GitHub Security: https://help.github.com/articles/github-security/
+.. _Heroku Security: https://www.heroku.com/policy/security
+.. _Alternatives to piping the install script into your shell. #90: https://github.com/fisherman/fisherman/issues/90
+.. _fisherman/fisherman: https://github.com/fisherman/fisherman
+.. _Collective Intelligence Framework: http://code.google.com/p/collective-intelligence-framework/
+.. _CSIRT Gadgets Foundation: http://csirtgadgets.org/rfc/getting-started/
+.. _PlatformUbuntu: https://github.com/csirtgadgets/massive-octo-spice/wiki/PlatformUbuntu
+.. _MozDef: http://mozdef.readthedocs.org/en/latest/
+.. _Summit Route: https://summitroute.com
+.. _Iterative Defense Architecture: https://summitroute.com/blog/2015/06/13/iterative_defense_architecture/

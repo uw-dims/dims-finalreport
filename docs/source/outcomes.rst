@@ -32,7 +32,7 @@ professionals at commercial software companies. Further refinement within an
 entity staffed and focused on bringing a product or service to the market could
 quickly get there, but what is public now is ahead of many of the open source
 code examples that one can find by searching the internet, and the list of
-resources in Section :ref:`resources` far exceeds any similar collection that
+resources in Section :ref:`references` far exceeds any similar collection that
 could be identified by the DIMS team.  Integration of DIMS features with those
 of the other projects described herein to produce a full-featured and
 production capable system would be the ideal, though the source of funding for
@@ -155,8 +155,8 @@ portal servers at once (one for dev/test/training and the other for
 "production" use.) Combined with the re-written Jenkins build scripts, an
 improved mechanism for debugging and development of new Trident features is now
 possible. (Testing of these features with volunteers associated with the
-Trident portal in use by the ops-trust community is being discussed and will
-move forward after the project end date.)
+Trident portal in use by the `ops-trust`_ community is being discussed and will
+continue as an independent project after this project's end date.)
 
 .. _pilotdeployment:
 
@@ -491,27 +491,12 @@ documentation.
 
 .. References and footnotes follow.
 
-.. _Don't Pipe to your Shell: https://www.seancassidy.me/dont-pipe-to-your-shell.html
-.. _Badge Program: https://www.coreinfrastructure.org/programs/badge-program
-.. _GitHub Security: https://help.github.com/articles/github-security/
-.. _Heroku Security: https://www.heroku.com/policy/security
-.. _Alternatives to piping the install script into your shell. #90: https://github.com/fisherman/fisherman/issues/90
-.. _fisherman/fisherman: https://github.com/fisherman/fisherman
-.. _Summit Route: https://summitroute.com
-.. _Iterative Defense Architecture: https://summitroute.com/blog/2015/06/13/iterative_defense_architecture/
+.. _ops-trust: https://portal.ops-trust.net/
+
 .. _OpenCredo: https://opencredo.com
 .. _The journey towards a secure government cloud bootstrapping process: https://opencredo.com/boot-my-secure-government-cloud/
-.. _Collective Intelligence Framework: http://code.google.com/p/collective-intelligence-framework/
-.. _PlatformUbuntu: https://github.com/csirtgadgets/massive-octo-spice/wiki/PlatformUbuntu
-.. _MozDef: http://mozdef.readthedocs.org/en/latest/
 .. _Installation: http://mozdef.readthedocs.io/en/latest/installation.html#mozdef-manual-installation-process
-.. _CSIRT Gadgets Foundation: http://csirtgadgets.org/rfc/getting-started/
 .. _ELK stack: http://www.elasticsearch.org/overview/
-.. _RabbitMQ: http://www.rabbitmq.com/
-.. _GRR Rapid Response: https://github.com/google/grr
-.. _Git: http://git-scm.com
-.. _Jenkins CI: http://jenkins-ci.org/
-.. _Ansible: http://www.ansible.com/get-started
 
 
 .. [Vix16] Paul Vixie. Magical Thinking in Internet Security. https://www.farsightsecurity.com/Blog/20160428-vixie-magicalthinking/, April 2016.
