@@ -11,6 +11,29 @@ on the DIMS software base, or a small open source development project
 wanting to use the platform for secure software development,
 will want to consider these suggestions.
 
+During the time of this project, we encountered all of the typical
+problems that a team would have in the lifecycle of designing,
+deploying, and maintaining a small-scale (on the order of dozens of
+server components) distributed system. In order to have isolated
+development, test, and production systems, the difficulty factor
+goes up. To perform multiple production deployments and update
+code over time further increases the difficulty factor. Eventually,
+the lack of automation becomes a limiting factor at best, or
+leads to an extremely unstable, fragile, and insecure final product at worst.
+
+The benefit to those who chose to follow our lead will be a faster and
+smoother journey than we experienced during the DIMS project period of
+performance. All of the hurdles, mistakes, struggles, and ultimately the many
+successes and achievements in distributed system engineering were not easily
+found in the open source community. The :ref:`dimssr:dimssystemrequirements`
+documents security practices and features that we have attempted to
+incorporate to the greatest extent possible, in a way that can be improved
+over time in a modular manner.  The system automation and continuous
+integration/continuous deployment features help in implementing and
+maintaining a secure system. (Red team application penetration testing will
+further improve the security of the system through feedback about weaknesses
+and deficiencies that crept in during development and deployment.)
+
 .. _ansibleFTW:
 
 Focus on System Build Automation
