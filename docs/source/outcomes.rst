@@ -412,7 +412,7 @@ disk images, and integrated into the early DIMS development deployment.
 .. _softwareproducts:
 
 Software Products and Documentation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------------------
 
 The following table provides links to public source code repositories and
 documentation.
