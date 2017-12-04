@@ -9,9 +9,21 @@ Management System* (DIMS) Project.
 Project Overview
 ----------------
 
-The Distributed Incident Management System (DIMS) Project period
-of performance began on August 16, 2014 and ended August 15, 2017.
-Over the period of performance, the people listed in Table
+The DIMS Project was intended to build upon a long history of DHS sponsored
+efforts to support security information event sharing among State, Local,
+Territorial, and Tribal (SLTT) government entities Pacific Northwest region
+known as the Public Regional Information Security Event Management (PRISEM)
+project.  The PI served as the Director of Research and Development for the
+PRISEM Project and managed its networking and hardware at the University of
+Washington from the project's inception in 2008.
+
+For more on the background on PRISEM and DIMS, see
+:ref:`dimsocd:dimsoperationalconceptdescription`,
+:ref:`dimssr:dimssystemrequirements`, and
+:ref:`dimsswplan:dimsswplan`.
+
+The period of performance for the DIMS Project ran from August 16, 2014 to
+August 15, 2017.  Over the period of performance, the people listed in Table
 :ref:`participanttable` were involved in project:
 
 .. _participanttable:
