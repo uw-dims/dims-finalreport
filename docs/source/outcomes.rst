@@ -158,6 +158,19 @@ possible. (Testing of these features with volunteers associated with the
 Trident portal in use by the ops-trust community is being discussed and will
 move forward after the project end date.)
 
+.. _pilotdeployment:
+
+Pilot Deployment
+----------------
+
+A deployment of the https://github.com/uw-dims/ansible-dims-playbooks code on a
+stand-alone baremetal server hosting two virtual machines running instances of
+the Trident portal, customized and branded specifically for the U.S. Secret
+Service Electronic Crimes Task Force (ECTF) following
+:ref:`ansibledimsplaybooks:localcustomization`, was produced for use in a pilot
+project.  Included are a Training Manual
+(https://trident-training-manual.readthedocs.io) and User Manual
+(https://trident-user-manual.readthedocs.io) focused on the Trident portal.
 
 .. _continuousintegration:
 
