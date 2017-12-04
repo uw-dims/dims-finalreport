@@ -70,11 +70,13 @@ Standardize on Operating System(s)
 ----------------------------------
 
 As much as possible, standardize on a small and manageable number of base
-operating systems and versions. Every major or minor version difference (e.g.,
-12.04.4 vs. 14.04.4 for Ubuntu Linux) or distribution difference (e.g., `Fedora
-vs.  RedHat Enterprise Linux vs. CentOS`_) can have implications for
-comparability of installed components and subcomponents, be they package
-contents, libraries, or supported programs and utilities.
+operating systems and versions, and strive to keep up with the most recent
+release (and perhaps one previous release) to avoid supporting too many
+disparate features and one-off workarounds. Every major or minor version
+difference (e.g., 12.04.4 vs. 14.04.4 for Ubuntu Linux) or distribution
+difference (e.g., `Fedora vs.  RedHat Enterprise Linux vs. CentOS`_) can have
+implications for compatability of sub-components, be
+they programs, libraries, or add-ons and utilities.
 
 While this recommendation sounds simple, it is not. This task is made difficult
 by the choices of supported base operating system(s) made by each of the open
