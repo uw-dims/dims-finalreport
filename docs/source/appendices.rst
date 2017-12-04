@@ -79,6 +79,8 @@ STIX Development Libraries
 
 ..
 
+.. _references:
+
 Reference Links
 ---------------
 
