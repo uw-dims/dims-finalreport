@@ -8,6 +8,28 @@ subsystems and catalogs the source code repositories and online documentation
 published during the project. These followed the contractual requirements
 described in DHS Contract HSHQDC-13-C-B0013.
 
+This project has successfully implemented a prototype for a deployable
+open source distributed system. As described in this section and
+Section :ref:`outcomes`, other projects have contemporaneously pursued
+the same goal of producing a generally usable system comprised of open
+source components. The DIMS project includes features that these other
+projects do not (e.g., the integrated ``bats`` tests, the breadth and
+depth of documentation, the features to support managing multiple
+simultaneous deployments with private configuration).
+
+The outcome of this project is by no means a production-ready commercially
+sellable system, but the open source products are competitive in many aspects
+with other projects created by larger teams of software engineering
+professionals at commercial software companies. Further refinement within an
+entity staffed and focused on bringing a product or service to the market could
+quickly get there, but what is public now is far ahead of many of the
+sample code that one can find by searching the internet, and the list of
+resources in Section :ref:`resources` and Section :ref:`softwareproducts`
+far exceeds anything that could be identified by the DIMS team.
+
+What follows are sections identifying some of the key high level
+achievements.
+
 .. _ansible_playbooks:
 
 Ansible Playbooks
@@ -363,6 +385,8 @@ disk images, and integrated into the early DIMS development deployment.
 
 .. _Bats\: Bash Automated Testing System: https://github.com/sstephenson/bats#bats-bash-automated-testing-system
 
+
+.. _softwareproducts:
 
 Software Products and Documentation
 -----------------------------------
