@@ -234,6 +234,40 @@ management feature (see `Introducing Docker Secret Management`_ and
 many tradeoffs and service integration issues in this area that make
 this a non-trivial problem for all open source projects of this scope.
 
+.. _testingenhancements:
+
+Testing and Test Automation
+---------------------------
+
+Section :ref:`testingchallenges` describes effort put in by the PI to automate
+system-wide testing. This primarily centered on post-processing output of BATS
+tests and JSON files created using a simple user interface that collected
+information related to the tests as described in the
+:ref:`dimsswplan:dimsswplan`.  Another team member created scripts in Jira that
+produced these same JSON files describing the output of manual tests managed
+using Jira, reducing the amount of effort to perform and report on user
+interface tests.  The final product was a structured set of RST files that
+could be processed with Sphinx to produce the test report in HTML, PDF, and
+epub formats.  Such test automation decreased effort required to perform test
+cycles and supported automated production of reports with very little need for
+manual input.
+
+The larger vision here was to scale test production and reporting by
+orchestrating the process using Ansible. For example, an Ansible playbook could
+invoke the ``test.runner`` script (see :ref:`ansibledimsplaybooks:runningTests`)
+on every system, placing output into a known file, which can then be retrieved
+using the ``fetch`` module into a hierarchical directory structure based on the
+system names. The contents of this directory tree can then be turned into
+separate RST files and an ``index.rst`` file generated that is then rendered
+using Sphinx.
+
+Further automation of the testing process along these lines would decrease the
+cost and disruption to regular development efforts, allowing more frequent
+testing and decreasing the effort spent on resolving failed tests.  (This task
+was on the to-do list, but had to take a lower priority to other more important
+tasks.)
+
+
 .. [#otto1] https://www.hashicorp.com/blog/otto/
 .. [#otto2] https://www.hashicorp.com/blog/decommissioning-otto/
 .. [#awx] A couple months before the DIMS project end of period of performance,

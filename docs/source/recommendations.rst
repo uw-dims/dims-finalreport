@@ -75,7 +75,7 @@ release (and perhaps one previous release) to avoid supporting too many
 disparate features and one-off workarounds. Every major or minor version
 difference (e.g., 12.04.4 vs. 14.04.4 for Ubuntu Linux) or distribution
 difference (e.g., `Fedora vs.  RedHat Enterprise Linux vs. CentOS`_) can have
-implications for compatability of sub-components, be
+implications for computability of sub-components, be
 they programs, libraries, or add-ons and utilities.
 
 While this recommendation sounds simple, it is not. This task is made difficult
@@ -305,6 +305,24 @@ what may be misconfigured, broken, or missing. Be disciplined about adding
 new tests and regularly running tests saves time in the long run. Make sure
 that all team members learn to use these tools, as well as spend time
 learning debugging techniques (see :ref:`ansibledimsplaybooks:debugging`).
+
+.. _testingrecommendations:
+
+Testing
+-------
+
+To avoid the issues described in Section :ref:`testingchallenges`, follow-on
+projects are strongly advised to use these same MIL-STD-498 documents
+(leveraging the Sphinx version of the templates used by the DIMS Project,
+listed in Section :ref:`softwareproducts`) and the simpler BATS mechanism to
+write tests to produce machine-parsable output.
+
+We found that when BATS tests were added to Ansible playbooks, and executed
+using the ``test.runner`` script after provisioning Vagrant virtual machines,
+it was very easy to identify bugs and problems in provisioning scripts.
+Friction in the development process was significantly reduced as a result.
+This same mechanism can be extended to support the system-wide test and
+reporting process. (See Section :ref:`testingenhancements`).
 
 
 .. _Fedora vs. RedHat Enterprise Linux vs. CentOS: https://danielmiessler.com/study/fedora_redhat_centos/

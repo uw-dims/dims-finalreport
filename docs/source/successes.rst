@@ -208,8 +208,8 @@ was chosen for its simplicity. A structured mechanism for embedding
 tests into Ansible Playbook roles was developed, along with a script
 to facilitate running tests named (not surprisingly) ``test.runner``.
 This testing methodology is described in Section
-:ref:`ansible_dims_playbooks:tests` of
-:ref:`ansible_dims_playbooks:ansible_dims_playbooks`.
+:ref:`ansibledimsplaybooks:tests` of
+:ref:`ansibledimsplaybooks:ansibledimsplaybooks`.
 
 .. code-block:: none
    :caption: Successful test run from command line

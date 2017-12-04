@@ -597,6 +597,40 @@ being able to provide as much input as we had hoped to their developers towards
 features we needed.
 
 
+.. _testingchallenges:
+
+Testing
+-------
+
+The contract included requirements for adherence to a specific software design
+standard and for two iterations of producing a full-system test plan and test
+report. The prime contractor organization had no previous experience with these
+standards and no formal in-house training or resources to support production
+of the test plan or test report. The sub-contractor providing project
+management assistance procured a software testing subject matter expert with
+experience at a large aerospace company. The initial plan developed by this
+expert (while perhaps typical for a large project in a large organization with
+specialized staff dedicated to testing) went far beyond what the DIMS Project's
+staffing and budget resources could support to manage the test planning,
+execution, and reporting, not to mention the cost of the commercial testing
+tools being recommended.
+
+The PI identified `MIL-STD-498`_, described at `A forgotten military standard
+that saves weeks of work (by providing free project management templates)`_.
+A simpler and more manageable plan was developed following the MIL-STD-498
+Software Test Plan (`STP.html`_), along with the Software Test Report
+(`STR.html`). Even with this simpler plan, the initial test consumed the
+majority of the project effort for several weeks leading up to the deliverable
+deadline.
+
+Prior to the second system-wide test cycle, the PI spent time towards
+automating production of the Test Report from machine-parsable inputs. The
+second test took less effort than the first, but the amount of manual effort
+was still large and one team member did not produce any input for the test
+report until the week after the report was delivered to the sponsor, despite
+numerous requests in the weeks leading up to the deadline.
+
+
 .. [1] All You Need to Know About the 10 Percent Brain Myth, in
    60 Seconds, by Christian Jarrett, July 24, 2014.
 
@@ -604,4 +638,7 @@ features we needed.
 .. _StackExchange: http://unix.stackexchange.com/
 .. _StackOverflow: http://stackoverflow.com/
 .. _A successful Git branching model: http://nvie.com/posts/a-successful-git-branching-model/
-
+.. _MIL-STD-498: http://en.wikipedia.org/wiki/MIL-STD-498
+.. _A forgotten military standard that saves weeks of work (by providing free project management templates): http://kkovacs.eu/free-project-management-template-mil-std-498
+.. _STP.html: http://kkovacs.eu/stuff/MIL-STD-498-templates-html/STP.html
+.. _STR.html: https://kkovacs.eu/stuff/MIL-STD-498-templates-html/STR.html
