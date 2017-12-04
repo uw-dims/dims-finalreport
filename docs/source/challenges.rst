@@ -619,7 +619,7 @@ The PI identified `MIL-STD-498`_, described at `A forgotten military standard
 that saves weeks of work (by providing free project management templates)`_.
 A simpler and more manageable plan was developed following the MIL-STD-498
 Software Test Plan (`STP.html`_), along with the Software Test Report
-(`STR.html`). Even with this simpler plan, the initial test consumed the
+(`STR.html`_). Even with this simpler plan, the initial test consumed the
 majority of the project effort for several weeks leading up to the deliverable
 deadline.
 
@@ -640,5 +640,5 @@ numerous requests in the weeks leading up to the deadline.
 .. _A successful Git branching model: http://nvie.com/posts/a-successful-git-branching-model/
 .. _MIL-STD-498: http://en.wikipedia.org/wiki/MIL-STD-498
 .. _A forgotten military standard that saves weeks of work (by providing free project management templates): http://kkovacs.eu/free-project-management-template-mil-std-498
-.. _STP.html: http://kkovacs.eu/stuff/MIL-STD-498-templates-html/STP.html
+.. _STP.html: https://kkovacs.eu/stuff/MIL-STD-498-templates-html/STP.html
 .. _STR.html: https://kkovacs.eu/stuff/MIL-STD-498-templates-html/STR.html
