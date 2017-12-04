@@ -13,22 +13,34 @@ will want to consider these suggestions.
 
 .. _ansibleFTW:
 
-Focus on Ansible
-----------------
+Focus on System Build Automation
+--------------------------------
 
-The primary focus of anyone wanting to build on the project's successes is to
-ensure everyone masters Ansible. That can't be stressed enough, since any
-system that is not under Ansible control is a risk to stability and very costly
-to fix or replace should something happen to it. Any host that is fully under
-Ansible control can be quickly rebuilt, quickly reconfigured, and much more
-easily debugged and diagnosed.
+From the first days of the project, the PI constantly told the team to *not*
+build things by hand, since that does not scale and cannot be replicated. We
+didn't need one hand-built system, we needed multiple systems for development,
+testing, production, and anyone wanting to use the DIMS system needed to
+quickly and easily stand up a system. This can only be accomplished using
+stable and well-documented build automation.
 
-Rather than use SSH to log into hosts, whenver possible use ``ansible`` ad-hoc
+Ansible was chosen early on as what looked like the most promising system build
+automation tool, so in this sense saying "focus on system build automation"
+means "focus on mastering Ansible." Anyone wanting to build on the project's
+successes, and avoid some of its challenges, is to ensure *everyone* masters
+using Ansible. That can't be stressed enough, since any system that is not
+under Ansible control is at risk of instability and very costly effort to fix
+or replace should something happen to it. Any host that is fully under Ansible
+control can be quickly rebuilt, quickly reconfigured, and much more easily
+debugged and diagnosed.
+
+Rather than use SSH to log into hosts, whenever possible use ``ansible`` ad-hoc
 mode. The ability to invoke modules directly using ``ansible`` not only helps
-learn how the module work, but it also allows very powerful manipulation of any
+learn how the module works, but it also allows very powerful manipulation of any
 or all hosts in the inventory at once. This makes debugging, configuring,
 cleaning up, or any other task you need to perform, much easier and more
-uniformly.
+uniform. Avoiding logging into hosts and remotely using the command line shell
+also helps focus on controlling the configuration and using the automation
+rather than hand-crafting uncontrolled system changes.
 
 Using ``ansible-playbook`` with custom playbooks for complex tasks, or by
 invoking a master playbook that includes all other playbooks, facilitates
@@ -41,7 +53,7 @@ to building a complex and scalable system.
 
 Last, but not least, by putting **all** configuration files under Ansible
 control from the start enables much easier change management and incremental
-configruation adjustment with less disruption than with manual system
+configuration adjustment with less disruption than with manual system
 administration. It is far easier to search Git history to figure out
 what changed, or search a few directory trees to locate where a particular
 variable is set or configuration file was customized. The ``ansible_managed``
@@ -58,21 +70,36 @@ Standardize on Operating System(s)
 ----------------------------------
 
 As much as possible, standardize on a small and manageable number of base
-operating systems and versions. Every major or minor version difference (e.g.,
-12.04.4 vs. 14.04.4 for Ubuntu Linux) or distribution difference (e.g., `Fedora
-vs.  RedHat Enterprise Linux vs. CentOS`_) can have implications for
-compatability of installed components and subcomponents, be they package
-contents, libraries, or supported programs and utilities.
+operating systems and versions, and strive to keep up with the most recent
+release (and perhaps one previous release) to avoid supporting too many
+disparate features and one-off workarounds. Every major or minor version
+difference (e.g., 12.04.4 vs. 14.04.4 for Ubuntu Linux) or distribution
+difference (e.g., `Fedora vs.  RedHat Enterprise Linux vs. CentOS`_) can have
+implications for computability of sub-components, be
+they programs, libraries, or add-ons and utilities.
 
-Using a configuration management program like Ansible helps by
-expressing installation steps using different Ansible modules or plays,
-though it does require engineering discipline to deal with complexity (above
-and beyond what a Bash script would entail, for example) and to ensure the
-right plays work the right way on the right operating system. This could mean
-maintaining a large set of group variables (one for each alternative operating
-system), using variables in inclusion directives to select from those
-alternatives, and/or using "Ansible facts" derived at run time with logic (e.g.,
-``when: ansible_os_family == "Debian"`` as a qualifier in a playbook)
+While this recommendation sounds simple, it is not. This task is made difficult
+by the choices of supported base operating system(s) made by each of the open
+source security tools you want to integrate. Great care needs to be taken in
+making the decisions of which operating systems to support balanced with
+available expertise in the team for dealing with required debugging and
+configuration management tasks.
+
+Using a configuration management program like Ansible helps by expressing
+installation steps using different Ansible modules or plays, though it does
+require engineering discipline to deal with complexity (above and beyond what a
+Bash script would entail, for example) and to ensure the right plays work the
+right way on the right operating system. This could mean maintaining a large
+set of group variables (one for each alternative operating system), using
+variables in inclusion directives to select from those alternatives, and/or
+using "Ansible facts" derived at run time with logic (e.g., ``when:
+ansible_os_family == "Debian"`` as a qualifier in a playbook)
+Developing Ansible playbooks in a modular way that can easily accommodate
+generalized support for multiple operating systems (e.g., using a "plug-in"
+style model) is a more sophisticated way of writing playbooks that requires a
+greater level of expertise in all who are writing the playbooks.  Such
+expertise, or institutional support for employee training to achieve it, are
+not always available.
 
 .. _standardVM:
 
@@ -91,15 +118,18 @@ Start with a preferred hypervisor to support and take the time to migrate
 legacy virtual machines to that preferred hypervisor, rather than attempting to
 support part of the system with one hypervisor and the rest with another. If it
 becomes necessary to support additional hypervisors, require replication of the
-*entire* system of systems in a separate deployment to ensure that tests can be
-peformed to validate that all software works identically using the alternate
-hypervisor.
+*entire* system of systems in a separate deployment (i.e., fully independent,
+not sharing any resources in a way that couples the heterogeneous systems) to
+ensure that tests can be performed to validate that all software works
+identically using the alternate hypervisor.
 
-The ``vncserver`` role was created to make it easier to remotely manage
+The ``vncserver`` role [#vncserver]_ was created to make it easier to remotely manage
 long-running virtual machines using a GUI hypervisor control program. Using
 CLI tools is also necessary, however, to more easily script operations
 so they can be parallelized using Ansible ad-hoc mode, or scheduled
 with ``cron`` or other background service managers.
+
+.. [#vncserver] https://github.com/uw-dims/ansible-dims-playbooks/blob/master/roles/vncserver/tasks/main.yml
 
 .. _staticDynamicConfigs:
 
@@ -146,9 +176,9 @@ recompiling to create new libraries or executable files. It is a little more
 difficult when a script is produced from a template, which is produced from a
 complex set of inventory files, host variable files, group variable files, and
 command line variable definitions as is supported by Ansible. In that case, the
-``Makefile`` model is harder to use and those who are not experts in how
-``make`` works (and are skilled enough to debug it with ``remake`` or other
-low-level process tracing tools) have a hard time.
+``Makefile`` model is harder to use, especially for those who are not experts in how
+``make`` works and may not have the skills required to efficiently debug
+it with ``remake`` or other low-level process tracing tools.
 
 Tools like Jenkins or Rundeck provide a similar kind of dependency chaining
 mechanism which may be preferable to ``make``, provided that programmers
@@ -254,6 +284,45 @@ using conditional constructs within programs, or mixing old and new files in a
 single directory without any clear way to delineate or separate these files.
 
 
+Budget for System Maintenance
+-----------------------------
+
+To paraphrase a joke in the programming world: "You have a problem. You decide
+to solve your problem using free and open source tools and operating systems.
+Now you have two problems." Sure, its a joke, but that makes it no less true.
+
+Trying to compose a system using open source parts that are constantly changing
+requires constantly dealing with testing upgrades, updating version numbers
+in Ansible playbook files, applying patches, debugging regression problems,
+debugging version inconsistencies between systems, and updating
+documentation. The more software subsystems and packages used, the
+greater the frequency of changes that must be dealt with. Assume that up to
+half of the project working time will be spent dealing with these issues.
+
+The automation provided by Ansible, and the integration of unit and system
+tests (see :ref:`ansibledimsplaybooks:tests`), helps immensely with identifying
+what may be misconfigured, broken, or missing. Be disciplined about adding
+new tests and regularly running tests saves time in the long run. Make sure
+that all team members learn to use these tools, as well as spend time
+learning debugging techniques (see :ref:`ansibledimsplaybooks:debugging`).
+
+.. _testingrecommendations:
+
+Testing
+-------
+
+To avoid the issues described in Section :ref:`testingchallenges`, follow-on
+projects are strongly advised to use these same MIL-STD-498 documents
+(leveraging the Sphinx version of the templates used by the DIMS Project,
+listed in Section :ref:`softwareproducts`) and the simpler BATS mechanism to
+write tests to produce machine-parsable output.
+
+We found that when BATS tests were added to Ansible playbooks, and executed
+using the ``test.runner`` script after provisioning Vagrant virtual machines,
+it was very easy to identify bugs and problems in provisioning scripts.
+Friction in the development process was significantly reduced as a result.
+This same mechanism can be extended to support the system-wide test and
+reporting process. (See Section :ref:`testingenhancements`).
 
 
 .. _Fedora vs. RedHat Enterprise Linux vs. CentOS: https://danielmiessler.com/study/fedora_redhat_centos/
