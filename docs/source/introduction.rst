@@ -107,11 +107,11 @@ The Need
 
 You can't have good system security without good system administration.
 Organizations need to have strong system administration skills in order to have
-a secure foundation for their operations. That 1/3 of attacks due to mistakes
+a secure foundation for their operations. That 1/3 of attacks are due to mistakes
 and misconfigurations identified in Verizon's DBIR reflects a painful
 reality. And 100% of those breaches occurred in companies who employ humans.
 
-Seriously, all humans make mistakes, or miss things. Or they may not know
+Of course, all humans make mistakes, or miss things. Or they may not know
 better when trying to just figure out how to get their job done and blindly
 follow someone's lead, opening themselves and their organization up to a major
 security hole (as seen in :numref:`curl2sudo` from `Don't Pipe to your
@@ -152,7 +152,7 @@ As knowledge and experience increase, the quality of work output increases and
 the errors and omissions decrease.  Finding and procuring the talent necessary
 to operate at the highest level, however, is neither easy, fast, nor cheap.
 
-This all begs the question, "What can our organization do bring the
+This all raises the question, "What can our organization do bring the
 capabilities of multiple open source products into a functioning whole with the
 least amount of pain and best operating security outcome?"
 
@@ -178,7 +178,7 @@ up.  The two primary outcomes of this effort are:
    hard to deploy, and often are so insecurely implemented that they are
    effectively wide open to the internet. This not only solves some of the
    infrastructure problems alluded to by the Linux Foundation, but also
-   addressing Vixie's example of supporting organizations wanting to use open
+   addresses Vixie's example of supporting organizations wanting to use open
    source security tools in concert to address their trusted information
    sharing and security operations needs.
 
@@ -233,7 +233,7 @@ implementation cost in system administration and operations overhead cited by
 Vixie. We enable this by helping make a less complex, more transparent, source
 controlled, and easier to secure open source platform than may otherwise be
 produced by someone leveraging multiple unfamiliar open source security tools
-from scratch. That means standing up a new server and adding new services to
+from scratch. That means standing up a new server and adding new services so
 it can be reduced from taking hours or days per system to just a few minutes of
 effort. If that task has to be repeated dozens (or possibly hundreds) of times,
 the cost savings can be significant.
@@ -285,7 +285,7 @@ it before either.)
 
 When it comes to the more difficult task of integrating multiple open source
 products into a functional distributed system, the research required to debug
-and solve an seemingly endless series of installation, configuration, and
+and solve a seemingly endless series of installation, configuration, and
 tuning problems.
 
 
