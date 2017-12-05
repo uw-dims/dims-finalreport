@@ -44,16 +44,16 @@ work.
 
 This problem was exacerbated in the DIMS Project due to the large number of new
 and rapidly changing tools and technologies that are necessary to assemble a
-system with the complexity defined in the project scope of work. Given project
-team members had experience in specific programming languages and some
-familiarity with Unix system administration on their own development
-workstations. Going beyond their experience and pushing them to rapidly and
-constantly learn new things is not easy, and is sometimes resisted.  During
-this project every team member was pushed to learn new programming languages,
-new data storage mechanisms, new inter-process communication protocols, new
-software development tools and processes, new types of security event data, and
-new concepts in network and host forensics required to process security event
-data, threat intelligence streams, and malware artifact metadata.
+system with the complexity defined in the project scope of work. Certain
+project team members had experience in specific programming languages, limiting
+their ability to contribute in some situations. Most had some familiarity with
+Unix system administration on their own development workstations, but were not
+able to branch out to unfamiliar Linux distributions.  During this project
+every team member was pushed to learn new programming languages, new data
+storage mechanisms, new inter-process communication protocols, new software
+development tools and processes, new types of security event data, and new
+concepts in network and host forensics required to process security event data,
+threat intelligence streams, and malware artifact metadata.
 
 .. _staffingchallenges:
 
@@ -62,20 +62,17 @@ Staffing Challenges
 
 The document :ref:`dimsjds:dimsjobdescriptions` was produced to list the full
 set of skills and experience required by those working on a project of this
-nature. It can be safely stated that every member of the team was pushed beyond
-their technical limits and had to constantly research and learn new
-technologies and rapidly acquire new software engineering, network engineering,
-or system administration skills. Not everyone is capable of, or happy with,
-being pushed beyond their limits on a daily basis and some turnover within the
-project was directly related to this pressure to deliver.
+nature. As mentioned in the previous section, every member of the team was
+pushed beyond their technical limits and had to constantly research and learn
+new technologies and rapidly acquire new software engineering, network
+engineering, or system administration skills.  Not everyone is capable of, or
+happy with, being pushed beyond their limits on a daily basis and some turnover
+within the project was directly related to this pressure to deliver.
 
 Over the course of the project, the team size was typically 3-5 people, with
 most of the team working at less than 100% FTE. One contractor was 100% FTE
 for the majority of the project and had to step in to perform tasks that were
-not being performed by other team members.  At several portions of the project,
-the PI was at 50% FTE in terms of the project budget, but often worked 60-80
-hours per week (sometimes more) to ensure that tasks were completed in order
-to meet deliverable deadlines.
+not being performed by other team members.
 
 The team was also partially virtual, with one, two, and sometimes three
 staff members working on the East Coast, while the rest of the team was
