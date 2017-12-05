@@ -110,7 +110,7 @@ hypervisors, for that matter) directly.
   commands in the ``Vagrantfile`` for pre-Ansible customization,
   and some external scripts.
 
-+ The Virtualbox Box file preparation for CoreOS uses external
++ The Virtualbox Box file preparation for CoreOS uses
   external scripts to prepare CoreOS for Ansible, and other
   ``Vagrantfile`` inline commands for boot-time customization.
 
@@ -202,6 +202,22 @@ though this is still not the ideal solution.
 Continued Reimplementation and Integration of Services
 ------------------------------------------------------
 
+Due to some of the issues listed in Section :ref:`challenges`, several of the
+sub-systems in the original development deployment that were never fully under
+Ansible control and had been hand-configured became unstable and failed. The
+DIMS dashboard web application, the Tupelo server, the Jenkins server, were all
+built on older Ubuntu 12.04 LTS and a Linux appliance virtual machine that was
+one of the first servers installed. As these base operating systems were
+manually created and managed, and the person who had originally set them up was
+no longer working on the project, rebuilding them would prove difficult and
+took lower priority to completion of other tasks. Some of the service, such as
+the dashboard web app, where also constructed using older Ansible playbooks
+that did not conform with the newer standards used for later playbooks and
+would similarly take extra time to be fully brought up to current standards.
+These tasks were added to Jira tickets, along with rebuilding all of the other
+central components (e.g., the Jenkins build server that failed when
+accidentally upgraded to a version with non-backward compatible features).
+
 In the final months of the project, effort was put into re-implementing as many
 of the original (version 1) deployment services as possible. The RabbitMQ service,
 Jenkins with Git+SSH and Nginx file service, and Trident portal were all
@@ -214,6 +230,7 @@ and ELK stack Ansible roles (which were all working in prototype form in year
 but it is likely that the Javascript Dashboard and Java Tupelo code are now
 out of date and will require experienced Javascript and Java programmers to
 bring them up to current coding standards.
+
 
 Secrets as a Service
 --------------------

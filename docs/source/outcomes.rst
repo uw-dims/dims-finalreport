@@ -1,378 +1,7 @@
 .. _outcomes:
 
-The Value Proposition
-=====================
-
-As mentioned in :ref:`introduction`, many of the products and services
-available in today's enterprise cybersecurity market have too many zeros in
-their total price. Nobody likes paying taxes, so local government can't
-afford expensive products or managed security services. Volunteers developing
-open source software don't want to give up both their time *and* the contents of
-their savings accounts.
-
-This section discusses the *value proposition* for the products of the
-DIMS project.
-
-The Need
---------
-
-You can't have good system security without good system administration.
-Organizations need to have strong system administration skills in order to have
-a secure foundation for their operations. That 1/3 of attacks due to mistakes
-and misconfigurations identified in Verizon's DBIR reflects a painful
-reality. And 100% of those breaches occurred in companies who employ humans.
-
-Seriously, all humans make mistakes, or miss things. Or they may not know
-better when trying to just figure out how to get their job done and blindly
-follow someone's lead, opening themselves and their organization up to a major
-security hole (as seen in :numref:`curl2sudo` from `Don't Pipe to your
-Shell`_).
-
-.. _curl2sudo:
-
-.. figure:: images/curl-sudo.png
-   :alt: Piping insecure content directly into a privileged shell
-   :width: 50%
-   :align: center
-
-   Piping insecure content directly into a privileged shell
-
-..
-
-Mistakes are easier to make in situations where it is difficult to
-see what is going on, or where someone is forced to deal with something
-new that they have never dealt with before and have little expertise.
-Paul Vixie has described the pain (in terms of operations cost and impact on
-security posture) that results from *complexity* in today's distributed
-systems and security products. [Vix16]_
-
-.. pull-quote::
-
-    *Increased complexity without corresponding increases in understanding
-    would be a net loss to a buyer. [...]*
-
-    *The TCO of new technology products and services, including
-    security-related products and services, should be fudge-factored by at
-    least 3X to account for the cost of reduced understanding. That extra 2X is
-    a source of new spending: on training, on auditing, on staff growth and
-    retention, on in-house integration.*
-
-..
-
-As knowledge and experience increase, the quality of work output increases and
-the errors and omissions decrease.  Finding and procuring the talent necessary
-to operate at the highest level, however, is neither easy, fast, nor cheap.
-
-This all begs the question, "What can our organization do bring the
-capabilities of multiple open source products into a functioning whole with the
-least amount of pain and best operating security outcome?"
-
-
-Our Approach
-------------
-
-Our approach is to provide a reference model for establishing a secure and
-maintainable distributed open source platform that enables secure software
-development and secure system operations. The DIMS team (now implementing the
-third iteration of some of the core elements) has experienced the pain of this
-process, which will reduce the cost for those who adopt our methodology.
-
-The DIMS project brings together multiple free/libre open source software
-(FOSS) tools in a reference model designed to be built securely from the ground
-up.  The two primary outcomes of this effort are:
-
-#. An example platform for building a complex integrated open source system for
-   computer security incident response released as open source software and
-   documentation.  These products provide a working and documented model
-   platform (or DevOps infrastructure) that can facilitate the secure
-   integration of open source components that (in and of themselves) are often
-   hard to deploy, and often are so insecurely implemented that they are
-   effectively wide open to the internet. This not only solves some of the
-   infrastructure problems alluded to by the Linux Foundation, but also
-   addressing Vixie's example of supporting organizations wanting to use open
-   source security tools in concert to address their trusted information
-   sharing and security operations needs.
-
-#. Transitioning this platform into the public sector to support operational
-   needs of State, Local, Territorial, and Tribal (SLTT) government entities.
-   DIMS project software products were included in a draft proposal for
-   evaluation by the PISCES-NW not-for-profit organization for use in the
-   Pacific Northwest.
-   The latest modification to the contract includes a pilot deployment for use
-   by the United States Secret Service for their Electronic Crimes Task Force
-   (ECTF) membership.
-
-The :ref:`dimssr:dimssystemrequirements` documents security practices and
-features that we have incorporated to the greatest extent possible, in a way
-that can be improved over time in a modular manner. The system automation and
-continuous integration/continuous deployment (CI/CD) features help in implementing and
-maintaining a secure system. (Red team application penetration testing will
-further improve the security of the system through feedback about weaknesses
-and deficiencies that crept in during development and deployment.)
-
-.. admonition:: Golden nugget
-
-   Over two decades of system administration and security operations experience
-   underlies the architectural model that we have been researching, developing,
-   implementing, and documenting.  The barrier to entry is the amount of time
-   and learning necessary to acquire this same expertise in order to be
-   competitive.
-
-..
-
-.. _benefittocustomers:
-
-Benefits per Cost
------------------
-
-The value of the DIMS products and methodology comes from altering the cost
-equation described by Vixie, which can be expressed this way:
-
-.. Disable because ReadTheDocs doesn't support imgmath. Use screen capture image instead.
-.. .. math:: CustomerValue = \cfrac{CustomerBenefit}{cost(OpenSource) + cost(Implementation)}
-
-.. image:: images/cost-equation.png
-   :scale: 40%
-   :align: center
-
-..
-
-The benefit to customers is maximized by the ability to construct and operate a
-secure incident response monitoring platform, expand it with additional open
-source tools as needed, saving a large part of the *2x* multiplier in
-implementation cost in system administration and operations overhead cited by
-Vixie. We enable this by helping make a less complex, more transparent, source
-controlled, and easier to secure open source platform than may otherwise be
-produced by someone leveraging multiple unfamiliar open source security tools
-from scratch. That means standing up a new server and adding new services to
-it can be reduced from taking hours or days per system to just a few minutes of
-effort. If that task has to be repeated dozens (or possibly hundreds) of times,
-the cost savings can be significant.
-
-The DIMS team created and used a CI/CD model using `Git`_, `Jenkins CI`_,
-and `Ansible`_
-for taking software source code, system automation instructions, software
-configuration, and documentation, to build a prototype for an open source
-software integration project. The resulting product can be used by an internal
-security operations group (or managed security service provider) to create an
-open source incident response capability. It also provides many of the elements
-called for in the CII `Badge Program`_ from the `GitHub Security`_ and `Heroku
-Security`_ policies.
-
-.. note::
-
-    To see more detail about the full set of tools, techniques, and
-    tasks that DIMS team members were expected to know or learn, see
-    :ref:`dimsjds:dimsjobdescriptions`.
-
-..
-
-The impact of the effort expended in this project goes beyond implementing one
-set of open source service components for a single group. This model can be
-replicated widely and improved upon by others faced with the same set of
-challenges in developing an affordable and scalable incident response
-capability.
-
-.. note::
-
-    Over the course of the project, we have learned of several other efforts to
-    address a similar set of goals and have reached out (as time permitted) to
-    find common ground and try to develop collaborative relationships that will
-    have broad impact over time. This is expanded upon in Section
-    :ref:`dimsswplan:commercializationplan`.
-
-..
-
-Competition and Alternatives
-----------------------------
-
-The common way that organizations go about implementing open source products is
-by following whatever installation instructions may be provided by the authors.
-Avoiding the security problems illustrated by :numref:`curl2sudo` involves
-searching the Internet to (hopefully) find some thread like `Alternatives to
-piping the install script into your shell. #90`_ (from GitHub
-`fisherman/fisherman`_, a "plugin manager for Fish," and no, we haven't heard of
-it before either.)
-
-When it comes to the more difficult task of integrating multiple open source
-products into a functional distributed system, the research required to debug
-and solve an seemingly endless series of installation, configuration, and
-tuning problems.
-
-
-Open Source Security Toolsets
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Some of the open source security tools that an incident response team would
-want to consider implementing are covered in the following subsections.
-
-Each of these systems is composed from several existing open source tools,
-combined with new open source scaffolding, glue, custom interfaces,
-and additional missing functionality that is necessary to achieve the
-resulting distributed system.
-
-At the same time, each of these distributed open source systems relies
-upon their own chosen base operating system, libraries and languages,
-subordinate services (e.g., database, email transport agent, message
-bus, job scheduling, etc.) All too frequently, the choices made by
-each group are mutually exclusive, or left to the customer to
-work out on their own.
-
-.. note::
-
-    To underscore Vixie's complexity and cost of implementation
-    observation, Ubuntu 14.04 and Debian 7 have differences in how common
-    services are configured that require debugging and custom
-    configuration steps that vary between distributions, while the use of
-    ``systemd`` for managing service daemons in Ubuntu 16.04 and Debian 8
-    are major impediments to migrating installation of all required
-    components of these multi-service systems from Ubuntu 14.04 and
-    Debian 7. Adding in RedHat Enterprise Linux, CentOS, or Fedora
-    (all part of the same RedHat family) adds further complexity to
-    the equation, which is a major reason why containerization is
-    gaining popularity as a mechanism for isolating these dependency
-    differences in a more manageable (but arguably less secure)
-    fashion.
-
-..
-
-The Trident portal
-^^^^^^^^^^^^^^^^^^
-
-The Trident portal is written in Go. Only Debian 7 (wheezy) is supported
-at this time, though Ubuntu 14.04 is on the list of future operating
-systems. Trident relies on PostreSQL for database, NGINX for web
-front end, and Postfix for email transport.
-
-
-The Collective Intelligence Framework (CIF)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The `Collective Intelligence Framework`_ (CIF) is the primary offering from the
-`CSIRT Gadgets Foundation`_. CIF is only supported on Ubuntu Linux. It is
-written in Perl and uses PostgreSQL, Apache2, BIND, Elasticsearch, ZeroMQ,
-and can support Kibana as an alternative interface to the indexed data
-in Elasticsearch.
-
-A monolithic *EasyButton* installation script is available in the
-`PlatformUbuntu`_ section of the CIF wiki to automate the installation steps.
-
-
-The Mozilla Defense Platform (MozDef)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The Mozilla Defense Platform (`MozDef`_) was developed by Mozilla to
-replace a commercial SIEM product with open source alternatives. They
-report processing over 300 Million records per day with their internal
-deployment.
-
-MozDef uses Ubuntu 14.04 as the base operating system. It has components for
-front-end user interface written in Javascript using Meteor, Node.js, and d3,
-and back-end data processing scripts written in Python using uWSGI, bottle.py,
-with MongoDB for a database, RabbitMQ for message bus, and NGINX for web app
-front end.
-
-For installation, there is a demonstration ``Dockerfile`` for creating a
-monolithic Docker image with all of the MozDef components in it.  (This is
-not the way Docker containers are intended to implement scalable microservices,
-but it does provide a very easy way to see a demonstration instance of MozDef).
-The manual instructions are more elaborate and must be followed carefully
-(including considering the admonitions related to security, e.g., "Configure
-your security group to open the ports you need. Keep in mind that it's probably
-a bad idea to have a public facing elasticsearch.")
-
-
-GRR Rapid Response
-^^^^^^^^^^^^^^^^^^
-
-Another example of a system made up of multiple components, packaged together
-into a single easy-to-install package, is the `GRR Rapid Response`_ system,
-a "forensic framework focused on scalability enabling powerful analysis."
-
-GRR runs on Ubuntu 16.04. To ease installation of the server components,
-the GRR team, like CIF and MozDef, provide both a monolithic installation
-script for a VM installation and a ``Dockerfile`` to run in a container.
-They also have packages for installing the client components on Windows,
-OS X, and Linux.
-
-.. attention::
-
-    The GRR team chose to move to ``systemd``, rather than continue to support
-    the older ``upstart``, ``init.d``, or ``supervisord`` service daemon
-    systems that are used by other products described in this section. This
-    means you must support three (or four) different service daemon management
-    mechanisms in order to incorporate all of the tools described here
-    into a single integrated deployment.
-
-..
-
-GRR's documentation similarly includes admonitions about security and functionality
-that is left to the customer to implement.  Take :numref:`grr-faq-logout`, a question
-from their FAQ as an example:
-
-.. _grr-faq-logout:
-
-.. figure:: images/grr-faq-logout.png
-   :alt: Question about the logout button from GRR FAQ
-   :width: 90%
-   :align: center
-
-   Question about the logout button from GRR FAQ
-
-..
-
-.. _integratedopensource:
-
-Integrated Open Source Solutions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The DIMS project began in Q4 2013. In the second half of 2015 two very similar
-efforts were identified that use some of the same tools for the same reasons.
-Both validate the model being established by DIMS and the value proposition
-for adopters.
-
-
-Summit Route Iterative Defense Architecture
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-An organization named `Summit Route`_ has described what they call the
-`Iterative Defense Architecture`_ (see :numref:`summitrouteIDA`) that is very
-similar in form and content to what the DIMS project has focused on producing.
-
-
-.. _summitrouteIDA:
-
-.. figure:: images/summit-route-oss-architecture.png
-   :alt: Summit Route Integrated Defense Architecture
-   :width: 70%
-   :align: center
-
-   Summit Route Integrated Defense Architecture
-
-..
-
-.. _opencredo:
-
-OpenCredo
-^^^^^^^^^
-
-A consultancy in the United Kingdom named `OpenCredo`_ is also working
-on a similar architecture to the DIMS project (see :numref:`bootmygovcloud`).
-Some of the specific components differ, but conceptually are the same
-and would meet the same requirements for the foundation (minus the
-dashboard, portal, etc.) that is specified in
-:ref:`dimssr:dimssystemrequirements`.
-
-.. _bootmygovcloud:
-
-.. figure:: images/opencredo-building-blocks-1.png
-   :alt: OpenCredo core building blocks
-   :width: 90%
-   :align: center
-
-   OpenCredo core building blocks
-
-..
+Outcomes
+========
 
 .. _summaryOfOutcomes:
 
@@ -383,57 +12,486 @@ As described in :ref:`dimsocd:dimsoperationalconceptdescription`,
 the DIMS project started out with two primary expected outcomes: (1) an example
 platform for building a complex integrated open source system for computer
 security incident response, and (2) to transition this platform into the public
-sector to support operational needs of State, Local, Territorial, and Tribal
-(SLTT) government entities. The latest modification to the contract includes a
-pilot deployment for use by the United States Secret Service in addition to the
-open source release of source code and documentation.
+sector to support operational needs of SLTT government entities. The latest
+modification to the contract includes a pilot deployment for use by the United
+States Secret Service in addition to the open source release of source code and
+documentation.
 
-During the time of this project, we encountered all of the typical
-problems that a team would have in the lifecycle of designing,
-deploying, and maintaining a small-scale (on the order of dozens of
-server components) distributed system. In order to have isolated
-development, test, and production systems, the difficulty factor
-goes up. To perform multiple production deployments and update
-code over time further increases the difficulty factor. Eventually,
-the lack of automation becomes a limiting factor at best, or
-leads to an extremely unstable, fragile, and insecure final product at worst.
+This project successfully implemented a prototype for a deployable open source
+distributed system. As described in this section and Section :ref:`introduction`,
+other projects have contemporaneously pursued a similar goal of producing a
+generally usable system comprised of open source components. The DIMS project
+includes some features not found in these other projects (e.g., the integrated
+``bats`` tests, the breadth and depth of documentation, the features to support
+managing multiple simultaneous deployments with private configuration).
 
-The benefit to those who chose to follow our lead will be a faster and
-smoother journey than we experienced during the DIMS project period of
-performance. All of the hurdles, mistakes, struggles, and ultimately the many
-successes and achievements in distributed system engineering were not easily
-found in the open source community. The :ref:`dimssr:dimssystemrequirements`
-documents security practices and features that we have attempted to
-incorporate to the greatest extent possible, in a way that can be improved
-over time in a modular manner.  The system automation and continuous
-integration/continuous deployment features help in implementing and
-maintaining a secure system. (Red team application penetration testing will
-further improve the security of the system through feedback about weaknesses
-and deficiencies that crept in during development and deployment.)
+The outcome of the DIMS Project is by no means a production-ready commercially
+marketable system, but the open source products are competitive in many aspects
+with other projects created by larger teams of software engineering
+professionals at commercial software companies. Further refinement within an
+entity staffed and focused on bringing a product or service to the market could
+quickly get there, but what is public now is ahead of many of the open source
+code examples that one can find by searching the internet, and the list of
+resources in Section :ref:`references` far exceeds any similar collection that
+could be identified by the DIMS team.  Integration of DIMS features with those
+of the other projects described herein to produce a full-featured and
+production capable system would be the ideal, though the source of funding for
+such an effort is unclear.
+
+What follows are sections identifying some of the key high level
+achievements.
+
+.. _ansible_playbooks:
+
+Ansible Playbooks
+-----------------
+
+The most significant achievement of this project was the production and
+refinement of
+a set of Ansible playbooks, roles, and task files, capable of instantiating a
+small-scale distributed system comprised of Ubuntu 14, Ubuntu 16, Debian 8, and
+Container Linux by CoreOS systems, implementing an ``etcd``, ``consul``, and
+Docker Swarm cluster. These playbooks share many similarities with those of
+some other publicly available projects that were developed contemporaneously
+with the DIMS Project, including the OpenCredo and Summit Route
+Iterative Defense Architecture projects mentioned in Section
+:ref:`integratedopensource`, as well as the `Fedora Project's Ansible playbooks`_,
+Intel Corporation's `Trusted Analytics Platform`_, and `DebOps`_.
+
+.. note::
+
+   The PI reached out to each of these groups listed (with the exception of
+   the Debops group) and two other projects using Ansible for multi-system
+   deployment, to see if there was any possibility to collaborate or take
+   development of DIMS Ansible playbooks.  The majority of these inquiries
+   resulted in no response at all (despite multiple attempts in some cases.)
+   One outreach resulted in a conversation that was a dead end, and another
+   response suggested the chances of potential funding were low. Only one
+   person engaged in multiple follow-on conversations, but no funding
+   opportunities to support a collaboration could be identified.
+
+   Two other projects were identified in the final days of the DIMS Project
+   while investigating options for using `hashicorp/terraform`_ and
+   `Digital Ocean`_ (Cisco Systems's `Mantl`_ and Mesosphere's `DC/OS`_).
+   These projects appear to
+   have significantly larger and more well-resourced development and marketing
+   teams. The
+   fact that so many similar projects exist does confirm the viability of the
+   direction taken in the DIMS Project.
+
+..
+
+.. _hashicorp/terraform: https://github.com/hashicorp/terraform
+.. _Digital Ocean: https://www.digitalocean.com/
+.. _Fedora Project's Ansible playbooks: https://infrastructure.fedoraproject.org/cgit/ansible.git
+.. _Trusted Analytics Platform: https://01.org/tap
+.. _trustedanalytics: https://github.com/trustedanalytics
+.. _DebOps: https://github.com/debops
+.. _Mantl: http://mantl.io/
+.. _DC/OS: https://dcos.io/
+
+The Ansible playbooks created by the DIMS project differ from each of
+these other projects in several ways. One primary difference is
+the separation of customization and configuration from the
+playbooks repository to facilitate continued development and integration
+of new tools capable of being managed independently of the public
+``ansible-dims-playbooks`` repository.
+
+These playbooks include the following features:
+
++ Support for Ubuntu 14.04, Ubuntu 16.04, Debian 8, Container Linux
+  by CoreOS, and partial support for Mac OS X (Darwin) and RedHat
+  Enterprise Linux.
+
++ Installation and pre-configuration of `Trident`_ trust group
+  management portal.
+
++ Integrated multi-level testing using ``bats``.
+
++ Support for official SSL certificates using `Letsencrypt`_ and
+  self-signed SSL certificates using https://github.com/uw-dims/ansible-role-ca
+
++ Support for automated backup and restoration of Trident PostgreSQL
+  database and Letsencrypt certificates.
+
++ Support for version pinning of core subsystems across development
+  and production hosts for improved distributed system stability.
+
++ Support for automated system-wide checks for availability of
+  package updates, application of updates, and detection of
+  required reboot, with option for email notification.
+
++ Support for isolated Vagrant Virtualbox virtual machines (including
+  local copies of Ansible playbooks for testing branches and
+  improved distributed system stability). This includes automated
+  VM suspension upon host shutdown using, and multi-VM resumption
+  after, using the ``dims.shutdown`` script.
+
+.. _Letsencrypt: https://letsencrypt.org/
+.. _Trident: https://trident.li
+
+.. _tridentportal:
+
+Trident Portal
+--------------
+
+The project began using the original Perl-based *ops-trust* portal system using
+a hosted portal that was pre-configured. An initial Ansible playbook to deploy
+a local instance was produced, but the team continued to use the hosted server.
+In the final year of the project, Ansible playbook support for the new
+Trident portal (re-written in Go, with both a command line and web application
+graphical interface) was finally added and the ability to replicate the Trident
+portal was achieved. Features to support customization of the portal's graphical
+elements (banner image, default icon image for users who have not loaded their
+own photo, logo image, and CSS style sheet settings for font and web page
+colors) were added to support custom branding.
+
+As mentioned in the previous section, along with the playbook for installing
+Trident the ability to backup and restore both the Trident database and the
+Letsencrypt SSL/TLS certificates was added. This allows easier development,
+testing, and training with the Trident portal by simplifying deployment of two
+portal servers at once (one for dev/test/training and the other for
+"production" use.) Combined with the re-written Jenkins build scripts, an
+improved mechanism for debugging and development of new Trident features is now
+possible. (Testing of these features with volunteers associated with the
+Trident portal in use by the `ops-trust`_ community is being discussed and will
+continue as an independent project after this project's end date.)
+
+.. _pilotdeployment:
+
+Pilot Deployment
+----------------
+
+A deployment of the https://github.com/uw-dims/ansible-dims-playbooks code on a
+stand-alone baremetal server hosting two virtual machines running instances of
+the Trident portal, customized and branded specifically for the U.S. Secret
+Service Electronic Crimes Task Force (ECTF) following
+:ref:`ansibledimsplaybooks:localcustomization`, was produced for use in a pilot
+project.  Included are a Training Manual
+(https://trident-training-manual.readthedocs.io) and User Manual
+(https://trident-user-manual.readthedocs.io) focused on the Trident portal.
+
+.. _continuousintegration:
+
+Continuous Integration/Continuous Deployment
+--------------------------------------------
+
+Very early on, the project team established a set of Git source repositories
+that were focused on discrete component services or functionality. Splitting
+things up into discrete and focused repositories was done to establish a model
+of modularity (to help make it easier to add new open source tools over time)
+and to allow independent open source release of repositories.  In all, over 40
+discrete repositories were created (some now deprecated, but the majority
+providing functioning components addressing all of the requirements listed in
+the contract and detailed in the :ref:`dimssr:dimssystemrequirements` document).
+
+Next, a `Jenkins CI`_ server was set up and tied to the Git repositories using
+Git post-commit hooks that trigger *build* jobs for source code and
+documentation. Some build jobs then, in turn, trigger *deploy* jobs that push
+the built products onto the systems that use them (see
+:ref:`dimsdevguide:continuousintegration` for more detail on this process).
+
+Throughout this entire workflow, log entries are generated (using a program
+``logmon``) that publishes them on an AMQP channel where they can be monitored
+from the DIMS Dashboard, monitored from a terminal session using the same
+``logmon`` program, or collected from the logging channel for indexed storage.
+
+.. _Jenkins CI: http://jenkins-ci.org/
+
+.. _installBuildAutomation:
+
+Install and Build Automation
+----------------------------
+
+System administrators are familiar with the steps of setting up a computer
+systems, be it a server or a desktop development workstation, by starting with
+an operating system installation ISO image, creating a bootable CD-ROM or USB
+drive, creating accounts for the system administrator and some users, selecting
+additional packages to install, and finally installing third-party open source
+tools as needed.
+
+This is a relatively simple process, and works well if the number of servers
+and workstations is small, if the number of project members is small (and
+turnover in staff is low and the team does not grow), if the software being
+developed is limited in size and scope, and if things don't change very
+quickly. Developers can even set up their own workstations and manage them.
+
+.. _testintegration:
+
+Integrated Tests
+----------------
+
+One of the requirements of the project was testing and validation
+of the system components. A great deal of effort was spent in writing
+comprehensive test plans and in performing two system-wide tests.
+After the experience of doing these test plans and tests, a decision
+was made to integrate the simplest set of tests as possible into
+the normal operation of the system. The `Bats: Bash Automated Testing System`_
+was chosen for its simplicity. A structured mechanism for embedding
+tests into Ansible Playbook roles was developed, along with a script
+to facilitate running tests named (not surprisingly) ``test.runner``.
+This testing methodology is described in Section
+:ref:`ansibledimsplaybooks:tests` of
+:ref:`ansibledimsplaybooks:ansibledimsplaybooks`.
+
+.. code-block:: none
+   :caption: Successful test run from command line
+
+    $ test.runner --level system --match pycharm
+    [+] Running test system/pycharm
+     ✓ [S][EV] Pycharm is not an installed apt package.
+     ✓ [S][EV] Pycharm Community edition is installed in /opt
+     ✓ [S][EV] "pycharm" is /opt/dims/bin/pycharm
+     ✓ [S][EV] /opt/dims/bin/pycharm is a symbolic link to installed pycharm
+     ✓ [S][EV] Pycharm Community installed version number is 2016.2.3
+
+    5 tests, 0 failures
+
+..
+
+.. code-block:: none
+   :caption: Failed unit test in Ansible playbook
+
+    $ run.playbook --tags python-virtualenv
+    . . .
+    TASK [python-virtualenv : Run unit test for Python virtualenv] ****************
+    Tuesday 01 August 2017  19:02:16 -0700 (0:02:06.294)       0:03:19.605 ********
+    fatal: [dimsdemo1.devops.develop]: FAILED! => {
+        "changed": true,
+        "cmd": [
+            "/opt/dims/bin/test.runner",
+            "--tap",
+            "--level",
+            "unit",
+            "--match",
+            "python-virtualenv"
+        ],
+        "delta": "0:00:00.562965",
+        "end": "2017-08-01 19:02:18.579603",
+        "failed": true,
+        "rc": 1,
+        "start": "2017-08-01 19:02:18.016638"
+    }
+
+    STDOUT:
+
+    # [+] Running test unit/python-virtualenv
+    1..17
+    ok 1 [S][EV] Directory /opt/dims/envs/dimsenv exists
+    ok 2 [U][EV] Directory /opt/dims/envs/dimsenv is not empty
+    ok 3 [U][EV] Directories /opt/dims/envs/dimsenv/{bin,lib,share} exist
+    ok 4 [U][EV] Program /opt/dims/envs/dimsenv/bin/python exists
+    ok 5 [U][EV] Program /opt/dims/envs/dimsenv/bin/pip exists
+    ok 6 [U][EV] Program /opt/dims/envs/dimsenv/bin/easy_install exists
+    ok 7 [U][EV] Program /opt/dims/envs/dimsenv/bin/wheel exists
+    ok 8 [U][EV] Program /opt/dims/envs/dimsenv/bin/python-config exists
+    ok 9 [U][EV] Program /opt/dims/bin/virtualenvwrapper.sh exists
+    ok 10 [U][EV] Program /opt/dims/envs/dimsenv/bin/activate exists
+    ok 11 [U][EV] Program /opt/dims/envs/dimsenv/bin/logmon exists
+    not ok 12 [U][EV] Program /opt/dims/envs/dimsenv/bin/blueprint exists
+    # (in test file unit/python-virtualenv.bats, line 54)
+    #   `[[ -x /opt/dims/envs/dimsenv/bin/blueprint ]]' failed
+    not ok 13 [U][EV] Program /opt/dims/envs/dimsenv/bin/dimscli exists
+    # (in test file unit/python-virtualenv.bats, line 58)
+    #   `[[ -x /opt/dims/envs/dimsenv/bin/dimscli ]]' failed
+    not ok 14 [U][EV] Program /opt/dims/envs/dimsenv/bin/sphinx-autobuild exists
+    # (in test file unit/python-virtualenv.bats, line 62)
+    #   `[[ -x /opt/dims/envs/dimsenv/bin/sphinx-autobuild ]]' failed
+    not ok 15 [U][EV] Program /opt/dims/envs/dimsenv/bin/ansible exists
+    # (in test file unit/python-virtualenv.bats, line 66)
+    #   `[[ -x /opt/dims/envs/dimsenv/bin/ansible ]]' failed
+    not ok 16 [U][EV] /opt/dims/envs/dimsenv/bin/dimscli version is 0.26.0
+    # (from function `assert' in file unit/helpers.bash, line 13,
+    #  in test file unit/python-virtualenv.bats, line 71)
+    #   `assert "dimscli 0.26.0" bash -c "/opt/dims/envs/dimsenv/bin/dimscli --version 2>&1"' failed with status 127
+    not ok 17 [U][EV] /opt/dims/envs/dimsenv/bin/ansible version is 2.3.1.0
+    # (from function `assert' in file unit/helpers.bash, line 18,
+    #  in test file unit/python-virtualenv.bats, line 76)
+    #   `assert "ansible 2.3.1.0" bash -c "/opt/dims/envs/dimsenv/bin/ansible --version 2>&1 | head -n1"' failed
+    # expected: "ansible 2.3.1.0"
+    # actual:   "bash: /opt/dims/envs/dimsenv/bin/ansible: No such file or directory"
+    #
+
+    PLAY RECAP ********************************************************************
+    dimsdemo1.devops.develop   : ok=49   changed=7    unreachable=0    failed=1
+    . . .
+
+..
+
+.. _python_virtualenv:
+
+Python Virtualenv Encapsulation
+-------------------------------
+
+A frequently experienced point of friction within the team had to do with
+differences in the tools being used by developers. One team member has ``git``
+version ``2.1`` and the other has version ``1.8`` and can't access the repo the
+night before a deadline. One person has the ``hub-flow`` tools and the other
+does not, but they also don't know how to merge and push branches so their code
+is not available to the team. Someone installs a broken version of an internal
+tool and doesn't realize it when they try to test someone else's commits, so
+their test fails when it should succeed and nobody knows why it is happening.
+
+As a means of isolating and encapsulating a Python based shell environment to
+facilitate development, testing, working on branches, and generally
+experimenting in a non-destructive manner, the use of a standardized Python
+virtual environment called ``dimsenv`` was implemented. This is a little
+heavier-weight use of the Python ``virtualenv`` mechanism, encapsulating more
+than just Python interpreter and ``pip`` installed packages.
+
+The ``python-virtualenv`` role builds a specific version of Python, installs a
+specific set of version-pinned ``pip`` packages, and also adds a series of programs to
+the ``bin/`` directory so as to ensure the full set of commands that have been
+documented in the :ref:`dimsdevguide:dimsdevguide` are available and at the
+same revision level.
+
+This not only saves time in setting up a development environment, but makes it
+more consistent across systems and between development team members. Things
+like testing new versions of Ansible is trivial.  You just clone the
+``dimsenv`` environment (which has all the development tools in it already),
+use ``workon`` to enable the new virtual environment, and ``pip install
+ansible==$DESIRED_VERSION``. Then run the playbooks you want to test. It is
+easy to switch back and forth, allowing development and debugging of playbooks
+to be able to migrate to the latest version of Ansible more easily, while still
+being able to fall back to the standard to get back to a stable build
+environment. While this is an unconventional use of Python ``virtualenv``, it
+works pretty well and saves lots of time.
+
+.. _dashboard:
+
+DIMS Dashboard
+--------------
+
+A functional dashboard web application was developed using distributed system
+features provided by several VM compute servers over AMQP, with single-signon
+tied to Google authentication. This dashboard supported user stories defined in
+the :ref:`dimssr:dimssr` with built-in test capabilities. This was the most
+production-ready and well-engineered components of the system.
+
+.. _dashboard_1:
+
+.. figure:: images/dashboard.png
+   :alt: DIMS Dashboard
+   :width: 70%
+   :align: center
+
+   DIMS Dashboard
+
+..
+
+.. _stixingest:
+
+Ingest of STIX Documents
+------------------------
+
+Java bindings for STIX were produced to facilitate ingest of STIX version
+1.1 documents into the DIMS system. (The current release of STIX is now
+version 2.0.)
+
+.. _tupelo:
+
+Tupelo and Related Host Forensic Tools
+--------------------------------------
+
+A Java client/server application for manipulation of host file system disk
+images and related metadata named "Tupelo" was produced as part of an earlier
+National Science Foundation grant funded project.  It was enhanced with
+inclusion of libraries for access TSK tools and manipulating virtual machine
+disk images, and integrated into the early DIMS development deployment.
+
+.. _Bats\: Bash Automated Testing System: https://github.com/sstephenson/bats#bats-bash-automated-testing-system
+
+.. _softwareproducts:
+
+Software Products and Documentation
+-----------------------------------
+
+The following table provides links to public source code repositories and
+documentation.
+
+.. _productstable:
+
+.. list-table:: Software Products and Documentation
+   :widths: 50,50
+   :header-rows: 1
+
+   * - Source repository
+     - Documenation
+
+   * - https://github.com/uw-dims/ansible-dims-playbooks
+     - https://ansible-dims-playbooks.readthedocs.io
+
+   * - https://github.com/uw-dims/device-files
+     - (No additional documentation)
+
+   * - https://github.com/uw-dims/dims-ad
+     - https://dims-ad.readthedocs.io
+
+   * - https://github.com/uw-dims/dims-adminguide
+     - https://dims-adminguide.readthedocs.io
+
+   * - https://github.com/uw-dims/dims-dashboard
+     - https://dims-dashboard.readthedocs.io
+
+   * - https://github.com/uw-dims/dims-devguide
+     - https://dims-devguide.readthedocs.io
+
+   * - https://github.com/uw-dims/dims-jds
+     - https://dims-jds.readthedocs.io
+
+   * - https://github.com/uw-dims/dims-ocd/
+     - https://dims-ocd.readthedocs.io
+
+   * - https://github.com/uw-dims/dims-sr/
+     - https://dims-sr.readthedocs.io
+
+   * - https://github.com/uw-dims/dims-swplan
+     - https://dims-swplan.readthedocs.io
+
+   * - https://github.com/uw-dims/dims-training-manual
+     - https://dims-training-manual.readthedocs.io
+
+   * - https://github.com/uw-dims/dims-tp/
+     - https://dims-tp.readthedocs.io
+
+   * - https://github.com/uw-dims/dims-user-manual
+     - https://dims-user-manual.readthedocs.io
+
+   * - https://github.com/uw-dims/fuse4j
+     - (No additional documentation)
+
+   * - https://github.com/uw-dims/java-native-loader
+     - (No additional documentation)
+
+   * - https://github.com/uw-dims/stix-java
+     - (No additional documentation)
+
+   * - https://github.com/uw-dims/trident-training-manual
+     - https://trident-training-manual.readthedocs.io
+
+   * - https://github.com/uw-dims/trident-user-manual
+     - https://trident-user-manual.readthedocs.io
+
+   * - https://github.com/uw-dims/tsk4j
+     - (No additional documentation)
+
+   * - https://github.com/uw-dims/tupelo
+     - (No additional documentation)
+
+   * - https://github.com/uw-dims/xsdwalker
+     - (No additional documentation)
+
+..
+
 
 .. References and footnotes follow.
 
-.. _Don't Pipe to your Shell: https://www.seancassidy.me/dont-pipe-to-your-shell.html
-.. _Badge Program: https://www.coreinfrastructure.org/programs/badge-program
-.. _GitHub Security: https://help.github.com/articles/github-security/
-.. _Heroku Security: https://www.heroku.com/policy/security
-.. _Alternatives to piping the install script into your shell. #90: https://github.com/fisherman/fisherman/issues/90
-.. _fisherman/fisherman: https://github.com/fisherman/fisherman
-.. _Summit Route: https://summitroute.com
-.. _Iterative Defense Architecture: https://summitroute.com/blog/2015/06/13/iterative_defense_architecture/
+.. _ops-trust: https://portal.ops-trust.net/
+
 .. _OpenCredo: https://opencredo.com
 .. _The journey towards a secure government cloud bootstrapping process: https://opencredo.com/boot-my-secure-government-cloud/
-.. _Collective Intelligence Framework: http://code.google.com/p/collective-intelligence-framework/
-.. _PlatformUbuntu: https://github.com/csirtgadgets/massive-octo-spice/wiki/PlatformUbuntu
-.. _MozDef: http://mozdef.readthedocs.org/en/latest/
 .. _Installation: http://mozdef.readthedocs.io/en/latest/installation.html#mozdef-manual-installation-process
-.. _CSIRT Gadgets Foundation: http://csirtgadgets.org/rfc/getting-started/
 .. _ELK stack: http://www.elasticsearch.org/overview/
-.. _RabbitMQ: http://www.rabbitmq.com/
-.. _GRR Rapid Response: https://github.com/google/grr
-.. _Git: http://git-scm.com
-.. _Jenkins CI: http://jenkins-ci.org/
-.. _Ansible: http://www.ansible.com/get-started
 
 
 .. [Vix16] Paul Vixie. Magical Thinking in Internet Security. https://www.farsightsecurity.com/Blog/20160428-vixie-magicalthinking/, April 2016.

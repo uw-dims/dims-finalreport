@@ -18,7 +18,7 @@ Understanding the Tools Being Used
 It is a myth that humans only use 10% of their brain. [1]_ But it is
 common for programmers and system administrators to only learn a
 small portion of the features and capabilities of any given program
-or tool that they may need to use. The simple thing to do is go search
+or tool that they may need to use. The simple thing to do is to search
 `StackExchange`_ for system administration tasks, or `StackOverflow`_
 for programming tasks, and simply copy/paste what someone posts there
 in order to quickly "solve" the problem at hand and move on to the
@@ -44,16 +44,16 @@ work.
 
 This problem was exacerbated in the DIMS Project due to the large number of new
 and rapidly changing tools and technologies that are necessary to assemble a
-system with the complexity defined in the project scope of work. Given project
-team members had experience in specific programming languages and some
-familiarity with Unix system administration on their own development
-workstations. Going beyond their experience and pushing them to rapidly and
-constantly learn new things is not easy, and is sometimes resisted.  During
-this project every team member was pushed to learn new programming languages,
-new data storage mechanisms, new inter-process communication protocols, new
-software development tools and processes, new types of security event data, and
-new concepts in network and host forensics required to process security event
-data, threat intelligence streams, and malware artifact metadata.
+system with the complexity defined in the project scope of work. Certain
+project team members had experience in specific programming languages, limiting
+their ability to contribute in some situations. Most had some familiarity with
+Unix system administration on their own development workstations, but were not
+able to branch out to unfamiliar Linux distributions.  During this project
+every team member was pushed to learn new programming languages, new data
+storage mechanisms, new inter-process communication protocols, new software
+development tools and processes, new types of security event data, and new
+concepts in network and host forensics required to process security event data,
+threat intelligence streams, and malware artifact metadata.
 
 .. _staffingchallenges:
 
@@ -62,20 +62,17 @@ Staffing Challenges
 
 The document :ref:`dimsjds:dimsjobdescriptions` was produced to list the full
 set of skills and experience required by those working on a project of this
-nature. It can be safely stated that every member of the team was pushed beyond
-their technical limits and had to constantly research and learn new
-technologies and rapidly acquire new software engineering, network engineering,
-or system administration skills. Not everyone is capable of, or happy with,
-being pushed beyond their limits on a daily basis and some turnover within the
-project was directly related to this pressure to deliver.
+nature. As mentioned in the previous section, every member of the team was
+pushed beyond their technical limits and had to constantly research and learn
+new technologies and rapidly acquire new software engineering, network
+engineering, or system administration skills.  Not everyone is capable of, or
+happy with, being pushed beyond their limits on a daily basis and some turnover
+within the project was directly related to this pressure to deliver.
 
 Over the course of the project, the team size was typically 3-5 people, with
 most of the team working at less than 100% FTE. One contractor was 100% FTE
 for the majority of the project and had to step in to perform tasks that were
-not being performed by other team members.  At several portions of the project,
-the PI was at 50% FTE in terms of the project budget, but often worked 60-80
-hours per week (sometimes more) to ensure that tasks were completed in order
-to meet deliverable deadlines.
+not being performed by other team members.
 
 The team was also partially virtual, with one, two, and sometimes three
 staff members working on the East Coast, while the rest of the team was
@@ -100,8 +97,8 @@ the deficit, but this was not possible when the PI did not write the software.)
 
 One risk to a project that is hard to avoid is a dependency on external
 software products or standards that are outside of the control of the project
-(e.g., see :ref:`stix_dev_libraries`). Such situations can surface larger
-organizational weaknesses and personnel issues that simply cannot be solved
+(e.g., see :ref:`stix_dev_libraries`). Such situations can cause larger
+organizational weaknesses and personnel issues to surface that simply cannot be solved
 without commitment and full-throated support from higher up in the
 organization. The best that can sometimes be achieved is to learn from
 the situation, find a way to move on, and carry the lessons forward
@@ -123,7 +120,7 @@ that provides HTTP/HTTPS web application services for browsers, an FTP file
 server that only serves static files, etc.
 
 In such simple deployments, naming a computer based on the service it
-provides seems to make sense and to be simple. Until you decide to it
+provides seems to make sense and to be simple. Until you decide it
 makes more sense to combine some related services on that one
 computer, at which point one of two things happens:
 
@@ -183,11 +180,11 @@ Separating DNS Name Spaces
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Adding to the complexity of DNS and host naming is the situation of multi-homed
-hosts. Most people are used to one computer with one or two interfaces (like a
+hosts. Most people are accustomed to one computer with one or two interfaces (like a
 laptop with either a wired Ethernet interface, or a WiFi interface, only one of
 which is active at any given time). That means the computer always has just one
 active IP address, and since laptops are usually used for connecting as a
-client to remote services, don't even need to have a DNS name!
+client to remote services, they don't even need to have a DNS name!
 
 Layered, segmented networks that involve external firewalling, Virtual Private
 Network (VPN) access to multi-segmented Virtual Local Area Network (VLAN)
@@ -288,8 +285,8 @@ and ran on two different operating systems.)
 On multiple occasions, hardware had to be moved from one location
 to another (which meant changing IP addresses on both bare-metal
 hosts and virtual machines, changing routes, and changing VPNs.)
-The last time hardware was moved, this time to consolidate it all
-into one data center, everything broke.
+The last time hardware was moved, in order to consolidate it all
+into one data center, the entire system became unstable and non-functional.
 
 One of the machines being moved served as the hypervisor for approximately
 a dozen virtual machines making up the core of the DIMS development
@@ -355,7 +352,7 @@ thus drifting apart in versions from the regularly updated development hosts
 running Ubuntu 14 and Debian 8), or dealing with changes to configuration files
 that had to be ported to Vagrant Virtualbox "box" files and the bare-metal
 cluster at the same time.  As these systems were not easily controlled with
-Ansible at first, this caused a lot of pain that was never fully eliminated. As
+Ansible at first, this caused a lot of frustration that was never fully eliminated. As
 the baremetal servers were re-purposed for pilot deployment work, the central
 cluster services degraded and took some formerly working services with them.
 
@@ -382,9 +379,10 @@ team, than was available.
 Using Agile
 ~~~~~~~~~~~
 
-Exacerbated by the issues of team member physical distribution, timezone
-differences, and work schedule differences was achieving and maintaining
-a cadence with Agile/Scrum and software releases. All team members were new
+Problems with achieving and maintaining a cadence with Agile/Scrum and
+software releases, were exacerbated by the issues of team member
+physical distribution, time zone differences and work schedule
+differences.  All team members were new
 to using Git, which has a steep learning curve to begin with. Differences
 in versions across workstations caused problems in sharing code using Git.
 Getting everyone to adopt common processes and tools proved to be difficult.
@@ -473,14 +471,13 @@ returned to the caller in a single data structure. The Trident portal holds a
 limited set of attributes about a user, but some programs integrated into DIMS
 need more attributes. That means one of two things must happen:
 
-#. Trident is modified support the extra attributes that are needed, or
+#. Trident must be modified to support the extra attributes that are needed, or
 
-#. An abstraction layer is added that makes one call to Trident to
+#. An abstraction layer is added that allows one call to Trident to
    get the attributes it holds, and a second call to a DIMS database
    component to get the extra attributes, combining them into one
-   data structure and returning that to the caller.
-
-This is illustrated in the following whiteboard sketch:
+   data structure that is returned to the caller.  This is illustrated in
+   Figure :ref:`figUserAttributes`.
 
 .. _figUserAttributes:
 
@@ -493,46 +490,6 @@ This is illustrated in the following whiteboard sketch:
    user-attributes.jpg
 
 ..
-
-Related to abstraction is the classification of system components using
-a taxonomy. A DIMS deployment is made up of a dozen or more computers
-(be they bare metal or virtual machines). Each of these computers must
-share a network address range, a segmented network topology with a VPN
-for remote access, have domain names to map to IP addresses, have a
-branded logo, etc. If a second DIMS instance is to be stood up, a
-complete set of similar systems (though configured differently with
-another address range, another set of DNS names, etc.) must be
-independently set up. This means that very little can be hard-coded,
-since each deployment will be isolated and independent (yet made up
-of the same service components from the same set of Ansible playbooks
-and instructions). This isn't the way that most people learn how to
-set up computers, so this presents both a conceptual challenge, as
-well as an engineering challenge to separate configuration and code
-that uses variables from the values that those variables take on
-at run time (and to keep multiple sets of those variables separated
-and organized so they don't interfere.)
-
-.. _coupling_cohesion:
-
-Coupling and Cohesion
-~~~~~~~~~~~~~~~~~~~~~
-
-The degree of coupling and cohesion between system components varied widely,
-contributing in many cases to instability of the overall system due to data
-dependencies, use of hard-coded values, redundancy in variables, and
-inconsistency in the use of DNS names vs. IP addresses.
-
-For example, there were often multiple variables in different locations with
-different naming styles that all held the same value. Changing only one of the
-variables resulted in inconsistency in configuration, breaking one or more
-components as a result of the change. Trying to find all occurrences of the
-similar variables was difficult, since the naming style used by each programmer
-may vary and you would not know what to look for. After the team was reduced to
-just the PI, a significant amount of effort was put into finding and
-eliminating duplicative variables, and switching to a more common naming style
-to reduce the effort required to make changes or debug problems. This had a
-major positive effect on overall system stability as well as speeding up
-forward progress on adding some new features required by the pilot deployment.
 
 .. _backward_compatibility:
 
@@ -559,7 +516,7 @@ In order to keep stability in the development environment to make forward
 progress on a number of fronts, the Trident version was pinned to ``1.3.8``.
 The pilot deployment, however, would need to be done using a newer version (at
 the time ``1.4.2``, currently ``1.4.5``).  There were at least two significant
-changes make between the ``1.3.8`` and ``1.4.2`` versions: The CSS style
+changes made between the ``1.3.8`` and ``1.4.2`` versions: The CSS style
 sheets used by the Trident portal GUI went from two files to one file, changing
 names at the same time, and there were some incompatible changes to the command
 set for the ``tcli`` command line interface that was used by Ansible to install
@@ -568,7 +525,7 @@ changes by extracting files from the two packages and differencing everything
 in order to then use conditional logic and dictionaries to quickly switch
 between version ``1.3.8`` and ``1.4.2`` in order to keep a stable working
 demo and simultaneously prepare for the pilot deployment. (A variation of
-this technique is illustrated in the code block in the code block :ref:`clientpy`).
+this technique is illustrated in the code block :ref:`clientpy`).
 This diverted a significant amount of energy for a period of time that pushed
 other tasks to the background.
 
@@ -619,7 +576,7 @@ The PI identified `MIL-STD-498`_, described at `A forgotten military standard
 that saves weeks of work (by providing free project management templates)`_.
 A simpler and more manageable plan was developed following the MIL-STD-498
 Software Test Plan (`STP.html`_), along with the Software Test Report
-(`STR.html`). Even with this simpler plan, the initial test consumed the
+(`STR.html`_). Even with this simpler plan, the initial test consumed the
 majority of the project effort for several weeks leading up to the deliverable
 deadline.
 
@@ -640,5 +597,5 @@ numerous requests in the weeks leading up to the deadline.
 .. _A successful Git branching model: http://nvie.com/posts/a-successful-git-branching-model/
 .. _MIL-STD-498: http://en.wikipedia.org/wiki/MIL-STD-498
 .. _A forgotten military standard that saves weeks of work (by providing free project management templates): http://kkovacs.eu/free-project-management-template-mil-std-498
-.. _STP.html: http://kkovacs.eu/stuff/MIL-STD-498-templates-html/STP.html
+.. _STP.html: https://kkovacs.eu/stuff/MIL-STD-498-templates-html/STP.html
 .. _STR.html: https://kkovacs.eu/stuff/MIL-STD-498-templates-html/STR.html

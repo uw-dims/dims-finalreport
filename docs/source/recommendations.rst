@@ -11,6 +11,29 @@ on the DIMS software base, or a small open source development project
 wanting to use the platform for secure software development,
 will want to consider these suggestions.
 
+During the time of this project, we encountered all of the typical
+problems that a team would have in the lifecycle of designing,
+deploying, and maintaining a small-scale (on the order of dozens of
+server components) distributed system. In order to have isolated
+development, test, and production systems, the difficulty factor
+goes up. To perform multiple production deployments and update
+code over time further increases the difficulty factor. Eventually,
+the lack of automation becomes a limiting factor at best, or
+leads to an extremely unstable, fragile, and insecure final product at worst.
+
+The benefit to those who chose to follow our lead will be a faster and
+smoother journey than we experienced during the DIMS project period of
+performance. All of the hurdles, mistakes, struggles, and ultimately the many
+successes and achievements in distributed system engineering were not easily
+found in the open source community. The :ref:`dimssr:dimssystemrequirements`
+documents security practices and features that we have attempted to
+incorporate to the greatest extent possible, in a way that can be improved
+over time in a modular manner.  The system automation and continuous
+integration/continuous deployment features help in implementing and
+maintaining a secure system. (Red team application penetration testing will
+further improve the security of the system through feedback about weaknesses
+and deficiencies that crept in during development and deployment.)
+
 .. _ansibleFTW:
 
 Focus on System Build Automation
@@ -19,14 +42,15 @@ Focus on System Build Automation
 From the first days of the project, the PI constantly told the team to *not*
 build things by hand, since that does not scale and cannot be replicated. We
 didn't need one hand-built system, we needed multiple systems for development,
-testing, production, and anyone wanting to use the DIMS system needed to
+testing, production, and anyone wanting to use the DIMS system needed to be able to
 quickly and easily stand up a system. This can only be accomplished using
 stable and well-documented build automation.
 
 Ansible was chosen early on as what looked like the most promising system build
 automation tool, so in this sense saying "focus on system build automation"
 means "focus on mastering Ansible." Anyone wanting to build on the project's
-successes, and avoid some of its challenges, is to ensure *everyone* masters
+successes, and avoid some of its challenges, must ensure that *all team members*
+involved in development or system administration master
 using Ansible. That can't be stressed enough, since any system that is not
 under Ansible control is at risk of instability and very costly effort to fix
 or replace should something happen to it. Any host that is fully under Ansible
@@ -66,8 +90,8 @@ reliably re-applying a role is simple and easy.
 
 .. _standardOS:
 
-Standardize on Operating System(s)
-----------------------------------
+Standardize Operating Systems
+-----------------------------
 
 As much as possible, standardize on a small and manageable number of base
 operating systems and versions, and strive to keep up with the most recent
@@ -81,7 +105,7 @@ they programs, libraries, or add-ons and utilities.
 While this recommendation sounds simple, it is not. This task is made difficult
 by the choices of supported base operating system(s) made by each of the open
 source security tools you want to integrate. Great care needs to be taken in
-making the decisions of which operating systems to support balanced with
+making the decisions of which operating systems to support, balanced with
 available expertise in the team for dealing with required debugging and
 configuration management tasks.
 
@@ -93,11 +117,11 @@ right way on the right operating system. This could mean maintaining a large
 set of group variables (one for each alternative operating system), using
 variables in inclusion directives to select from those alternatives, and/or
 using "Ansible facts" derived at run time with logic (e.g., ``when:
-ansible_os_family == "Debian"`` as a qualifier in a playbook)
+ansible_os_family == "Debian"`` as a conditional in a playbook)
 Developing Ansible playbooks in a modular way that can easily accommodate
 generalized support for multiple operating systems (e.g., using a "plug-in"
 style model) is a more sophisticated way of writing playbooks that requires a
-greater level of expertise in all who are writing the playbooks.  Such
+greater level of expertise of those writing the playbooks.  Such
 expertise, or institutional support for employee training to achieve it, are
 not always available.
 
@@ -144,7 +168,7 @@ or role wipes out changes a user has made and takes the configuration file back
 to an initial state.
 
 There are several ways to do this, some more complicated than others.
-One of the easiest ways is to start with a generic file has very little
+One of the easiest ways is to start with a generic file that has very little
 need for customization and will run on all systems, which in turn uses
 a *drop-in* inclusion mechanism to in turn support inclusion of two
 types of files:
@@ -198,38 +222,25 @@ nature makes itself painfully obvious.
 Avoid Painting Yourself into a Corner with Versions
 ---------------------------------------------------
 
-From the start, build everything to support at least two versions (``N`` and
-``N-1``). In the case of DIMS, some systems were originally installed with
-Ubuntu 12.04 LTS, but during the initial year a new set of scripts were
-written to support Ubuntu 14.04 LTS (and the Ubuntu 12.04 LTS scripts were
-abandoned). Since many systems were not originally created under full
-Ansible control, or with automated build mechanisms, it was difficult
-to migrate away from Ubuntu 12.04 on some systems and packages on those
-systems slowly drifted and things broke.
-
-If the build environment uses hard-coded version numbers like ``14.04`` and the
-SHA256 hash of the installation ISO image for Ubuntu in a single variable, it
-may become difficult (if not impossible, under the constraints of available
-resources) to migrate to a new version of the operating system. The opposite --
-and perhaps worse problem -- is having older version of an operating system
-(e.g., Ubuntu 12.04 LTS) that were manually created to serve some key required
-services, while the remainder of the build environment only was written to
-support Ubuntu 14.04 LTS. The result is friction in upgrading, or having to
-live with bugs or broken features because they cannot be upgraded.
+From the start, build everything to support at least two operating system
+release versions (the current release and one release back, or ``N`` and
+``N-1``) and try to move as quickly as possible to the current release to avoid
+getting locked in to older systems. This process is made easier if everyone
+writing scripts and configuration files follows a "no hard-coded values" rule
+for things like version numbers, hashes of distribution media for integrity
+checking, file names of ISO installation disk images, etc.
 
 If all of the required attributes of an operating system release (e.g., version
 major and minor number, CPU architecture type, ISO download URL, SHA256 hash of
-ISO, etc.) were all turned into variables and used consistently throughout the
-OS build and Ansible deployment and configuration process, alternating between
-the two is a simple matter of swapping out the file that defines the values for
-these variables. This is where dictionaries (also known as "maps") come in
-handy, allowing a single key (e.g., "ubuntu-14.04.5") to serve as a single
-index to obtain all of the constituent variables in a consistent way.  If the
-Packer build process, the Kickstart install process, and the Ansible playbooks,
-all use different ways of defining these attributes, it becomes very difficult
-to upgrade. If they all use a common dictionary and templating to produce
-equivalent results across multiple tool using a single identifier, things are a
-lot easier.
+ISO, etc.) were referenced with variables and those variables used consistently
+throughout the OS build and Ansible deployment and configuration process,
+alternating between the two is a simple matter of alternating between two
+sets of variable definitions.  This is where dictionaries (also known as
+"maps") come in handy, allowing a single key (e.g., "ubuntu-14.04.5") to serve
+as an index to obtain all of the constituent variables in a consistent
+way.  If the Packer build process, the Kickstart install process, and the
+Ansible playbooks, all define these attributes in different ways, it
+becomes very difficult to upgrade versions.
 
 Since operating systems are incrementally improving over time, the build
 environment **must** take this into consideration to keep you from getting
@@ -277,7 +288,7 @@ directory of `openstack/python-openstackclient`_ and to module names.
 Of course this requires greater engineering discipline when programming, but
 had this technique been known and used from the start of the project it would
 have resulted in a much more organized and structured source directory tree
-that can supports deprecation of old code, transition and migration to new
+that can support deprecation of old code, transition and migration to new
 versions, as well as clean deletion of obsolete code when the time comes. Using
 this mechanism of uniformly handling version support is much more modular than
 using conditional constructs within programs, or mixing old and new files in a
@@ -288,21 +299,23 @@ Budget for System Maintenance
 -----------------------------
 
 To paraphrase a joke in the programming world: "You have a problem. You decide
-to solve your problem using free and open source tools and operating systems.
-Now you have two problems." Sure, its a joke, but that makes it no less true.
+to solve your problem using free and open source software tools and operating
+systems.  Now you have two problems." Sure, its a joke, but that makes it no
+less true.
 
 Trying to compose a system using open source parts that are constantly changing
 requires constantly dealing with testing upgrades, updating version numbers
 in Ansible playbook files, applying patches, debugging regression problems,
 debugging version inconsistencies between systems, and updating
-documentation. The more software subsystems and packages used, the
-greater the frequency of changes that must be dealt with. Assume that up to
-half of the project working time will be spent dealing with these issues.
+documentation. The more software subsystems and packages that are used, the
+greater the frequency of changes that must be dealt with. Assume that somewhere
+between 25% to 50%
+of the project working time will be spent dealing with these issues.
 
 The automation provided by Ansible, and the integration of unit and system
-tests (see :ref:`ansibledimsplaybooks:tests`), helps immensely with identifying
+tests (see :ref:`ansibledimsplaybooks:tests`) helps immensely with identifying
 what may be misconfigured, broken, or missing. Be disciplined about adding
-new tests and regularly running tests saves time in the long run. Make sure
+new tests. Regularly running tests saves time in the long run. Make sure
 that all team members learn to use these tools, as well as spend time
 learning debugging techniques (see :ref:`ansibledimsplaybooks:debugging`).
 
