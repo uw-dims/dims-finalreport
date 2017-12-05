@@ -26,7 +26,7 @@ includes some features not found in these other projects (e.g., the integrated
 managing multiple simultaneous deployments with private configuration).
 
 The outcome of the DIMS Project is by no means a production-ready commercially
-sellable system, but the open source products are competitive in many aspects
+marketable system, but the open source products are competitive in many aspects
 with other projects created by larger teams of software engineering
 professionals at commercial software companies. Further refinement within an
 entity staffed and focused on bringing a product or service to the market could
@@ -72,8 +72,10 @@ Intel Corporation's `Trusted Analytics Platform`_, and `DebOps`_.
 
    Two other projects were identified in the final days of the DIMS Project
    while investigating options for using `hashicorp/terraform`_ and
-   `Digital Ocean`_; Cisco's `Mantl`_ and `DC/OS`_. These projects appear to
-   have significantly larger and more well-resourced development teams. The
+   `Digital Ocean`_ (Cisco Systems's `Mantl`_ and Mesosphere's `DC/OS`_).
+   These projects appear to
+   have significantly larger and more well-resourced development and marketing
+   teams. The
    fact that so many similar projects exist does confirm the viability of the
    direction taken in the DIMS Project.
 
@@ -89,9 +91,8 @@ Intel Corporation's `Trusted Analytics Platform`_, and `DebOps`_.
 .. _DC/OS: https://dcos.io/
 
 The Ansible playbooks created by the DIMS project differ from each of
-these in that they are designed to be multi-OS from the start, focused on
-producing a stand-alone small-scale distributed system designed for security
-incident response, with customization and configuration separated from the
+these other projects in several ways. One primary difference is
+the separation of customization and configuration from the
 playbooks repository to facilitate continued development and integration
 of new tools capable of being managed independently of the public
 ``ansible-dims-playbooks`` repository.
@@ -143,9 +144,7 @@ graphical interface) was finally added and the ability to replicate the Trident
 portal was achieved. Features to support customization of the portal's graphical
 elements (banner image, default icon image for users who have not loaded their
 own photo, logo image, and CSS style sheet settings for font and web page
-colors) were added to support custom branding. These playbooks were used to
-deploy a pilot instance to complete one of the final deliverables of the
-project.
+colors) were added to support custom branding.
 
 As mentioned in the previous section, along with the playbook for installing
 Trident the ability to backup and restore both the Trident database and the
@@ -184,7 +183,7 @@ of modularity (to help make it easier to add new open source tools over time)
 and to allow independent open source release of repositories.  In all, over 40
 discrete repositories were created (some now deprecated, but the majority
 providing functioning components addressing all of the requirements listed in
-the contract and detailed in the :ref:`dimssr:dimssystemrequirements` document.
+the contract and detailed in the :ref:`dimssr:dimssystemrequirements` document).
 
 Next, a `Jenkins CI`_ server was set up and tied to the Git repositories using
 Git post-commit hooks that trigger *build* jobs for source code and
@@ -341,7 +340,7 @@ heavier-weight use of the Python ``virtualenv`` mechanism, encapsulating more
 than just Python interpreter and ``pip`` installed packages.
 
 The ``python-virtualenv`` role builds a specific version of Python, installs a
-specific set of pinned ``pip`` packages, and also adds a series of programs to
+specific set of version-pinned ``pip`` packages, and also adds a series of programs to
 the ``bin/`` directory so as to ensure the full set of commands that have been
 documented in the :ref:`dimsdevguide:dimsdevguide` are available and at the
 same revision level.
@@ -379,13 +378,6 @@ production-ready and well-engineered components of the system.
    DIMS Dashboard
 
 ..
-
-Unfortunately, the dashboard server was one of the systems that was
-only partially under Ansible control, using the older style Ansible playbooks
-that have not been fully brought up to current standards. This has been
-on the to-do list, along with rebuilding all of the other central
-components (e.g., the Jenkins build server that failed when accidentally
-upgraded to a version with non-backward compatible features).
 
 .. _stixingest:
 

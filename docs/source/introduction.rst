@@ -11,13 +11,14 @@ Project Overview
 
 The DIMS Project was intended to build upon a long history of DHS sponsored
 efforts to support security information event sharing among State, Local,
-Territorial, and Tribal (SLTT) government entities Pacific Northwest region
+Territorial, and Tribal (SLTT) government entities in the Pacific Northwest region
 known as the Public Regional Information Security Event Management (PRISEM)
 project.  The PI served as the Director of Research and Development for the
 PRISEM Project and managed its networking and hardware at the University of
 Washington from the project's inception in 2008.
 
-For more on the background on PRISEM and DIMS, see
+For more on the background on the relationship between the PRISEM and
+DIMS projects, see
 :ref:`dimsocd:dimsoperationalconceptdescription`,
 :ref:`dimssr:dimssystemrequirements`, and
 :ref:`dimsswplan:dimsswplan`.
@@ -182,11 +183,11 @@ up.  The two primary outcomes of this effort are:
    sharing and security operations needs.
 
 #. Transitioning this platform into the public sector to support operational
-   needs of State, Local, Territorial, and Tribal (SLTT) government entities.
+   needs of SLTT government entities.
    DIMS project software products were included in a draft proposal for
    evaluation by the PISCES-NW not-for-profit organization for use in the
    Pacific Northwest.
-   The latest modification to the contract includes a pilot deployment for use
+   The last modification to the DIMS contract includes a pilot deployment for use
    by the United States Secret Service for their Electronic Crimes Task Force
    (ECTF) membership.
 
