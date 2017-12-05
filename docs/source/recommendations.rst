@@ -42,14 +42,15 @@ Focus on System Build Automation
 From the first days of the project, the PI constantly told the team to *not*
 build things by hand, since that does not scale and cannot be replicated. We
 didn't need one hand-built system, we needed multiple systems for development,
-testing, production, and anyone wanting to use the DIMS system needed to
+testing, production, and anyone wanting to use the DIMS system needed to be able to
 quickly and easily stand up a system. This can only be accomplished using
 stable and well-documented build automation.
 
 Ansible was chosen early on as what looked like the most promising system build
 automation tool, so in this sense saying "focus on system build automation"
 means "focus on mastering Ansible." Anyone wanting to build on the project's
-successes, and avoid some of its challenges, is to ensure *everyone* masters
+successes, and avoid some of its challenges, must ensure that *all team members*
+involved in development or system administration master
 using Ansible. That can't be stressed enough, since any system that is not
 under Ansible control is at risk of instability and very costly effort to fix
 or replace should something happen to it. Any host that is fully under Ansible
@@ -104,7 +105,7 @@ they programs, libraries, or add-ons and utilities.
 While this recommendation sounds simple, it is not. This task is made difficult
 by the choices of supported base operating system(s) made by each of the open
 source security tools you want to integrate. Great care needs to be taken in
-making the decisions of which operating systems to support balanced with
+making the decisions of which operating systems to support, balanced with
 available expertise in the team for dealing with required debugging and
 configuration management tasks.
 
@@ -167,7 +168,7 @@ or role wipes out changes a user has made and takes the configuration file back
 to an initial state.
 
 There are several ways to do this, some more complicated than others.
-One of the easiest ways is to start with a generic file has very little
+One of the easiest ways is to start with a generic file that has very little
 need for customization and will run on all systems, which in turn uses
 a *drop-in* inclusion mechanism to in turn support inclusion of two
 types of files:
@@ -287,7 +288,7 @@ directory of `openstack/python-openstackclient`_ and to module names.
 Of course this requires greater engineering discipline when programming, but
 had this technique been known and used from the start of the project it would
 have resulted in a much more organized and structured source directory tree
-that can supports deprecation of old code, transition and migration to new
+that can support deprecation of old code, transition and migration to new
 versions, as well as clean deletion of obsolete code when the time comes. Using
 this mechanism of uniformly handling version support is much more modular than
 using conditional constructs within programs, or mixing old and new files in a
@@ -307,13 +308,14 @@ requires constantly dealing with testing upgrades, updating version numbers
 in Ansible playbook files, applying patches, debugging regression problems,
 debugging version inconsistencies between systems, and updating
 documentation. The more software subsystems and packages that are used, the
-greater the frequency of changes that must be dealt with. Assume that a quarter
-up to half of the project working time will be spent dealing with these issues.
+greater the frequency of changes that must be dealt with. Assume that somewhere
+between 25% to 50%
+of the project working time will be spent dealing with these issues.
 
 The automation provided by Ansible, and the integration of unit and system
-tests (see :ref:`ansibledimsplaybooks:tests`), helps immensely with identifying
+tests (see :ref:`ansibledimsplaybooks:tests`) helps immensely with identifying
 what may be misconfigured, broken, or missing. Be disciplined about adding
-new tests and regularly running tests saves time in the long run. Make sure
+new tests. Regularly running tests saves time in the long run. Make sure
 that all team members learn to use these tools, as well as spend time
 learning debugging techniques (see :ref:`ansibledimsplaybooks:debugging`).
 

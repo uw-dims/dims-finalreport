@@ -110,7 +110,7 @@ hypervisors, for that matter) directly.
   commands in the ``Vagrantfile`` for pre-Ansible customization,
   and some external scripts.
 
-+ The Virtualbox Box file preparation for CoreOS uses external
++ The Virtualbox Box file preparation for CoreOS uses
   external scripts to prepare CoreOS for Ansible, and other
   ``Vagrantfile`` inline commands for boot-time customization.
 

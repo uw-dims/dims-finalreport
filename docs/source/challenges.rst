@@ -18,7 +18,7 @@ Understanding the Tools Being Used
 It is a myth that humans only use 10% of their brain. [1]_ But it is
 common for programmers and system administrators to only learn a
 small portion of the features and capabilities of any given program
-or tool that they may need to use. The simple thing to do is go search
+or tool that they may need to use. The simple thing to do is to search
 `StackExchange`_ for system administration tasks, or `StackOverflow`_
 for programming tasks, and simply copy/paste what someone posts there
 in order to quickly "solve" the problem at hand and move on to the
@@ -97,8 +97,8 @@ the deficit, but this was not possible when the PI did not write the software.)
 
 One risk to a project that is hard to avoid is a dependency on external
 software products or standards that are outside of the control of the project
-(e.g., see :ref:`stix_dev_libraries`). Such situations can surface larger
-organizational weaknesses and personnel issues that simply cannot be solved
+(e.g., see :ref:`stix_dev_libraries`). Such situations can cause larger
+organizational weaknesses and personnel issues to surface that simply cannot be solved
 without commitment and full-throated support from higher up in the
 organization. The best that can sometimes be achieved is to learn from
 the situation, find a way to move on, and carry the lessons forward
@@ -120,7 +120,7 @@ that provides HTTP/HTTPS web application services for browsers, an FTP file
 server that only serves static files, etc.
 
 In such simple deployments, naming a computer based on the service it
-provides seems to make sense and to be simple. Until you decide to it
+provides seems to make sense and to be simple. Until you decide it
 makes more sense to combine some related services on that one
 computer, at which point one of two things happens:
 
@@ -180,11 +180,11 @@ Separating DNS Name Spaces
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Adding to the complexity of DNS and host naming is the situation of multi-homed
-hosts. Most people are used to one computer with one or two interfaces (like a
+hosts. Most people are accustomed to one computer with one or two interfaces (like a
 laptop with either a wired Ethernet interface, or a WiFi interface, only one of
 which is active at any given time). That means the computer always has just one
 active IP address, and since laptops are usually used for connecting as a
-client to remote services, don't even need to have a DNS name!
+client to remote services, they don't even need to have a DNS name!
 
 Layered, segmented networks that involve external firewalling, Virtual Private
 Network (VPN) access to multi-segmented Virtual Local Area Network (VLAN)
@@ -285,7 +285,7 @@ and ran on two different operating systems.)
 On multiple occasions, hardware had to be moved from one location
 to another (which meant changing IP addresses on both bare-metal
 hosts and virtual machines, changing routes, and changing VPNs.)
-The last time hardware was moved, this time to consolidate it all
+The last time hardware was moved, in order to consolidate it all
 into one data center, the entire system became unstable and non-functional.
 
 One of the machines being moved served as the hypervisor for approximately
@@ -352,7 +352,7 @@ thus drifting apart in versions from the regularly updated development hosts
 running Ubuntu 14 and Debian 8), or dealing with changes to configuration files
 that had to be ported to Vagrant Virtualbox "box" files and the bare-metal
 cluster at the same time.  As these systems were not easily controlled with
-Ansible at first, this caused a lot of pain that was never fully eliminated. As
+Ansible at first, this caused a lot of frustration that was never fully eliminated. As
 the baremetal servers were re-purposed for pilot deployment work, the central
 cluster services degraded and took some formerly working services with them.
 
@@ -379,9 +379,10 @@ team, than was available.
 Using Agile
 ~~~~~~~~~~~
 
-Exacerbated by the issues of team member physical distribution, timezone
-differences, and work schedule differences was achieving and maintaining
-a cadence with Agile/Scrum and software releases. All team members were new
+Problems with achieving and maintaining a cadence with Agile/Scrum and
+software releases, were exacerbated by the issues of team member
+physical distribution, time zone differences and work schedule
+differences.  All team members were new
 to using Git, which has a steep learning curve to begin with. Differences
 in versions across workstations caused problems in sharing code using Git.
 Getting everyone to adopt common processes and tools proved to be difficult.
@@ -515,7 +516,7 @@ In order to keep stability in the development environment to make forward
 progress on a number of fronts, the Trident version was pinned to ``1.3.8``.
 The pilot deployment, however, would need to be done using a newer version (at
 the time ``1.4.2``, currently ``1.4.5``).  There were at least two significant
-changes make between the ``1.3.8`` and ``1.4.2`` versions: The CSS style
+changes made between the ``1.3.8`` and ``1.4.2`` versions: The CSS style
 sheets used by the Trident portal GUI went from two files to one file, changing
 names at the same time, and there were some incompatible changes to the command
 set for the ``tcli`` command line interface that was used by Ansible to install
@@ -524,7 +525,7 @@ changes by extracting files from the two packages and differencing everything
 in order to then use conditional logic and dictionaries to quickly switch
 between version ``1.3.8`` and ``1.4.2`` in order to keep a stable working
 demo and simultaneously prepare for the pilot deployment. (A variation of
-this technique is illustrated in the code block in the code block :ref:`clientpy`).
+this technique is illustrated in the code block :ref:`clientpy`).
 This diverted a significant amount of energy for a period of time that pushed
 other tasks to the background.
 
