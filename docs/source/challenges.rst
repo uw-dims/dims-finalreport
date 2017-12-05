@@ -286,7 +286,7 @@ On multiple occasions, hardware had to be moved from one location
 to another (which meant changing IP addresses on both bare-metal
 hosts and virtual machines, changing routes, and changing VPNs.)
 The last time hardware was moved, this time to consolidate it all
-into one data center, everything broke.
+into one data center, the entire system became unstable and non-functional.
 
 One of the machines being moved served as the hypervisor for approximately
 a dozen virtual machines making up the core of the DIMS development
@@ -470,14 +470,13 @@ returned to the caller in a single data structure. The Trident portal holds a
 limited set of attributes about a user, but some programs integrated into DIMS
 need more attributes. That means one of two things must happen:
 
-#. Trident is modified support the extra attributes that are needed, or
+#. Trident must be modified to support the extra attributes that are needed, or
 
-#. An abstraction layer is added that makes one call to Trident to
+#. An abstraction layer is added that allows one call to Trident to
    get the attributes it holds, and a second call to a DIMS database
    component to get the extra attributes, combining them into one
-   data structure and returning that to the caller.
-
-This is illustrated in the following whiteboard sketch:
+   data structure that is returned to the caller.  This is illustrated in
+   Figure :ref:`figUserAttributes`.
 
 .. _figUserAttributes:
 
