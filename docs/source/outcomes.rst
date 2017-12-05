@@ -427,6 +427,9 @@ documentation.
    * - https://github.com/uw-dims/dims-ad
      - https://dims-ad.readthedocs.io
 
+   * - https://github.com/uw-dims/dims-adminguide
+     - https://dims-adminguide.readthedocs.io
+
    * - https://github.com/uw-dims/dims-dashboard
      - https://dims-dashboard.readthedocs.io
 
