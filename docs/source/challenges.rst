@@ -491,46 +491,6 @@ This is illustrated in the following whiteboard sketch:
 
 ..
 
-Related to abstraction is the classification of system components using
-a taxonomy. A DIMS deployment is made up of a dozen or more computers
-(be they bare metal or virtual machines). Each of these computers must
-share a network address range, a segmented network topology with a VPN
-for remote access, have domain names to map to IP addresses, have a
-branded logo, etc. If a second DIMS instance is to be stood up, a
-complete set of similar systems (though configured differently with
-another address range, another set of DNS names, etc.) must be
-independently set up. This means that very little can be hard-coded,
-since each deployment will be isolated and independent (yet made up
-of the same service components from the same set of Ansible playbooks
-and instructions). This isn't the way that most people learn how to
-set up computers, so this presents both a conceptual challenge, as
-well as an engineering challenge to separate configuration and code
-that uses variables from the values that those variables take on
-at run time (and to keep multiple sets of those variables separated
-and organized so they don't interfere.)
-
-.. _coupling_cohesion:
-
-Coupling and Cohesion
-~~~~~~~~~~~~~~~~~~~~~
-
-The degree of coupling and cohesion between system components varied widely,
-contributing in many cases to instability of the overall system due to data
-dependencies, use of hard-coded values, redundancy in variables, and
-inconsistency in the use of DNS names vs. IP addresses.
-
-For example, there were often multiple variables in different locations with
-different naming styles that all held the same value. Changing only one of the
-variables resulted in inconsistency in configuration, breaking one or more
-components as a result of the change. Trying to find all occurrences of the
-similar variables was difficult, since the naming style used by each programmer
-may vary and you would not know what to look for. After the team was reduced to
-just the PI, a significant amount of effort was put into finding and
-eliminating duplicative variables, and switching to a more common naming style
-to reduce the effort required to make changes or debug problems. This had a
-major positive effect on overall system stability as well as speeding up
-forward progress on adding some new features required by the pilot deployment.
-
 .. _backward_compatibility:
 
 Backward Compatibility
