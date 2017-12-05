@@ -89,8 +89,8 @@ reliably re-applying a role is simple and easy.
 
 .. _standardOS:
 
-Standardize on Operating System(s)
-----------------------------------
+Standardize Operating Systems
+-----------------------------
 
 As much as possible, standardize on a small and manageable number of base
 operating systems and versions, and strive to keep up with the most recent
@@ -116,11 +116,11 @@ right way on the right operating system. This could mean maintaining a large
 set of group variables (one for each alternative operating system), using
 variables in inclusion directives to select from those alternatives, and/or
 using "Ansible facts" derived at run time with logic (e.g., ``when:
-ansible_os_family == "Debian"`` as a qualifier in a playbook)
+ansible_os_family == "Debian"`` as a conditional in a playbook)
 Developing Ansible playbooks in a modular way that can easily accommodate
 generalized support for multiple operating systems (e.g., using a "plug-in"
 style model) is a more sophisticated way of writing playbooks that requires a
-greater level of expertise in all who are writing the playbooks.  Such
+greater level of expertise of those writing the playbooks.  Such
 expertise, or institutional support for employee training to achieve it, are
 not always available.
 
@@ -221,38 +221,25 @@ nature makes itself painfully obvious.
 Avoid Painting Yourself into a Corner with Versions
 ---------------------------------------------------
 
-From the start, build everything to support at least two versions (``N`` and
-``N-1``). In the case of DIMS, some systems were originally installed with
-Ubuntu 12.04 LTS, but during the initial year a new set of scripts were
-written to support Ubuntu 14.04 LTS (and the Ubuntu 12.04 LTS scripts were
-abandoned). Since many systems were not originally created under full
-Ansible control, or with automated build mechanisms, it was difficult
-to migrate away from Ubuntu 12.04 on some systems and packages on those
-systems slowly drifted and things broke.
-
-If the build environment uses hard-coded version numbers like ``14.04`` and the
-SHA256 hash of the installation ISO image for Ubuntu in a single variable, it
-may become difficult (if not impossible, under the constraints of available
-resources) to migrate to a new version of the operating system. The opposite --
-and perhaps worse problem -- is having older version of an operating system
-(e.g., Ubuntu 12.04 LTS) that were manually created to serve some key required
-services, while the remainder of the build environment only was written to
-support Ubuntu 14.04 LTS. The result is friction in upgrading, or having to
-live with bugs or broken features because they cannot be upgraded.
+From the start, build everything to support at least two operating system
+release versions (the current release and one release back, or ``N`` and
+``N-1``) and try to move as quickly as possible to the current release to avoid
+getting locked in to older systems. This process is made easier if everyone
+writing scripts and configuration files follows a "no hard-coded values" rule
+for things like version numbers, hashes of distribution media for integrity
+checking, file names of ISO installation disk images, etc.
 
 If all of the required attributes of an operating system release (e.g., version
 major and minor number, CPU architecture type, ISO download URL, SHA256 hash of
-ISO, etc.) were all turned into variables and used consistently throughout the
-OS build and Ansible deployment and configuration process, alternating between
-the two is a simple matter of swapping out the file that defines the values for
-these variables. This is where dictionaries (also known as "maps") come in
-handy, allowing a single key (e.g., "ubuntu-14.04.5") to serve as a single
-index to obtain all of the constituent variables in a consistent way.  If the
-Packer build process, the Kickstart install process, and the Ansible playbooks,
-all use different ways of defining these attributes, it becomes very difficult
-to upgrade. If they all use a common dictionary and templating to produce
-equivalent results across multiple tool using a single identifier, things are a
-lot easier.
+ISO, etc.) were referenced with variables and those variables used consistently
+throughout the OS build and Ansible deployment and configuration process,
+alternating between the two is a simple matter of alternating between two
+sets of variable definitions.  This is where dictionaries (also known as
+"maps") come in handy, allowing a single key (e.g., "ubuntu-14.04.5") to serve
+as an index to obtain all of the constituent variables in a consistent
+way.  If the Packer build process, the Kickstart install process, and the
+Ansible playbooks, all define these attributes in different ways, it
+becomes very difficult to upgrade versions.
 
 Since operating systems are incrementally improving over time, the build
 environment **must** take this into consideration to keep you from getting
@@ -311,16 +298,17 @@ Budget for System Maintenance
 -----------------------------
 
 To paraphrase a joke in the programming world: "You have a problem. You decide
-to solve your problem using free and open source tools and operating systems.
-Now you have two problems." Sure, its a joke, but that makes it no less true.
+to solve your problem using free and open source software tools and operating
+systems.  Now you have two problems." Sure, its a joke, but that makes it no
+less true.
 
 Trying to compose a system using open source parts that are constantly changing
 requires constantly dealing with testing upgrades, updating version numbers
 in Ansible playbook files, applying patches, debugging regression problems,
 debugging version inconsistencies between systems, and updating
-documentation. The more software subsystems and packages used, the
-greater the frequency of changes that must be dealt with. Assume that up to
-half of the project working time will be spent dealing with these issues.
+documentation. The more software subsystems and packages that are used, the
+greater the frequency of changes that must be dealt with. Assume that a quarter
+up to half of the project working time will be spent dealing with these issues.
 
 The automation provided by Ansible, and the integration of unit and system
 tests (see :ref:`ansibledimsplaybooks:tests`), helps immensely with identifying
